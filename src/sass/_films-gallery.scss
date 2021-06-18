@@ -1,0 +1,157 @@
+.films_gallery {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 50px;
+      }
+
+      background-color: #fffff;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.17;
+    text-align: center;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 36px;
+      line-height: 1.17;
+    }
+  }
+
+
+
+
+
+.team {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  
+    @media screen and (min-width: 1200px) {
+      padding-top: 94px;
+      padding-bottom: 94px;
+    }
+  
+    background-color: #f5f4fa;
+  
+    h2 {
+      margin-top: 0;
+      margin-bottom: 30px;
+  
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.17;
+      text-align: center;
+  
+      @media screen and (min-width: 1200px) {
+        font-size: 36px;
+        line-height: 1.17;
+      }
+    }
+  
+    h3 {
+      margin-bottom: 10px;
+  
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.19;
+      text-align: center;
+    }
+  }
+  
+  .team-img {
+    width: 100%;
+  }
+  
+  .team-list {
+    .item {
+      display: block;
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+  
+      background-color: $primary-white-color;
+  
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+  
+    &.item:not(:last-child) {
+      margin-bottom: 0;
+    }
+  
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -15px;
+  
+      .item {
+        width: calc((100% - 2 * 30px) / 2);
+        margin: 15px;
+      }
+    }
+  
+    @media screen and (min-width: 1200px) {
+      .item {
+        width: calc((100% - 4 * 30px) / 4);
+        margin: 15px;
+      }
+    }
+  }
+  
+  .team-par {
+    margin-top: 0;
+    margin-bottom: 16px;
+  
+    color: #757575;
+  
+    font-size: 16px;
+    line-height: 1.19;
+    text-align: center;
+  }
+  
+  .social-list {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-item:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  
+    border-radius: 50%;
+    color: $social-link-color;
+  
+    &:hover,
+    &:focus {
+      background-color: $accent-color;
+      color: $primary-white-color;
+  
+      transition: $tansition-hover;
+    }
+  }
+  
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  
+    fill: currentColor;
+  
+    &:hover {
+      fill: $primary-white-color;
+  
+      transition: $tansition-hover;
+    }
+  }
