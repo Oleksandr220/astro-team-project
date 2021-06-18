@@ -6,9 +6,9 @@ const movieId = '10580';
 
 function onImageClicked(id, key) {
 apiFetchRequest.fetchMovieDetails(id, key)
-    // .then(movie => {
-    //     console.log('test',movie)
-    // })
+    .then(movie => {
+        console.log('test', movie)
+    })
 }
 onImageClicked(movieId, userKey)
 
