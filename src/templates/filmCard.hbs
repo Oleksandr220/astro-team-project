@@ -1,0 +1,14 @@
+    <button>X</button>
+    <img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt='poster of movie {{title}}'/>
+        <h2>{{title}}</h2>
+        <p>'Vote / Votes' {{vote_average}} / {{vote_count}}</p>
+        <p class=''>'Popularity' {{popularity}}</p>
+        <p class=''>'Original Title' {{original_title}}</p>
+        <p class=''>'Genre' {{#each genres}}
+                            {{this.name}}
+                            {{/each}}</p>
+        <h3>'About'</h3>
+        <p> {{overview}}</p>
+        <button>add to Watched</button>
+        <button>add to queue</button>
+    </div>

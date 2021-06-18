@@ -1,25 +1,35 @@
-import * as apiFetchRequest from './fetchRequests';
+import * as apiFetchRequest from './fetchRequests.js';
+import imageCardsTpl from '../templates/filmCard.hbs';
 
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
-const movieId = '10580';
+// const movieId = '10580';
 
+const body = document.querySelector('body');
+const popUp = document.querySelector('#do');
 
-function onImageClicked(id, key) {
+body.addEventListener('click', onDisplayBigImg);
+
+function fetchMovieById(id, key) {
 apiFetchRequest.fetchMovieDetails(id, key)
     .then(movie => {
-        console.log('test', movie)
+        const markup = renderFilmCard(movie);
+        return markup;
     })
 }
-onImageClicked(movieId, userKey)
 
 function onDisplayBigImg(e) {
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-  console.log(e.target.dataset.lightbox);
-  const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.lightbox}" alt="${e.target.alt}">
-`);
-  instance.show();
-  return;
+    if (e.target.nodeName !== 'IMG') {
+        return;
+    }
+    let idFromImg = e.target.id;
+    fetchMovieById(idFromImg, userKey);
+}
+
+function renderFilmCard(movie) {
+    //   if (!movie.poster_path) {
+    //     movie.poster_path = "/"
+    
+    //   }
+    const markup = imageCardsTpl(movie);
+    return (popUp.innerHTML = markup);
 }
