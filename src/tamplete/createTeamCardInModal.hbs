@@ -1,0 +1,12 @@
+{{#each this}}
+  <li class='modal-container-item'>
+    <div class='photo-card'>
+      <img src='{{this.photo1}}' data-source='{{this.photo2}}' alt='{{this.role}}' />
+
+      <div class='team-member'>
+        <p class='team-member-name'>{{this.name}}</p>
+        <p class='team-member-role'>{{this.role}}</p>
+      </div>
+    </div>
+  </li>
+{{/each}}
