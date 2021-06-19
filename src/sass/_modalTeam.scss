@@ -1,12 +1,3 @@
-li {
-  list-style: none;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-}
-
 .backdrop {
   position: fixed;
   top: 0px;
@@ -104,7 +95,7 @@ p {
 
   &-title {
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     // font-family: Titan One;
     font-style: normal;
@@ -139,6 +130,7 @@ p {
 .modal-team-list {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .photo-card {
