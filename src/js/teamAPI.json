@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Andrii",
+    "surname": "Lanyk",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Frontend Developer"
+  },
+  {
+    "name": "Bohdan",
+    "surname": "Dyachenko",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Scrum Master"
+  },
+  {
+    "name": "Igor",
+    "surname": "Mokhnatskyy",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Frontend Developer"
+  },
+  {
+    "name": "Svitlana",
+    "surname": "Nedilko",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Frontend Developer"
+  },
+  {
+    "name": "Stanislav",
+    "surname": "Sheludyakov",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Frontend Developer"
+  },
+  {
+    "name": "Alexandr",
+    "surname": "Maslov",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Backend Developer"
+  },
+  {
+    "name": "Aleksey",
+    "surname": "Krikun",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "UI/UX Designer"
+  },
+  {
+    "name": "Vladislav",
+    "surname": "Yuskiv",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Frontend Developer"
+  },
+  {
+    "name": "Danilo",
+    "surname": "Prokhorchuk",
+    "photo1":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+    "photo2":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
+    "role": "Team Lead"
+  }
+]

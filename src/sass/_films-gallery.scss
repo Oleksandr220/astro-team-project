@@ -1,0 +1,68 @@
+.films-gallery {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 50px;
+        }
+        
+        background-color: #ffffff;
+}
+
+.card__film {
+  width: 280px;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+  width: 294px;         
+  display: flex;          
+  flex-wrap: wrap;
+  margin: -15px;
+  width: calc((100% - 2 * 30px) / 2);
+  margin: 15px;
+  }
+  
+  @media screen and (min-width: 1024px) {
+  width: 274px;
+  width: calc((100% - 3 * 30px) / 3);
+  margin: 15px;
+  }
+
+  .thumb {
+    margin-bottom: 10px;
+  }
+      
+  h2 {
+    margin: 0;
+
+    color: #000000;
+      
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.34;
+  }
+}
+      
+.card__text {
+  display: flex;
+      
+  color: #ff6b08;
+      
+  font-size: 12px;
+  line-height: 1.34;
+}
+
+.card__vote_average {
+  width: 36px;
+  height: 16px;
+
+  margin-left: 10px;
+
+  color: #ffffff;
+
+  background-color: #ff6b01;
+  border-radius: 5px;
+}

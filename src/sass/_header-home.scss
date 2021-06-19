@@ -1,35 +1,35 @@
 .header {
-    background-color: rgba(00, 00, 00, 0.56);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: border-box;
-    background-size: cover;
+    background: var(--primary-background-color);
     margin-left: auto;
     margin-right: auto;
-    padding-top: 46px;
-    padding-bottom: 96px;
-    @media screen and (min-width: 320px) {
-        background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg.jpg);
-        max-width: 320px;
-    }
-    @media screen and (min-width: 770px) {
-        background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg-tabl.jpg);
-        max-width: 770px;
-    }
-    @media screen and (min-width: 1024px) {
-        background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg-desk.jpg);
-        max-width: 1024px;
-    }
     &-nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 41px;
     }
+    &>.container {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: border-box;
+        background-size: cover;
+        padding-top: 46px;
+        padding-bottom: 96px;
+        width: 100%;
+        @media screen and (min-width: $MobileWidth) {
+            background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg.jpg);
+        }
+        @media screen and (min-width: $TabletWidth) {
+            background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg-tabl.jpg);
+        }
+        @media screen and (min-width: $DesktopWidth) {
+            background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg-desk.jpg);
+        }
+    }
 }
 
 .logo {
-    color: #fff;
+    color: var(--primary-text-color);
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -53,13 +53,13 @@
         flex-wrap: nowrap;
     }
     &-link {
-        color: #fff;
-    }
-    &-link:focus {
-        border-bottom: 3px solid orange;
+        color: var(--primary-text-color);
     }
     &-item:not(:last-child) {
         margin-right: 40px;
+    }
+    &-current {
+        border-bottom: 3px solid var(--accent-color);
     }
 }
 
@@ -79,8 +79,8 @@
         }
         width: 100%;
         background-color: inherit;
-        border-bottom: 0.5px solid #fff;
-        color: #fff;
+        border-bottom: 0.5px solid var(--primary-text-color);
+        color: var(--primary-text-color);
         outline: none;
         border-top: none;
         border-left: none;
@@ -89,13 +89,13 @@
     }
     &-input:focus,
     &-input:active {
-        border-bottom: 0.5px solid orange;
+        border-bottom: 0.5px solid var(--accent-color);
     }
     &-input:focus::placeholder,
     &-input:active::placeholder {
-        color: orange;
+        color: var(--accent-color);
     }
     &-input::placeholder {
-        color: #fff;
+        color: var(--primary-text-color);
     }
 }
