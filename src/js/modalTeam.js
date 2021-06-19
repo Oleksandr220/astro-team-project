@@ -11,6 +11,7 @@ let teamRenderData = [];
 
 openModalButton.addEventListener('click', () => {
   modalBackdrop.classList.remove('is-hidden');
+  showPage;
 });
 
 closeModalButton.addEventListener('click', () => {
