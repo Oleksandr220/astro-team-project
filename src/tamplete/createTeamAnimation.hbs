@@ -1,0 +1,23 @@
+{{#each this}}
+  <li class='modal-container-item'>
+    <div class='photo-card' data-id={{surname}}>
+      <div class='photo-card-img'>
+        <div class='frame'>
+          <div class='slices' onclick='void(0);' style=background-image:url({{photo1}}); >
+            <div class='slice slice-1' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-2' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-3' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-4' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-5' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-6' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-7' style=background-image:url({{photo2}}); ></div>
+            <div class='slice slice-8' style=background-image:url({{photo2}}); ></div>
+          </div>
+        </div>
+      </div>
+
+      <p class='photo-card-name'>{{name}} {{surname}}</p>
+      <p class='photo-card-role'>{{role}}</p>
+    </div>
+  </li>
+{{/each}}
