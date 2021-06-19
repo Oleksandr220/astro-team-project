@@ -1,5 +1,5 @@
 import teamAPI from './teamAPI.json';
-import createTeamAnimationTPL from '../tamplete/createTeamAnimation.hbs';
+import createTeamAnimationTPL from '../templates/createTeamAnimation.hbs';
 
 const openModalButton = document.querySelector('[data-team]');
 const closeModalButton = document.querySelector('[data-modal-close]');

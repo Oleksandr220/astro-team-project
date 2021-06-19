@@ -1,11 +1,11 @@
+import cardTpl from '../templates/film-card.hbs';
+import { fetchTrending, fetchSearchMovie } from './main';
+
 const refs = {
-    
-    galleryRef: document.querySelector('.js-gallery'),
-   
+    galleryRef: document.querySelector('.js-gallery'),  
 }
 
-
-
-function imagesMarkup (images) {
-    refs.galleryRef.insertAdjacentHTML('beforeend', imageCardTpl(images));
+function imagesMarkup (card) {
+    refs.galleryRef.insertAdjacentHTML('beforeend', cardTpl(card));
 }
+console.log(fetchTrending)
