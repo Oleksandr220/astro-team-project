@@ -10,18 +10,6 @@
         background-color: #fffff;
 }
 
-//   .gallery-card:hover,
-//   .gallery-card:focus {
-//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
-//     transition: $tansition-hover;
-  
-//     .card-overlay,
-//     .card-overlay {
-//       transform: translateY(0);
-//     }
-//   }
-
 .card__film {
   width: 280px;
 
@@ -39,11 +27,6 @@
   width: calc((100% - 3 * 30px) / 3);
   margin: 15px;
   }
-              
-  // a {
-  //   margin: 0;
-  //   text-decoration: none;
-  //   }
       
   h2 {
     margin: 0;
@@ -57,6 +40,8 @@
 }
       
 .card__text {
+  display: flex;
+
   padding-top: 10px;
       
   color: #ff6b08;
@@ -68,6 +53,8 @@
 .card__vote_average {
   width: 36px;
   height: 16px;
+
+  margin-left: 10px;
 
   color: #ffffff;
 
