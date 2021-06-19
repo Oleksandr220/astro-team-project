@@ -1,8 +1,6 @@
 import './sass/main.scss';
+import './js/header';
 import './js/main';
-<<<<<<< HEAD
+import './js/film-gallery';
 import './js/pagination.js';
 import './js/modalTeam.js';
-=======
-import './js/header';
->>>>>>> header-library
