@@ -1,5 +1,6 @@
 import teamAPI from './teamAPI.json';
-import createTeamCardInModalTPL from '../tamplete/createTeamCardInModal.hbs';
+// import createTeamCardInModalTPL from '../tamplete/createTeamCardInModal.hbs';
+import createTeamAnimationTPL from '../tamplete/createTeamAnimation.hbs';
 
 const openModalButton = document.querySelector('[data-team]');
 const closeModalButton = document.querySelector('[data-modal-close]');
@@ -45,7 +46,7 @@ function renderTeamListOnButtonClick(buttons) {
 }
 
 function createListMarkup(teamRenderData) {
-  return createTeamCardInModalTPL(teamRenderData);
+  return createTeamAnimationTPL(teamRenderData);
 }
 
 let showPage = (function () {
@@ -64,6 +65,26 @@ let showPage = (function () {
 
     teamList.innerHTML = '';
     teamList.insertAdjacentHTML('beforeend', createListMarkup(teamRenderData));
+
+    teamRenderData.map(({ surname, photo1, photo2 }, i) => {
+      let nameTextArray = document.querySelectorAll('.photo-card-name');
+      nameTextArray.forEach(elem => {
+        if (elem.innerHTML.includes(`${surname}`)) {
+          let photoCard = document.querySelector(`[data-id=${surname}]`);
+          const sliceArray = photoCard.querySelectorAll('.slices .slice');
+          sliceArray.forEach(e => {
+            e.style.backgroundImage = `url(${photo2})`;
+          });
+
+          const slices = document.querySelectorAll('.slices');
+          slices.forEach((element, index) => {
+            if (i === index) {
+              element.style.backgroundImage = `url(${photo1})`;
+            }
+          });
+        }
+      });
+    });
   };
 })();
 

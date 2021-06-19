@@ -1,6 +1,7 @@
 [
   {
-    "name": "Andrii Lanyk",
+    "name": "Andrii",
+    "surname": "Lanyk",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -8,7 +9,8 @@
     "role": "Frontend Developer"
   },
   {
-    "name": "Bohdan Dyachenko",
+    "name": "Bohdan",
+    "surname": "Dyachenko",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -16,7 +18,8 @@
     "role": "Scrum Master"
   },
   {
-    "name": "Igor Mokhnatskyy",
+    "name": "Igor",
+    "surname": "Mokhnatskyy",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -24,7 +27,8 @@
     "role": "Frontend Developer"
   },
   {
-    "name": "Svitlana Nedilko",
+    "name": "Svitlana",
+    "surname": "Nedilko",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -32,7 +36,8 @@
     "role": "Frontend Developer"
   },
   {
-    "name": "Stanislav Sheludyakov",
+    "name": "Stanislav",
+    "surname": "Sheludyakov",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -40,7 +45,8 @@
     "role": "Frontend Developer"
   },
   {
-    "name": "Alexandr Maslov",
+    "name": "Alexandr",
+    "surname": "Maslov",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -48,7 +54,8 @@
     "role": "Backend Developer"
   },
   {
-    "name": "Aleksey Krikun",
+    "name": "Aleksey",
+    "surname": "Krikun",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -56,7 +63,8 @@
     "role": "UI/UX Designer"
   },
   {
-    "name": "Vladislav Yuskiv",
+    "name": "Vladislav",
+    "surname": "Yuskiv",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
@@ -64,7 +72,8 @@
     "role": "Frontend Developer"
   },
   {
-    "name": "Danilo Prokhorchuk",
+    "name": "Danilo",
+    "surname": "Prokhorchuk",
     "photo1":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
     "photo2":
