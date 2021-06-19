@@ -7,25 +7,25 @@ const movieId = 10580;
 
 
 
-function onInputTrending(key){
+function onInputTrending(key) {
     apiFetchRequest.fetchTrending(key)
-    .then(movie => {
-        console.log(movie)
-    })
+        .then(movie => {
+            console.log(movie)
+        })
 }
 
-function onInputMovieDetails(key){
+function onInputMovieDetails(key) {
     apiFetchRequest.fetchSearchMovie(key)
-    .then(movie => {
-        console.log(movie)
-    })
+        .then(movie => {
+            console.log(movie)
+        })
 }
 
-function onInputMovie(id, key){
+function onInputMovie(id, key) {
     apiFetchRequest.fetchMovieDetails(id, key)
-    .then(movie => {
-        console.log(movie)
-    })
+        .then(movie => {
+            console.log(movie)
+        })
 }
 
 
