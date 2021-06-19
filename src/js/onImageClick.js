@@ -2,7 +2,6 @@ import * as apiFetchRequest from './fetchRequests.js';
 import imageCardsTpl from '../templates/filmCard.hbs';
 
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
-// const movieId = '10580';
 
 const body = document.querySelector('body');
 const popUp = document.querySelector('#do');
@@ -17,11 +16,12 @@ function fetchMovieById(id, key) {
 }
 
 function onDisplayBigImg(e) {
-  if (e.target.nodeName !== 'IMG' && e.target.classList.contains(card-image)) {
+  if (e.target.nodeName !== 'IMG') {
     return;
     }
   const getIdFromImg = e.target.id;
-  fetchMovieById(getIdFromImg, userKey);
+    fetchMovieById(getIdFromImg, userKey);
+    body.removeEventListener('click', onDisplayBigImg);
 }
 
 function renderFilmCard(movie) {
@@ -49,5 +49,6 @@ function onEscButtonPress(evt) {
 function onCloseModal() {
   popUp.classList.add('visually-hidden');
   popUp.innerHTML = '';
-  window.removeEventListener('keydown', onEscButtonPress);
+    window.removeEventListener('keydown', onEscButtonPress);
+    body.addEventListener('click', onDisplayBigImg);
 }
