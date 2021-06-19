@@ -10,26 +10,44 @@ const popUp = document.querySelector('#do');
 body.addEventListener('click', onDisplayBigImg);
 
 function fetchMovieById(id, key) {
-apiFetchRequest.fetchMovieDetails(id, key)
-    .then(movie => {
-        const markup = renderFilmCard(movie);
-        return markup;
-    })
+  apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
+    const markup = renderFilmCard(movie);
+    return markup;
+  });
 }
 
 function onDisplayBigImg(e) {
-    if (e.target.nodeName !== 'IMG') {
-        return;
+  if (e.target.nodeName !== 'IMG' && e.target.classList.contains(card-image)) {
+    return;
     }
-    let idFromImg = e.target.id;
-    fetchMovieById(idFromImg, userKey);
+  const getIdFromImg = e.target.id;
+  fetchMovieById(getIdFromImg, userKey);
 }
 
 function renderFilmCard(movie) {
-    //   if (!movie.poster_path) {
-    //     movie.poster_path = "/"
-    
-    //   }
-    const markup = imageCardsTpl(movie);
-    return (popUp.innerHTML = markup);
+  //   if (!movie.poster_path) {
+  //     movie.poster_path = "/"
+  // ..__ ДОписати частину коду, щоб при відсутності постера відображалась картинка,
+  //  яку потрібно ще придумати і завантажити в різних розширеннях __..
+  //   }
+  const markup = imageCardsTpl(movie);
+  popUp.innerHTML = markup;
+  const buttonCloseModal = document.querySelector('[data-close]');
+
+  window.addEventListener('keydown', onEscButtonPress);
+  popUp.classList.remove('visually-hidden');
+  buttonCloseModal.addEventListener('click', onCloseModal);
+  console.log(popUp);
+}
+
+function onEscButtonPress(evt) {
+  if (evt.code === 'Escape') {
+    onCloseModal();
+  }
+}
+
+function onCloseModal() {
+  popUp.classList.add('visually-hidden');
+  popUp.innerHTML = '';
+  window.removeEventListener('keydown', onEscButtonPress);
 }
