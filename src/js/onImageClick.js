@@ -1,10 +1,10 @@
 import * as apiFetchRequest from './fetchRequests.js';
 import imageCardsTpl from '../templates/filmCardDetail.hbs';
 
-const body = document.querySelector('.card__list');
+const listOfMovie = document.querySelector('.card__list');
 const popUp = document.querySelector('[data-popup="backdrop"]');
 
-body.addEventListener('click', onDisplayBigImg);
+listOfMovie.addEventListener('click', onDisplayBigImg);
 
 function fetchMovieById(id, type) {
   apiFetchRequest.fetchMovieDetails(id, type).then(movie => {
@@ -14,35 +14,29 @@ function fetchMovieById(id, type) {
 }
 
 function onDisplayBigImg(e) {
-  console.log(e.target)
   if (e.target.nodeName !== 'IMG') {
     return;
   }
   const getIdFromImg = e.target.dataset.action;
   const getMediaType = e.target.dataset.type;
-    fetchMovieById(getIdFromImg, getMediaType);
-    body.removeEventListener('click', onDisplayBigImg);
+  
+  fetchMovieById(getIdFromImg, getMediaType);
+  listOfMovie.removeEventListener('click', onDisplayBigImg);
 }
 
 function renderFilmCard(movie) {
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
-  const buttonCloseModal = document.querySelector('[data-close]');
-
-  window.addEventListener('keydown', onEscButtonPress);
-  popUp.classList.remove('visually-hidden');
-  buttonCloseModal.addEventListener('click', onCloseModal);
+  popUp.classList.remove('visually-hiden');
+  popUp.addEventListener('click', onCloseModal);
+  window.addEventListener('keydown', onCloseModal);
 }
 
-function onEscButtonPress(evt) {
-  if (evt.code === 'Escape') {
-    onCloseModal();
-  }
-}
-
-function onCloseModal() {
-  popUp.classList.add('visually-hidden');
+function onCloseModal(e) {
+  if(e.code === 'Escape' || e.target.dataset.popup === 'backdrop' || e.target.dataset.popup === 'close')
+  popUp.classList.add('visually-hiden');
   popUp.innerHTML = '';
-    window.removeEventListener('keydown', onEscButtonPress);
-    body.addEventListener('click', onDisplayBigImg);
+  popUp.removeEventListener('keydown', onCloseModal);
+  window.removeEventListener('keydown', onCloseModal);
+  listOfMovie.addEventListener('click', onDisplayBigImg);
 }
