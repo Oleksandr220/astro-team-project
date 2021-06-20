@@ -1,13 +1,15 @@
 .films-gallery {
-    padding-top: 20px;
-    padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 
-    @media screen and (min-width: 768px) {
-        padding-top: 60px;
-        padding-bottom: 50px;
-        }
-        
-        background-color: #ffffff;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+
+  background-color: $primary-background-color;
 }
 
 .card__film {
@@ -17,40 +19,38 @@
   }
 
   @media screen and (min-width: 768px) {
-  width: 294px;         
-  display: flex;          
-  flex-wrap: wrap;
-  margin: -15px;
-  width: calc((100% - 2 * 30px) / 2);
-  margin: 15px;
+    width: 294px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+    margin: 15px;
   }
-  
+
   @media screen and (min-width: 1024px) {
-  width: 274px;
-  width: calc((100% - 3 * 30px) / 3);
-  margin: 15px;
+    width: 274px;
+    margin: 15px;
   }
 
   .thumb {
     margin-bottom: 10px;
   }
-      
+
   h2 {
     margin: 0;
 
-    color: #000000;
-      
+    color: $secondary-text-color;
+
     font-weight: 500;
     font-size: 12px;
     line-height: 1.34;
   }
 }
-      
+
 .card__text {
   display: flex;
-      
-  color: #ff6b08;
-      
+
+  color: $accent-text-color;
+
   font-size: 12px;
   line-height: 1.34;
 }
@@ -61,8 +61,8 @@
 
   margin-left: 10px;
 
-  color: #ffffff;
+  color: $primary-text-color;
 
-  background-color: #ff6b01;
+  background-color: $accent-color;
   border-radius: 5px;
 }

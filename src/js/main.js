@@ -5,12 +5,10 @@ import * as apiFetchRequest from './fetchRequests'
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 const movieId = 10580;
 
-
-
 function onInputTrending(key) {
     apiFetchRequest.fetchTrending(key)
         .then(movie => {
-            console.log(movie)
+            renderSection(movie.results)
         })
 }
 
@@ -29,6 +27,22 @@ function onInputMovie(id, key) {
 }
 
 
+// function getTrendingSection() { onInputTrending(userKey) }
+// function getSearchSection() { onInputTrending(userKey) }
+// function getDetailsCard() { onInputTrending(userKey) }
+
 onInputTrending(userKey)
 onInputMovieDetails(userKey)
 onInputMovie(movieId, userKey)
+// export {getTrendingSection, getSearchSection, getDetailsCard}
+
+import cardTpl from '../templates/film-card.hbs';
+
+const refs = {
+    galleryRef: document.querySelector('.js-gallery'),  
+}
+
+function renderSection(card) {
+        const markupCard = cardTpl(card);
+        refs.galleryRef.innerHTML = markupCard;
+}
