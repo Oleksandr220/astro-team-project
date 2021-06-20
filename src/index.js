@@ -4,3 +4,4 @@ import './js/main';
 import './js/film-gallery';
 import './js/pagination.js';
 import './js/modalTeam.js';
+import './js/onImageClick.js';
