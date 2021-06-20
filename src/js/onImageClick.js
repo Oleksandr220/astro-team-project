@@ -25,11 +25,6 @@ function onDisplayBigImg(e) {
 }
 
 function renderFilmCard(movie) {
-  //   if (!movie.poster_path) {
-  //     movie.poster_path = "/"
-  // ..__ ДОписати частину коду, щоб при відсутності постера відображалась картинка,
-  //  яку потрібно ще придумати і завантажити в різних розширеннях __..
-  //   }
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
   const buttonCloseModal = document.querySelector('[data-close]');
