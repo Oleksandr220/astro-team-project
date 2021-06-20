@@ -4,7 +4,7 @@ import imageCardsTpl from '../templates/filmCardDetail.hbs';
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 // const movieId = '10580';
 
-const body = document.querySelector('body');
+const body = document.querySelector('.card__film');
 const popUp = document.querySelector('#do');
 
 body.addEventListener('click', onDisplayBigImg);
@@ -17,10 +17,11 @@ function fetchMovieById(id, key) {
 }
 
 function onDisplayBigImg(e) {
-  if (e.target.nodeName !== 'IMG') {
+  console.log(e.currentTarget)
+  if (e.currentTarget.nodeName !== 'LI') {
     return;
-    }
-  const getIdFromImg = e.target.id;
+  }
+  const getIdFromImg = e.currentTarget.dataset.action;
     fetchMovieById(getIdFromImg, userKey);
     body.removeEventListener('click', onDisplayBigImg);
 }
@@ -33,7 +34,6 @@ function renderFilmCard(movie) {
   window.addEventListener('keydown', onEscButtonPress);
   popUp.classList.remove('visually-hidden');
   buttonCloseModal.addEventListener('click', onCloseModal);
-  console.log(popUp);
 }
 
 function onEscButtonPress(evt) {

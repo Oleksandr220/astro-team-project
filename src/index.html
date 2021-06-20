@@ -19,6 +19,17 @@
           <img src="" id="508943" width="100px" height="100px">
           <div id="do" class="visually-hidden"></div>
         </div>
+    <li class="card__film" data-action='508943'>
+      <div class="thumb">
+        <img src="https://image.tmdb.org/t/p/w500/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg" alt="{{title}} {{name}}" width="100%" data-id="{{id}}" />
+      </div>
+      <h2 class="card__title">{{title}} {{name}}</h2>
+      <p class="card__text">
+        <span>{{#each genres}} {{name}} {{/each}}</span> | <span>{{release_date}}</span>
+        <span class="card__vote_average">{{vote_average}}</span>
+      </p>
+    </li>
+      <div id="do" class="visually-hidden"></div>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modalTeam.html"></include>
     <include src="./partials/films-gallery.html"></include>
