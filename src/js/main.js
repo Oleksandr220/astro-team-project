@@ -1,6 +1,7 @@
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
-import * as apiFetchRequest from './fetchRequests'
+import * as apiFetchRequest from './fetchRequests';
+const debounce = require('lodash.debounce');
 
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 const movieId = '10580';
@@ -52,4 +53,4 @@ function renderSection(card) {
         const markupCard = cardTpl(card);
         refs.galleryRef.innerHTML = markupCard;
 }
-refs.searchInput.addEventListener('input', onInputMovieDetails);
+refs.searchInput.addEventListener('input', debounce(onInputMovieDetails, 500));
