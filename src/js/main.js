@@ -11,7 +11,7 @@ const mediaType = 'movie';
 function onInputTrending() {
     apiFetchRequest.fetchTrending()
         .then(movie => {
-            console.log(movie)
+            renderSection(movie.results)
         })
 }
 
@@ -33,3 +33,19 @@ function onInputMovie(id, media_type) {
 onInputTrending()
 onInputMovieDetails(query)
 onInputMovie(movieId, mediaType)
+// function getTrendingSection() { onInputTrending(userKey) }
+// function getSearchSection() { onInputTrending(userKey) }
+// function getDetailsCard() { onInputTrending(userKey) }
+
+// export {getTrendingSection, getSearchSection, getDetailsCard}
+
+import cardTpl from '../templates/film-card.hbs';
+
+const refs = {
+    galleryRef: document.querySelector('.js-gallery'),  
+}
+
+function renderSection(card) {
+        const markupCard = cardTpl(card);
+        refs.galleryRef.innerHTML = markupCard;
+}
