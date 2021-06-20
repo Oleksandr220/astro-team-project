@@ -5,7 +5,7 @@ const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 // const movieId = '10580';
 
 const body = document.querySelector('.card__film');
-const popUp = document.querySelector('#do');
+const popUp = document.querySelector('[data-popup="backdrop"]');
 
 body.addEventListener('click', onDisplayBigImg);
 
