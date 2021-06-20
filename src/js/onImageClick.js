@@ -1,28 +1,26 @@
 import * as apiFetchRequest from './fetchRequests.js';
 import imageCardsTpl from '../templates/filmCardDetail.hbs';
 
-const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
-// const movieId = '10580';
-
-const body = document.querySelector('.card__film');
+const body = document.querySelector('.card__list');
 const popUp = document.querySelector('[data-popup="backdrop"]');
 
 body.addEventListener('click', onDisplayBigImg);
 
-function fetchMovieById(id, key) {
-  apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
+function fetchMovieById(id, type) {
+  apiFetchRequest.fetchMovieDetails(id, type).then(movie => {
     const markup = renderFilmCard(movie);
     return markup;
   });
 }
 
 function onDisplayBigImg(e) {
-  console.log(e.currentTarget)
-  if (e.currentTarget.nodeName !== 'LI') {
+  console.log(e.target)
+  if (e.target.nodeName !== 'IMG') {
     return;
   }
-  const getIdFromImg = e.currentTarget.dataset.action;
-    fetchMovieById(getIdFromImg, userKey);
+  const getIdFromImg = e.target.dataset.action;
+  const getMediaType = e.target.dataset.type;
+    fetchMovieById(getIdFromImg, getMediaType);
     body.removeEventListener('click', onDisplayBigImg);
 }
 

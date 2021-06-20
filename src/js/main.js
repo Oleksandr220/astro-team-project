@@ -2,33 +2,34 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as apiFetchRequest from './fetchRequests'
 
-const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
-const movieId = 10580;
+const movieId = '10580';
+const query = 'cat';
+const mediaType = 'movie';
 
 
 
-function onInputTrending(key) {
-    apiFetchRequest.fetchTrending(key)
+function onInputTrending() {
+    apiFetchRequest.fetchTrending()
         .then(movie => {
             console.log(movie)
         })
 }
 
-function onInputMovieDetails(key) {
-    apiFetchRequest.fetchSearchMovie(key)
+function onInputMovieDetails(query) {
+    apiFetchRequest.fetchSearchMovie(query)
         .then(movie => {
             console.log(movie)
         })
 }
 
-function onInputMovie(id, key) {
-    apiFetchRequest.fetchMovieDetails(id, key)
+function onInputMovie(id, media_type) {
+    apiFetchRequest.fetchMovieDetails(id, media_type)
         .then(movie => {
             console.log(movie)
         })
 }
 
 
-onInputTrending(userKey)
-onInputMovieDetails(userKey)
-onInputMovie(movieId, userKey)
+onInputTrending()
+onInputMovieDetails(query)
+onInputMovie(movieId, mediaType)

@@ -14,20 +14,30 @@
   <body>
     <include src="./partials/header.html"></include>
     <include src="./partials/btnContainer.html"></include>
-        <div>
-          <div id="do" class="visually-hidden"></div>
+    <ul class="card__list">
+      <li class="card__film">
+        <div class="thumb">
+          <img src="https://image.tmdb.org/t/p/w500/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg" alt="{{title}} {{name}}" width="100%"
+            data-action='508943' data-type='movie'/>
         </div>
-    <li class="card__film" data-action='508943'>
-      <div class="thumb">
-        <img src="https://image.tmdb.org/t/p/w500/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg" alt="{{title}} {{name}}" width="100%"
-          data-id="{{id}}" />
-      </div>
-      <h2 class="card__title">{{title}} {{name}}</h2>
-      <p class="card__text">
-        <span>{{#each genres}} {{name}} {{/each}}</span> | <span>{{release_date}}</span>
-        <span class="card__vote_average">{{vote_average}}</span>
-      </p>
-    </li>
+        <h2 class="card__title">{{title}} {{name}}</h2>
+        <p class="card__text">
+          <span>{{#each genres}} {{name}} {{/each}}</span> | <span>{{release_date}}</span>
+          <span class="card__vote_average">{{vote_average}}</span>
+        </p>
+      </li>
+      <li class="card__film">
+        <div class="thumb">
+          <img src="https://image.tmdb.org/t/p/w500/ykElAtsOBoArgI1A8ATVH0MNve0.jpg" alt="{{title}} {{name}}" width="100%"
+            data-action='84958' data-type='tv'/>
+        </div>
+        <h2 class="card__title">{{title}} {{name}}</h2>
+        <p class="card__text">
+          <span>{{#each genres}} {{name}} {{/each}}</span> | <span>{{release_date}}</span>
+          <span class="card__vote_average">{{vote_average}}</span>
+        </p>
+      </li>
+    </ul>
     <div data-popup="backdrop" class="visually-hidden"></div>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modalTeam.html"></include>
