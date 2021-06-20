@@ -1,7 +1,5 @@
 import { onError } from './main';
 
-
-
 function fetchTrending (key) {
    return fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`)
 .then(response =>  {

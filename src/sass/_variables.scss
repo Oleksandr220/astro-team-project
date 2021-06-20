@@ -1,21 +1,13 @@
- :root {
-  --primary-background-color: #e5e5e5; //фон
-  --accent-color: #FF6B01; //кнопка
-  --accent-text-color: #FF6B08; //жанр и год фильма, подчеркивание
+:root {
+  --primary-background-color: #fff; //фон
+  --accent-color: #ff6b01; //кнопка
+  --accent-text-color: #ff6b08; //жанр и год фильма, подчеркивание
   --primary-text-color: #fff;
   --secondary-text-color: #000;
-  --err-text-color: #FF001B;
-  --footer-background-color: #F7F7F7; // footer + фон стрелки пагинации
-} 
+  --err-text-color: #ff001b;
+  --footer-background-color: #f7f7f7; // footer + фон стрелки пагинации
+}
 
 $MobileWidth: 320px;
 $TabletWidth: 768px;
 $DesktopWidth: 1024px;
-
-.visually-hidden {
-  position: absolute;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-}
