@@ -9,8 +9,8 @@ function fetchTrending (key) {
 }
 
 
-function fetchSearchMovie(key){
-    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&page=1&include_adult=false&query=cat`)
+function fetchSearchMovie(key, query){
+    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&page=1&include_adult=false&query=${query}`)
     .then(response =>  {
         return response.json()
     })
