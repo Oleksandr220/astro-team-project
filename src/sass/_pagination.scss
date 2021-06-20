@@ -41,5 +41,5 @@
 
 #paginate .controls div.numbers div:hover,
 #paginate .controls div.numbers div.active {
-  color: $accent-text-color;
+  color: var(--accent-text-color);
 }
