@@ -6,13 +6,9 @@ const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 let numberOfPage = 1;
 let totalMovies = 20;
 
-function renderPage(card) {
-  return cardTpl(card);
-}
-
 function createSection(key, page) {
   res.fetchTrending(userKey, numberOfPage).then(movies => {
-    gallery.innerHTML = renderPage(movies.results);
+    gallery.innerHTML = cardTpl(movies.results);
   });
 }
 

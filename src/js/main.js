@@ -4,7 +4,6 @@ import * as apiFetchRequest from './fetchRequests';
 
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 const movieId = 10580;
-let numberOfPage = 1;
 
 function onInputTrending(key, page) {
   apiFetchRequest.fetchTrending(key, page).then(movie => {
@@ -24,21 +23,6 @@ function onInputMovie(id, key) {
   });
 }
 
-// function getTrendingSection() { onInputTrending(userKey) }
-// function getSearchSection() { onInputTrending(userKey) }
-// function getDetailsCard() { onInputTrending(userKey) }
-
 onInputMovieDetails(userKey);
 onInputMovie(movieId, userKey);
 export default { onInputTrending, onInputMovieDetails, onInputMovie };
-
-import cardTpl from '../templates/film-card.hbs';
-
-const refs = {
-  galleryRef: document.querySelector('.js-gallery'),
-};
-
-function renderSection(card) {
-  const markupCard = cardTpl(card);
-  refs.galleryRef.innerHTML = markupCard;
-}
