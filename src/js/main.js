@@ -25,8 +25,8 @@ function onInputMovieDetails(e) {
         })
 }
 
-function onInputMovie(id, media_type) {
-    apiFetchRequest.fetchMovieDetails(id, media_type)
+function onInputMovie(id, key) {
+    apiFetchRequest.fetchMovieDetails(id, key)
         .then(movie => {
             console.log(movie)
         })
