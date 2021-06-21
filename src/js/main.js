@@ -2,6 +2,10 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as apiFetchRequest from './fetchRequests';
 
+const debounce = require('lodash.debounce');
+
+
+const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 const movieId = '10580';
 const query = 'cat';
 const mediaType = 'movie';
@@ -47,10 +51,17 @@ function onInputTrending(key, page) {
   });
 }
 
-function onInputMovieDetails(key) {
-  apiFetchRequest.fetchSearchMovie(key).then(movie => {
-    console.log(movie);
-  });
+function onInputMovieDetails(e) {
+    const query = e.target.value.trim();
+    if (query.length < 1) {
+        onInputTrending(userKey);
+        return;
+    };
+    apiFetchRequest.fetchSearchMovie(userKey, query)
+        .then(movie => {
+            renderSection(movie.results);
+        })
+
 }
 
 function onInputMovie(id, key) {
