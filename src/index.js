@@ -9,3 +9,5 @@ import './js/loader.js';
 
 import './js/onImageClick.js';
 
+import './js/btnBackToTop';
+
