@@ -5,6 +5,7 @@ import * as apiFetchRequest from './fetchRequests';
 const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
 const movieId = 10580;
 
+
 function onInputTrending(key, page) {
   apiFetchRequest.fetchTrending(key, page).then(movie => {
     renderSection(movie.results);
@@ -23,6 +24,8 @@ function onInputMovie(id, key) {
   });
 }
 
+
 onInputMovieDetails(userKey);
 onInputMovie(movieId, userKey);
 export default { onInputTrending, onInputMovieDetails, onInputMovie };
+
