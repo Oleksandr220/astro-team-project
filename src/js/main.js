@@ -32,6 +32,7 @@ function onInputMovieDetails(e) {
     console.log('query: ', query);
     console.log('numberOfPage: ', numberOfPage);
     totalMovies = movie.total_results;
+    console.log('totalMovies: ', totalMovies);
     renderPage(totalMovies, numberOfPage, query);
   });
 }

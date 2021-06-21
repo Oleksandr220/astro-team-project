@@ -23,6 +23,14 @@ function createSectionSearch(key, page, query) {
 function createPagination(totalMovies, startPage, query) {
   console.log('totalMovies: ', totalMovies);
   console.log('numberOfPage: ', numberOfPage);
+  const paginationList = document.querySelector('#paginate');
+  if (totalMovies < 1) {
+    console.log('paginationList: ', paginationList);
+    paginationList.classList.add('is-hidden');
+  } else {
+    console.log('paginationList: ', paginationList);
+    paginationList.classList.remove('is-hidden');
+  }
   numberOfPage = startPage;
   let perPage = 20;
 
