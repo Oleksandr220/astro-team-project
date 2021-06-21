@@ -17,7 +17,6 @@
   width: 280px;
   padding: 48px 20px;
   background-color: var(--primary-text-color);
-  border: 1px solid rgba(0, 0, 0, 0.8);
 
   &.is-hidden {
     display: none;
@@ -31,8 +30,8 @@
     margin: 0;
     padding: 0;
     justify-content: center;
-    height: 14px;
-    width: 14px;
+    height: 30px;
+    width: 30px;
     overflow: hidden;
 
     border-radius: 50%;
@@ -159,4 +158,8 @@
     border: 1px solid var(--accent-color);
     color: var(--primary-text-color);
   }
+}
+
+.button-x {
+  font-size: 25px;
 }
