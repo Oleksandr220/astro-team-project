@@ -1,7 +1,6 @@
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as apiFetchRequest from './fetchRequests';
-import * as apiFetchGenres from './fetchGenres';
 
 const debounce = require('lodash.debounce');
 
@@ -22,39 +21,50 @@ console.log(API_KEY)
 
 import cardTpl from '../templates/film-card.hbs';
 
-function fetchMovieGenres(key) {
-  apiFetchRequest.fetchTrending(key).then(movie => {
+function onInputTrending(key, page) {
+  apiFetchRequest.fetchTrending(key, page).then(movie => {
     renderSection(movie.results);
   });
 }
 
-// function onInputTrending(key, page) {
-//   apiFetchRequest.fetchTrending(key, page).then(movie => {
-//     renderSection(movie.results);
-//   });
-// }
 
-
-// function onInputMovieDetails(e) {
-//     const query = e.target.value.trim();
-//     if (query.length < 1) {
-//         onInputTrending(API_KEY);
-//         return;
-//     };
-//     apiFetchRequest.fetchSearchMovie(API_KEY, query)
-//     .then(movie => {
-//         renderSection(movie.results);
-//     })
+function onInputMovieDetails(e) {
+    const query = e.target.value.trim();
+    if (query.length < 1) {
+        onInputTrending(API_KEY);
+        return;
+    };
+    apiFetchRequest.fetchSearchMovie(API_KEY, query)
+    .then(movie => {
+        renderSection(movie.results);
+    })
     
-// }
+}
 
-// function onInputMovie(id, key) {
-//     apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
-//         console.log(movie);
-//     });
-// }
+function onInputMovie(id, key) {
+    apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
+        console.log(movie);
+    });
+}
 
-// onInputTrending()
+onInputTrending()
 
 // onInputMovieDetails(API_KEY);
 // onInputMovie(movieId, API_KEY);
+
+function fetchMovieGenres(key){
+    apiFetchGenres.fetchMovieGenres(key)
+    .then(movie => {
+        console.log(movie)
+    })
+}
+
+function fetchTVGenres(key){
+    apiFetchGenres.fetchTVGenres(key)
+    .then(movie => {
+        console.log(movie)
+    })
+}
+
+fetchMovieGenres(API_KEY)
+fetchTVGenres(API_KEY)
