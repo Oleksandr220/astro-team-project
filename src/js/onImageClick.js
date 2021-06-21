@@ -1,8 +1,10 @@
 import * as apiFetchRequest from './fetchRequests.js';
-import imageCardsTpl from '../templates/film-modal.hbs';
+import imageCardsTpl from '../templates/filmCardDetail.hbs';
+
 
 const listOfMovie = document.querySelector('.js-gallery');
-const popUp = document.querySelector('.info-backdrop');
+
+const popUp = document.querySelector('[data-popup="backdrop"]');
 
 listOfMovie.addEventListener('click', onDisplayBigImg);
 

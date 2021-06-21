@@ -1,15 +1,36 @@
-<div>
-    <button class='' data-popup="close">X</button>
-    <img class='' src=https://image.tmdb.org/t/p/w500{{poster_path}} alt='poster of movie {{title}}'/>
-        <h2 class=''>{{title}}</h2>
-        <p class=''>Vote / Votes {{vote_average}} / {{vote_count}}</p>
-        <p class=''>Popularity {{popularity}}</p>
-        <p class=''>Original Title {{original_title}}</p>
-        <p class=''>Genre {{#each genres}}
-                            {{this.name}}
-                            {{/each}}</p>
-        <h3 class=''>About</h3>
-        <p class=''> {{overview}}</p>
-        <button class=''>ADD TO WATCHED</button>
-        <button class=''>ADD TO QUEUE</button>
+<div class=".modal-body">
+    <button class='' data-popup="close" data-close>
+        <span class="button-x">&#215;</span>
+    </button>
+    <img class='modal-image' src=https://image.tmdb.org/t/p/w500{{poster_path}} alt='poster of movie {{title}}'/>
+        <h2 class='modal-title'>{{title}}</h2>
+        <ul class='modal-list-info'>
+            <li class='modal-item-title'>
+                Vote / Votes
+                <div class='vote-container'>
+                    <span class='counter vote'>{{vote_average}}</span>
+                    /
+                    <span class='counter count'>{{vote_count}}</span>
+                </div>
+            </li>
+            <li class='modal-item-title'>
+                Popularity
+                <span class='modal-item-text'>{{popularity}}</span>
+            </li>
+            <li class='modal-item-title'>
+                Original Title
+                <span class='modal-item-text uppercase-text'>{{original_title}}</span>
+            </li>
+            <li class='modal-item-title'>Genre
+                <span class='modal-item-text'>{{#each genres}}
+                    {{this.name}}
+                    {{/each}}</span>
+            </li>
+        </ul>
+        <h3 class='modal-describing-title'>About</h3>
+        <p class='modal-describing-text'> {{overview}}</p>
+        <div class='modal-batton-container'>
+            <button class='button primary'>ADD TO WATCHED</button>
+            <button class='button'>ADD TO QUEUE</button>
+        </div>
 </div>
