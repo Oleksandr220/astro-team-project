@@ -5,11 +5,9 @@ import { API_KEY } from './API_KEY';
 const gallery = document.querySelector('.js-gallery');
 let numberOfPage = 1;
 let query = '';
-// let totalMovies = 20;
 
 function createSectionTrending(key, page) {
   res.fetchTrending(key, page).then(movies => {
-    console.log('movies in trending: ', movies);
     gallery.innerHTML = cardTpl(movies.results);
   });
 }
@@ -22,8 +20,10 @@ function createSectionSearch(key, page, query) {
   });
 }
 
-function createPagination(totalMovies, query) {
-  console.log('query: ', query);
+function createPagination(totalMovies, startPage, query) {
+  console.log('totalMovies: ', totalMovies);
+  console.log('numberOfPage: ', numberOfPage);
+  numberOfPage = startPage;
   let perPage = 20;
 
   const state = {
