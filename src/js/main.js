@@ -31,10 +31,10 @@ function onInputTrending(key, page) {
 function onInputMovieDetails(e) {
     const query = e.target.value.trim();
     if (query.length < 1) {
-        onInputTrending(API_KEY);
+        onInputTrending();
         return;
     };
-    apiFetchRequest.fetchSearchMovie(API_KEY, query)
+    apiFetchRequest.fetchSearchMovie(query)
     .then(movie => {
         renderSection(movie.results);
     })
@@ -51,3 +51,13 @@ onInputTrending()
 
 // onInputMovieDetails(API_KEY);
 // onInputMovie(movieId, API_KEY);
+const refs = {
+    galleryRef: document.querySelector('.js-gallery'),  
+    searchInput: document.querySelector('.search-input'),  
+}
+
+function renderSection(card) {
+        const markupCard = cardTpl(card);
+        refs.galleryRef.innerHTML = markupCard;
+}
+refs.searchInput.addEventListener('input', debounce(onInputMovieDetails, 500));
