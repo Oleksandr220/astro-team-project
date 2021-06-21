@@ -25,11 +25,14 @@
         />
       {{/if}}
     </div>
-    <h2 class='card__title'>{{title}} {{name}}</h2>
+    <div>
+       <h2 class='card__title'>{{title}} {{name}}</h2>
     <p class='card__text'>
       <span>{{#each genres}} {{name}} {{/each}}</span>
       |
       <span>{{release_date}}</span>
-    </p>
+    </p> 
+    </div>
+    
   </li>
 {{/each}}
