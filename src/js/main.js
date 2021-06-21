@@ -1,6 +1,7 @@
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as apiFetchRequest from './fetchRequests';
+import * as apiFetchGenres from './fetchGenres';
 
 const debounce = require('lodash.debounce');
 
@@ -54,17 +55,17 @@ onInputTrending()
 
 function fetchMovieGenres(key){
     apiFetchGenres.fetchMovieGenres(key)
-    .then(movie => {
-        console.log(movie)
+    .then(genre => {
+        console.log(genre)
     })
 }
 
-function fetchTVGenres(key){
-    apiFetchGenres.fetchTVGenres(key)
-    .then(movie => {
-        console.log(movie)
+function fetchTvGenres(key){
+    apiFetchGenres.fetchTvGenres(key)
+    .then(genre => {
+        console.log(genre)
     })
 }
 
 fetchMovieGenres(API_KEY)
-fetchTVGenres(API_KEY)
+fetchTvGenres(API_KEY)
