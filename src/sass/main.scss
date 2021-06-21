@@ -1,10 +1,12 @@
+@import './utils/variables';
+@import './utils/breakpoints.scss';
 @import './base/fonts';
 @import './base/common';
-@import './utils/breakpoints';
-@import './utils/variables';
 @import './components/header-home';
 @import './components/header-library';
 @import './components/films-gallery';
 @import './components/pagination';
 @import './components/modalTeam.scss';
+@import './components/film-modal';
 @import './components/footer';
+@import './components/loader';

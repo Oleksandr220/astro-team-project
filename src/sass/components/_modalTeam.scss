@@ -69,7 +69,7 @@
   }
 
   &-close {
-    color: #ff6b08;
+    color: var(--accent-text-color);
     font-size: 20px;
     font-weight: bold;
     font-family: Times, sans-serif;
@@ -197,7 +197,7 @@
   box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   background: #333;
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
   font-family: 'Open Sans', Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

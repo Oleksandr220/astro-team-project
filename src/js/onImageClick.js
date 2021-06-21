@@ -33,10 +33,10 @@ function renderFilmCard(movie) {
 }
 
 function onCloseModal(e) {
-  if(e.code === 'Escape' || e.target.dataset.popup === 'backdrop' || e.target.dataset.popup === 'close')
-  popUp.classList.add('visually-hiden');
-  popUp.innerHTML = '';
-  popUp.removeEventListener('keydown', onCloseModal);
-  window.removeEventListener('keydown', onCloseModal);
-  listOfMovie.addEventListener('click', onDisplayBigImg);
+  if (e.code === 'Escape' || e.target.dataset.popup === 'backdrop' || e.target.dataset.popup === 'close') {
+    popUp.classList.add('visually-hiden');
+    popUp.innerHTML = '';
+    window.removeEventListener('keydown', onCloseModal);
+    listOfMovie.addEventListener('click', onDisplayBigImg);
+  }
 }

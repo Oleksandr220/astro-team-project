@@ -1,140 +1,151 @@
-const data = Array.from({ length: 100 }).map((_, i) => `Item ${i + 1}`);
+import cardTpl from '../templates/film-card.hbs';
+import * as res from './fetchRequests.js';
 
-let perPage = 5;
+const gallery = document.querySelector('.js-gallery');
+import { API_KEY } from './API_KEY';
+let numberOfPage = 1;
+let totalMovies = 20;
 
-const state = {
-  page: 1,
-  perPage,
-  totalPages: Math.ceil(data.length / perPage),
-  maxVisibleButtons: 5,
-};
+function createSection(key, page) {
+  res.fetchTrending(API_KEY, numberOfPage).then(movies => {
+    gallery.innerHTML = cardTpl(movies.results);
+  });
+}
 
-const html = {
-  get(element) {
-    return document.querySelector(element);
-  },
-};
+res.fetchTrending(API_KEY, numberOfPage).then(movies => {
+  totalMovies = movies.total_results;
+  createPagination(totalMovies);
+});
 
-const controls = {
-  next() {
-    state.page++;
-    const lastPage = state.page > state.totalPages;
-    if (lastPage) {
-      state.page--;
-    }
-  },
-  prev() {
-    state.page--;
-    if (state.page < 1) {
+function createPagination(totalMovies) {
+  let perPage = 20;
+
+  const state = {
+    page: 1,
+    perPage,
+    totalPages: Math.ceil(totalMovies / perPage),
+    maxVisibleButtons: 5,
+  };
+
+  const html = {
+    get(element) {
+      return document.querySelector(element);
+    },
+  };
+
+  const controls = {
+    next() {
       state.page++;
-    }
-  },
-  goto(page) {
-    if (page < 1) {
-      page = 1;
-    }
+      const lastPage = state.page > state.totalPages;
+      if (lastPage) {
+        state.page--;
+      }
+      numberOfPage = state.page;
+    },
+    prev() {
+      state.page--;
+      if (state.page < 1) {
+        state.page++;
+      }
+      numberOfPage = state.page;
+    },
+    goto(page) {
+      if (page < 1) {
+        page = 1;
+      }
 
-    state.page = +page;
+      state.page = +page;
+      numberOfPage = state.page;
 
-    if (page > state.totalPages) {
-      state.page = state.totalPages;
-    }
-  },
-  createListeners() {
-    html.get('.first').addEventListener('click', () => {
-      controls.goto(1);
-      update();
-    });
-    html.get('.last').addEventListener('click', () => {
-      controls.goto(state.totalPages);
-      update();
-    });
-    html.get('.next').addEventListener('click', () => {
-      controls.next();
-      update();
-    });
-    html.get('.prev').addEventListener('click', () => {
-      controls.prev();
-      update();
-    });
-  },
-};
+      if (page > state.totalPages) {
+        state.page = state.totalPages;
+        numberOfPage = state.page;
+      }
+    },
+    createListeners() {
+      html.get('.first').addEventListener('click', () => {
+        controls.goto(1);
+        update();
+      });
+      html.get('.last').addEventListener('click', () => {
+        controls.goto(state.totalPages);
+        update();
+      });
+      html.get('.next').addEventListener('click', () => {
+        controls.next();
+        update();
+      });
+      html.get('.prev').addEventListener('click', () => {
+        controls.prev();
+        update();
+      });
+    },
+  };
 
-const list = {
-  create(item) {
-    const div = document.createElement('div');
-    div.classList.add('item');
-    div.innerHTML = item;
-    html.get('.list').appendChild(div);
-  },
-  update() {
-    html.get('.list').innerHTML = '';
-    let page = state.page - 1;
-    let start = page * state.perPage;
-    let end = start + state.perPage;
-    const paginatedItems = data.slice(start, end);
+  const list = {
+    update() {
+      html.get('.js-gallery').innerHTML = createSection(API_KEY, numberOfPage);
+    },
+  };
 
-    paginatedItems.forEach(list.create);
-  },
-};
+  const buttons = {
+    element: html.get('#paginate .numbers'),
 
-const buttons = {
-  element: html.get('#paginate .numbers'),
+    create(number) {
+      const button = document.createElement('div');
 
-  create(number) {
-    const button = document.createElement('div');
+      button.innerHTML = number;
 
-    button.innerHTML = number;
+      if (state.page == number) {
+        button.classList.add('active');
+      }
 
-    if (state.page == number) {
-      button.classList.add('active');
-    }
+      button.addEventListener('click', event => {
+        const page = event.target.innerText;
+        controls.goto(page);
+        update();
+      });
 
-    button.addEventListener('click', event => {
-      const page = event.target.innerText;
-      controls.goto(page);
-      update();
-    });
+      buttons.element.appendChild(button);
+    },
+    update() {
+      buttons.element.innerHTML = '';
+      const { maxLeft, maxRight } = buttons.calculateMaxVisible();
 
-    buttons.element.appendChild(button);
-  },
-  update() {
-    buttons.element.innerHTML = '';
-    const { maxLeft, maxRight } = buttons.calculateMaxVisible();
+      for (let page = maxLeft; page <= maxRight; page++) {
+        buttons.create(page);
+      }
+    },
+    calculateMaxVisible() {
+      const { maxVisibleButtons } = state;
+      let maxLeft = state.page - Math.floor(maxVisibleButtons / 2);
+      let maxRight = state.page + Math.floor(maxVisibleButtons / 2);
 
-    for (let page = maxLeft; page <= maxRight; page++) {
-      buttons.create(page);
-    }
-  },
-  calculateMaxVisible() {
-    const { maxVisibleButtons } = state;
-    let maxLeft = state.page - Math.floor(maxVisibleButtons / 2);
-    let maxRight = state.page + Math.floor(maxVisibleButtons / 2);
+      if (maxLeft < 1) {
+        maxLeft = 1;
+        maxRight = maxVisibleButtons;
+      }
 
-    if (maxLeft < 1) {
-      maxLeft = 1;
-      maxRight = maxVisibleButtons;
-    }
+      if (maxRight > state.totalPages) {
+        maxLeft = state.totalPages - (maxVisibleButtons - 1);
+        maxRight = state.totalPages;
 
-    if (maxRight > state.totalPages) {
-      maxLeft = state.totalPages - (maxVisibleButtons - 1);
-      maxRight = state.totalPages;
+        if (maxLeft < 1) maxLeft = 1;
+      }
 
-      if (maxLeft < 1) maxLeft = 1;
-    }
+      return { maxLeft, maxRight };
+    },
+  };
 
-    return { maxLeft, maxRight };
-  },
-};
+  function update() {
+    list.update();
+    buttons.update();
+  }
 
-function update() {
-  list.update();
-  buttons.update();
+  function init() {
+    update();
+    controls.createListeners();
+  }
+
+  init();
 }
-
-function init() {
-  update();
-  controls.createListeners();
-}
-
-init();
