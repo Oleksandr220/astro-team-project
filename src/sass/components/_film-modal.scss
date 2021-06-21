@@ -103,13 +103,13 @@
     &.count {
       border: 1px solid var(--footer-background-color);
       background-color: var(--footer-background-color);
-      color: #000000;
+      color: var(--secondary-text-color);
     }
   }
 }
 
 .modal-item-text {
-  color: #000000;
+  color: var(--secondary-text-color);
 }
 
 .uppercase-text {
@@ -139,7 +139,7 @@
 .button {
   display: flex;
   padding: 8px 12px;
-  border: 1px solid #000000;
+  border: 1px solid var(--secondary-text-color);
   border-radius: 5px;
   width: 112px;
   height: 44px;

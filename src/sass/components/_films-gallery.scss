@@ -2,7 +2,7 @@
   padding-top: 20px;
   padding-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $TabletWidth) {
     display: flex;
     flex-wrap: wrap;
     padding-top: 60px;
@@ -18,7 +18,7 @@
     margin-bottom: 10px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $TabletWidth) {
     width: 294px;
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +26,7 @@
     margin: 15px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $DesktopWidth) {
     width: 274px;
     margin: 15px;
   }

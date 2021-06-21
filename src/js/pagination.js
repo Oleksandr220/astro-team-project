@@ -2,17 +2,17 @@ import cardTpl from '../templates/film-card.hbs';
 import * as res from './fetchRequests.js';
 
 const gallery = document.querySelector('.js-gallery');
-const userKey = '1ca3db2e1e1b7285b1391876caf4be93';
+import { API_KEY } from './API_KEY';
 let numberOfPage = 1;
 let totalMovies = 20;
 
 function createSection(key, page) {
-  res.fetchTrending(userKey, numberOfPage).then(movies => {
+  res.fetchTrending(API_KEY, numberOfPage).then(movies => {
     gallery.innerHTML = cardTpl(movies.results);
   });
 }
 
-res.fetchTrending(userKey, numberOfPage).then(movies => {
+res.fetchTrending(API_KEY, numberOfPage).then(movies => {
   totalMovies = movies.total_results;
   createPagination(totalMovies);
 });
@@ -84,7 +84,7 @@ function createPagination(totalMovies) {
 
   const list = {
     update() {
-      html.get('.js-gallery').innerHTML = createSection(userKey, numberOfPage);
+      html.get('.js-gallery').innerHTML = createSection(API_KEY, numberOfPage);
     },
   };
 
