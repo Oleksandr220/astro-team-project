@@ -13,22 +13,16 @@ function createSectionTrending(key, page) {
 }
 
 function createSectionSearch(key, page, query) {
-  console.log('query: ', query);
   res.fetchSearchMovie(key, page, query).then(movies => {
-    console.log('movies in search: ', movies);
     gallery.innerHTML = cardTpl(movies.results);
   });
 }
 
 function createPagination(totalMovies, startPage, query) {
-  console.log('totalMovies: ', totalMovies);
-  console.log('numberOfPage: ', numberOfPage);
   const paginationList = document.querySelector('#paginate');
   if (totalMovies < 1) {
-    console.log('paginationList: ', paginationList);
     paginationList.classList.add('is-hidden');
   } else {
-    console.log('paginationList: ', paginationList);
     paginationList.classList.remove('is-hidden');
   }
   numberOfPage = startPage;

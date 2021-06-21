@@ -29,10 +29,7 @@ function onInputMovieDetails(e) {
   //   return;
   // }
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
-    console.log('query: ', query);
-    console.log('numberOfPage: ', numberOfPage);
     totalMovies = movie.total_results;
-    console.log('totalMovies: ', totalMovies);
     renderPage(totalMovies, numberOfPage, query);
   });
 }
