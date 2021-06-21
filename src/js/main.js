@@ -1,6 +1,6 @@
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
-import * as apiFetchRequest from './fetchRequests'
+import * as apiFetchRequest from './fetchRequests';
 
 const movieId = '10580';
 const query = 'cat';
@@ -41,11 +41,26 @@ onInputMovie(movieId, mediaType)
 
 import cardTpl from '../templates/film-card.hbs';
 
-const refs = {
-    galleryRef: document.querySelector('.js-gallery'),  
+function onInputTrending(key, page) {
+  apiFetchRequest.fetchTrending(key, page).then(movie => {
+    renderSection(movie.results);
+  });
 }
 
-function renderSection(card) {
-        const markupCard = cardTpl(card);
-        refs.galleryRef.innerHTML = markupCard;
+function onInputMovieDetails(key) {
+  apiFetchRequest.fetchSearchMovie(key).then(movie => {
+    console.log(movie);
+  });
 }
+
+function onInputMovie(id, key) {
+  apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
+    console.log(movie);
+  });
+}
+
+
+onInputMovieDetails(userKey);
+onInputMovie(movieId, userKey);
+export default { onInputTrending, onInputMovieDetails, onInputMovie }
+
