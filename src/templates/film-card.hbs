@@ -3,9 +3,12 @@
     <div class="thumb">
         <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}} {{name}}" width="100%" data-id="{{id}}" data-action='{{id}}' data-type='{{media_type}}'/>      
     </div>
-    <h2 class="card__title">{{title}} {{name}}</h2>
+    <div>
+      <h2 class="card__title">{{title}} {{name}}</h2>
     <p class="card__text">
         <span>{{#each genres}} {{name}} {{/each}}</span> | <span>{{release_date}}</span>
-    </p>
+    </p>  
+    </div>
+    
 </li>
 {{/each}}
