@@ -1,23 +1,29 @@
 import cardTpl from '../templates/film-card.hbs';
 import * as res from './fetchRequests.js';
+import { API_KEY } from './API_KEY';
 
 const gallery = document.querySelector('.js-gallery');
-import { API_KEY } from './API_KEY';
 let numberOfPage = 1;
-let totalMovies = 20;
+let query = '';
+// let totalMovies = 20;
 
-function createSection(key, page) {
-  res.fetchTrending(API_KEY, numberOfPage).then(movies => {
+function createSectionTrending(key, page) {
+  res.fetchTrending(key, page).then(movies => {
+    console.log('movies in trending: ', movies);
     gallery.innerHTML = cardTpl(movies.results);
   });
 }
 
-res.fetchTrending(API_KEY, numberOfPage).then(movies => {
-  totalMovies = movies.total_results;
-  createPagination(totalMovies);
-});
+function createSectionSearch(key, page, query) {
+  console.log('query: ', query);
+  res.fetchSearchMovie(key, page, query).then(movies => {
+    console.log('movies in search: ', movies);
+    gallery.innerHTML = cardTpl(movies.results);
+  });
+}
 
-function createPagination(totalMovies) {
+function createPagination(totalMovies, query) {
+  console.log('query: ', query);
   let perPage = 20;
 
   const state = {
@@ -84,7 +90,11 @@ function createPagination(totalMovies) {
 
   const list = {
     update() {
-      html.get('.js-gallery').innerHTML = createSection(API_KEY, numberOfPage);
+      if (query) {
+        html.get('.js-gallery').innerHTML = createSectionSearch(API_KEY, numberOfPage, query);
+      } else {
+        html.get('.js-gallery').innerHTML = createSectionTrending(API_KEY, numberOfPage);
+      }
     },
   };
 
@@ -149,3 +159,5 @@ function createPagination(totalMovies) {
 
   init();
 }
+
+export default createPagination;

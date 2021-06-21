@@ -1,53 +1,49 @@
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as apiFetchRequest from './fetchRequests';
-
-const debounce = require('lodash.debounce');
-
-
+import renderPage from './pagination';
+import debounce from 'lodash.debounce';
 import { API_KEY } from './API_KEY';
+
+const input = document.querySelector('.search-input');
+input.addEventListener('input', debounce(onInputMovieDetails, 300));
+
 const movieId = '10580';
-const query = 'cat';
 const mediaType = 'movie';
+let query = '';
+let numberOfPage = 1;
+let totalMovies = 20;
 
-console.log(API_KEY)
-
-// function onInputTrending() {
-//     apiFetchRequest.fetchTrending()
-//         .then(movie => {
-//             renderSection(movie.results)
-//         })
-// }
-
-import cardTpl from '../templates/film-card.hbs';
-
-function onInputTrending(key, page) {
+function startPageTrending(key, page) {
+  console.log('page in Trending: ', page);
+  console.log('key in Trending: ', key);
   apiFetchRequest.fetchTrending(key, page).then(movie => {
-    renderSection(movie.results);
+    totalMovies = movie.total_results;
+    renderPage(movie.results);
   });
 }
 
-
 function onInputMovieDetails(e) {
-    const query = e.target.value.trim();
-    if (query.length < 1) {
-        onInputTrending(API_KEY);
-        return;
-    };
-    apiFetchRequest.fetchSearchMovie(API_KEY, query)
-    .then(movie => {
-        renderSection(movie.results);
-    })
-    
+  let query = e.target.value.toLowerCase().trim();
+  let numberOfPage = 1;
+  // if (query.length < 1) {
+  //   onInputTrending(API_KEY);
+  //   return;
+  // }
+  apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
+    console.log('query: ', query);
+    totalMovies = movie.total_results;
+    renderPage(movie.results, query);
+  });
 }
 
 function onInputMovie(id, key) {
-    apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
-        console.log(movie);
-    });
+  apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
+    console.log(movie);
+  });
 }
 
-onInputTrending()
+startPageTrending(API_KEY, numberOfPage);
 
 // onInputMovieDetails(API_KEY);
 // onInputMovie(movieId, API_KEY);
