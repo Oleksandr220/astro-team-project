@@ -3,6 +3,7 @@ import imageCardsTpl from '../templates/filmCardDetail.hbs';
 
 
 const listOfMovie = document.querySelector('.js-gallery');
+const body = document.querySelector('body');
 
 const popUp = document.querySelector('[data-popup="backdrop"]');
 
@@ -23,22 +24,29 @@ function onDisplayBigImg(e) {
   const getMediaType = e.target.dataset.type;
   
   fetchMovieById(getIdFromImg, getMediaType);
-  listOfMovie.removeEventListener('click', onDisplayBigImg);
 }
 
 function renderFilmCard(movie) {
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
   popUp.classList.remove('visually-hiden');
-  popUp.addEventListener('click', onCloseModal);
-  window.addEventListener('keydown', onCloseModal);
+  body.classList.add('modal-open');
+  window.addEventListener('keydown', onEscPress);
+  const closeBtn = document.querySelector('[data-popup="close"]');
+  closeBtn.addEventListener('click', onCloseModal);
+
 }
 
-function onCloseModal(e) {
-  if(e.code === 'Escape' || e.target.dataset.popup === 'backdrop' || e.target.dataset.popup === 'close')
+function onEscPress(e) {
+  if (e.code === 'Escape') {
+    onCloseModal();
+  }
+}
+
+function onCloseModal() {
   popUp.classList.add('visually-hiden');
+  body.classList.remove('modal-open');
   popUp.innerHTML = '';
-  popUp.removeEventListener('keydown', onCloseModal);
+  closeBtn.removeEventListener('click', onCloseModal);
   window.removeEventListener('keydown', onCloseModal);
-  listOfMovie.addEventListener('click', onDisplayBigImg);
 }

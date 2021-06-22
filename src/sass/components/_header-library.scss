@@ -22,7 +22,7 @@
         color: var(--primary-text-color);
         filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
     }
-    &-button:focus {
+    &-button-focus {
         background: var(--accent-color);
     }
 }

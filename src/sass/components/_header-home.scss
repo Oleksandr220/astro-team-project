@@ -3,31 +3,28 @@
   margin-left: auto;
   margin-right: auto;
   &-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 41px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 41px;
   }
-  & > .container {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: border-box;
-    background-size: cover;
-    padding-top: 46px;
-    padding-bottom: 96px;
-    width: 100%;
-    @media screen and (min-width: $MobileWidth) {
-      background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)),
-        url(../images/header/header-bg.jpg);
-    }
-    @media screen and (min-width: $TabletWidth) {
-      background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)),
-        url(../images/header/header-bg-tabl.jpg);
-    }
-    @media screen and (min-width: $DesktopWidth) {
-      background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)),
-        url(../images/header/header-bg-desk.jpg);
-    }
+  &>.container {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-origin: border-box;
+      background-size: cover;
+      padding-top: 46px;
+      padding-bottom: 96px;
+      width: 100%;
+      @media screen and (min-width: $MobileWidth) {
+          background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg.jpg);
+      }
+      @media screen and (min-width: $TabletWidth) {
+          background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg-tabl.jpg);
+      }
+      @media screen and (min-width: $DesktopWidth) {
+          background-image: linear-gradient(rgba(00, 00, 00, 0.56), rgba(00, 00, 00, 0.56)), url(../images/header/header-bg-desk.jpg);
+      }
   }
 }
 
@@ -44,61 +41,86 @@
   width: 24px;
   height: 24px;
   &-name {
-    @media screen and (max-width: $TabletWidth - 1px) {
-      display: none;
-    }
+      @media screen and (max-width: $TabletWidth - 1px) {
+          display: none;
+      }
   }
   &-img {
-    margin-right: 10px;
+      margin-right: 10px;
   }
   &-links {
-    display: flex;
-    flex-wrap: nowrap;
+      display: flex;
+      flex-wrap: nowrap;
   }
   &-link {
-    color: var(--primary-text-color);
+      color: var(--primary-text-color);
   }
   &-item:not(:last-child) {
-    margin-right: 40px;
+      margin-right: 40px;
   }
   &-current {
-    border-bottom: 3px solid var(--accent-color);
+      border-bottom: 3px solid var(--accent-color);
   }
 }
 
 .search {
+  position: relative;
   @media screen and (min-width: $TabletWidth) {
-    display: flex;
-    justify-content: center;
+      display: flex;
+      justify-content: center;
   }
   &-input {
-    margin-right: auto;
-    margin-left: auto;
-    @media screen and (max-width: $TabletWidth - 1px) {
+      margin-right: auto;
+      margin-left: auto;
+      @media screen and (max-width: $TabletWidth - 1px) {
+          width: 100%;
+      }
+      @media screen and (min-width: $TabletWidth) {
+          width: 336px;
+      }
       width: 100%;
-    }
-    @media screen and (min-width: $TabletWidth) {
-      width: 336px;
-    }
-    width: 100%;
-    background-color: inherit;
-    border-bottom: 0.5px solid var(--primary-text-color);
-    color: var(--primary-text-color);
-    outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-bottom: 5px;
+      background-color: inherit;
+      border-bottom: 0.5px solid var(--primary-text-color);
+      color: var(--primary-text-color);
+      outline: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      padding-bottom: 5px;
+      &-box {
+          position: relative;
+      }
   }
   &-input:focus,
   &-input:active {
-    border-bottom: 0.5px solid var(--accent-color);
+      border-bottom: 0.5px solid var(--accent-color);
   }
   &-input:focus::placeholder,
   &-input:active::placeholder {
-    color: var(--accent-color);
+      color: var(--accent-color);
   }
   &-input::placeholder {
-    color: var(--primary-text-color);
+      color: var(--primary-text-color);
+  }
+  &-loap {
+      position: absolute;
+      right: 0px;
+      width: 20px;
+      transform: scale(-1, 1);
+      color: var(--primary-text-color);
+  }
+  &-loap-active {
+      color: var(--accent-color);
+  }
+  &-erorr {
+      position: absolute;
+      top: 50px;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #FF001B;
   }
 }
