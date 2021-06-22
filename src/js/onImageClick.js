@@ -23,22 +23,26 @@ function onDisplayBigImg(e) {
   const getMediaType = e.target.dataset.type;
   
   fetchMovieById(getIdFromImg, getMediaType);
-  listOfMovie.removeEventListener('click', onDisplayBigImg);
 }
 
 function renderFilmCard(movie) {
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
   popUp.classList.remove('visually-hiden');
-  popUp.addEventListener('click', onCloseModal);
-  window.addEventListener('keydown', onCloseModal);
+  window.addEventListener('keydown', onEscPress);
+  const closeBtn = document.querySelector('[data-popup="close"]');
+  closeBtn.addEventListener('click', onCloseModal);
 }
 
-function onCloseModal(e) {
-  if(e.code === 'Escape' || e.target.dataset.popup === 'backdrop' || e.target.dataset.popup === 'close')
-  popUp.classList.add('visually-hiden');
-  popUp.innerHTML = '';
-  popUp.removeEventListener('keydown', onCloseModal);
-  window.removeEventListener('keydown', onCloseModal);
-  listOfMovie.addEventListener('click', onDisplayBigImg);
+function onEscPress(e) {
+  if (e.code === 'Escape') {
+    onCloseModal();
+  }
+}
+
+function onCloseModal() {
+    popUp.classList.add('visually-hiden');
+    popUp.innerHTML = '';
+    closeBtn.removeEventListener('click', onCloseModal);
+    window.removeEventListener('keydown', onCloseModal);
 }
