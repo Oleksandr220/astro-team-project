@@ -12,28 +12,25 @@ const movieId = '10580';
 const mediaType = 'movie';
 let query = '';
 let numberOfPage = 1;
-let totalMovies = 20;
+let totalMovies;
 
 function startPageTrending(key, page) {
-  console.log('page in Trending: ', page);
-  console.log('key in Trending: ', key);
   apiFetchRequest.fetchTrending(key, page).then(movie => {
     totalMovies = movie.total_results;
-    renderPage(movie.results);
+    renderPage(totalMovies, numberOfPage);
   });
 }
 
 function onInputMovieDetails(e) {
-  let query = e.target.value.toLowerCase().trim();
-  let numberOfPage = 1;
+  query = e.target.value.toLowerCase().trim();
+  numberOfPage = 1;
   // if (query.length < 1) {
   //   onInputTrending(API_KEY);
   //   return;
   // }
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
-    console.log('query: ', query);
     totalMovies = movie.total_results;
-    renderPage(movie.results, query);
+    renderPage(totalMovies, numberOfPage, query);
   });
 }
 

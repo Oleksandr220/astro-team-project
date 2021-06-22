@@ -5,25 +5,27 @@ import { API_KEY } from './API_KEY';
 const gallery = document.querySelector('.js-gallery');
 let numberOfPage = 1;
 let query = '';
-// let totalMovies = 20;
 
 function createSectionTrending(key, page) {
   res.fetchTrending(key, page).then(movies => {
-    console.log('movies in trending: ', movies);
     gallery.innerHTML = cardTpl(movies.results);
   });
 }
 
 function createSectionSearch(key, page, query) {
-  console.log('query: ', query);
   res.fetchSearchMovie(key, page, query).then(movies => {
-    console.log('movies in search: ', movies);
     gallery.innerHTML = cardTpl(movies.results);
   });
 }
 
-function createPagination(totalMovies, query) {
-  console.log('query: ', query);
+function createPagination(totalMovies, startPage, query) {
+  const paginationList = document.querySelector('#paginate');
+  if (totalMovies < 1) {
+    paginationList.classList.add('is-hidden');
+  } else {
+    paginationList.classList.remove('is-hidden');
+  }
+  numberOfPage = startPage;
   let perPage = 20;
 
   const state = {
