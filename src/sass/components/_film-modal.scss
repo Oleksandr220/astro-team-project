@@ -18,6 +18,18 @@
   padding: 48px 20px;
   background-color: var(--primary-text-color);
 
+  @media screen and (min-width: $TabletWidth) {
+    margin: 231px auto 0;
+    width: 618px;
+    padding: 42px 30px;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    margin: 100px auto 0;
+    width: 882px;
+    padding: 50px 30px;
+  }
+
   &.is-hidden {
     display: none;
   }
@@ -44,6 +56,27 @@
       border: 1px solid var(--accent-color);
     }
   }
+
+  .container-film-card {
+    @media screen and (min-width: $TabletWidth) {
+      display: flex;
+      gap: 30px;
+    }
+
+    @media screen and (min-width: $DesktopWidth) {
+      gap: 30px;
+    }
+  }
+
+  .container-film-info {
+    @media screen and (min-width: $TabletWidth) {
+      max-width: 264px;
+    }
+
+    @media screen and (min-width: $DesktopWidth) {
+      max-width: 396px;
+    }
+  }
 }
 
 .modal-image {
@@ -52,6 +85,18 @@
   height: 356px;
   width: 240px;
   border-radius: 5px;
+
+  @media screen and (min-width: $TabletWidth) {
+    margin-bottom: 0;
+    height: 374px;
+    width: 264px;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    margin-bottom: 0;
+    height: 478px;
+    width: 396px;
+  }
 }
 
 .modal-title {
@@ -60,6 +105,11 @@
   font-weight: 500;
   line-height: 1.2;
   text-transform: uppercase;
+
+  @media screen and (min-width: $DesktopWidth) {
+    font-size: 30px;
+    line-height: 1.17;
+  }
 }
 
 .modal-list-info {
@@ -72,7 +122,7 @@
   line-height: 1.33;
   color: var(--modal-grey-text-color);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 
   &:not(:last-child) {
     margin-bottom: 10px;
@@ -158,6 +208,15 @@
     border: 1px solid var(--accent-color);
     color: var(--primary-text-color);
   }
+
+  @media screen and (min-width: $TabletWidth) {
+    width: 124px;
+    padding: 8px 9px;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    width: 136px;
+  }
 }
 
 .button-x {
@@ -166,4 +225,9 @@
   width: 30px;
   height: 30px;
   font-size: 30px;
+}
+
+.modal-open {
+  height: 100vh;
+  overflow-y: hidden;
 }

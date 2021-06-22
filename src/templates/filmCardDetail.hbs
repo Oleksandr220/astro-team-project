@@ -1,38 +1,48 @@
-<section class="info-backdrop">
-    <div class="modal-body">
-        <button class='icon-closeback' data-popup="close" data-close>
-            <span class="button-x">&#215;</span>
-        </button>
-        <img class='modal-image' src=https://image.tmdb.org/t/p/w500{{poster_path}} alt='poster of movie {{title}}'/>
-            <h2 class='modal-title'>{{title}}</h2>
-            <ul class='modal-list-info'>
-                <li class='modal-item-title'>
-                    Vote / Votes
-                    <div class='vote-container'>
-                        <span class='counter vote'>{{vote_average}}</span>
-                        /
-                        <span class='counter count'>{{vote_count}}</span>
-                    </div>
-                </li>
-                <li class='modal-item-title'>
-                    Popularity
-                    <span class='modal-item-text'>{{popularity}}</span>
-                </li>
-                <li class='modal-item-title'>
-                    Original Title
-                    <span class='modal-item-text uppercase-text'>{{original_title}}</span>
-                </li>
-                <li class='modal-item-title'>Genre
-                    <span class='modal-item-text'>{{#each genres}}
-                        {{this.name}}
-                        {{/each}}</span>
-                </li>
-            </ul>
-            <h3 class='modal-describing-title'>About</h3>
-            <p class='modal-describing-text'> {{overview}}</p>
-            <div class='modal-batton-container'>
-                <button class='button primary'>ADD TO WATCHED</button>
-                <button class='button'>ADD TO QUEUE</button>
+<section class='info-backdrop'>
+  <div class='modal-body'>
+    <button class='icon-closeback' data-popup='close' data-close>
+      <span class='button-x'>&#215;</span>
+    </button>
+    <div class='container-film-card'>
+      <img
+        class='modal-image'
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        alt='poster of movie {{title}}'
+        width='100%'
+      />
+      <div class='container-film-info'>
+        <h2 class='modal-title'>{{title}}</h2>
+        <ul class='modal-list-info'>
+          <li class='modal-item-title'>
+            Vote / Votes
+            <div class='vote-container'>
+              <span class='counter vote'>{{vote_average}}</span>
+              /
+              <span class='counter count'>{{vote_count}}</span>
             </div>
+          </li>
+          <li class='modal-item-title'>
+            Popularity
+            <span class='modal-item-text'>{{popularity}}</span>
+          </li>
+          <li class='modal-item-title'>
+            Original Title
+            <span class='modal-item-text uppercase-text'>{{original_title}}</span>
+          </li>
+          <li class='modal-item-title'>Genre
+            <span class='modal-item-text'>{{#each genres}}
+                {{this.name}}
+              {{/each}}</span>
+          </li>
+        </ul>
+        <h3 class='modal-describing-title'>About</h3>
+        <p class='modal-describing-text'> {{overview}}</p>
+
+        <div class='modal-batton-container'>
+          <button class='button primary'>ADD TO WATCHED</button>
+          <button class='button'>ADD TO QUEUE</button>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
