@@ -4,9 +4,8 @@ import * as apiFetchRequest from './fetchRequests';
 import renderPage from './pagination';
 import debounce from 'lodash.debounce';
 import { API_KEY } from './API_KEY';
-import {onLoader, stopLoader} from './loader'
-const input = document.querySelector('.search-input');
-input.addEventListener('input', debounce(onInputMovieDetails, 300));
+import { onLoader, stopLoader } from './loader';
+import cardTpl from '../templates/film-card.hbs';
 
 const movieId = '10580';
 const mediaType = 'movie';
@@ -19,20 +18,20 @@ function startPageTrending(key, page) {
     totalMovies = movie.total_results;
     renderPage(totalMovies, numberOfPage);
   });
-  
+
 }
 
 function onInputMovieDetails(e) {
-    const query = e.target.value.trim();
-    if (query.length < 1) {
-        onInputTrending();
-        return;
-    };
-    apiFetchRequest.fetchSearchMovie(query)
+  const query = e.target.value.trim();
+  if (query.length < 1) {
+    onInputTrending();
+    return;
+  };
+  apiFetchRequest.fetchSearchMovie(query)
     .then(movie => {
-        renderSection(movie.results);
+      renderSection(movie.results);
     })
-    
+
 }
 
 function onInputMovie(id, key) {
@@ -48,12 +47,12 @@ startPageTrending(API_KEY, numberOfPage);
 // onInputMovieDetails(API_KEY);
 // onInputMovie(movieId, API_KEY);
 const refs = {
-    galleryRef: document.querySelector('.js-gallery'),  
-    searchInput: document.querySelector('.search-input'),  
+  galleryRef: document.querySelector('.js-gallery'),
+  searchInput: document.querySelector('.search-input'),
 }
 
 function renderSection(card) {
-        const markupCard = cardTpl(card);
-        refs.galleryRef.innerHTML = markupCard;
+  const markupCard = cardTpl(card);
+  refs.galleryRef.innerHTML = markupCard;
 }
 refs.searchInput.addEventListener('input', debounce(onInputMovieDetails, 500));
