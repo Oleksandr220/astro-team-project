@@ -31,7 +31,7 @@
             <h3 class='modal-describing-title'>About</h3>
             <p class='modal-describing-text'> {{overview}}</p>
             <div class='modal-batton-container'>
-                <button class='button primary' data-id="{{id}}" >ADD TO WATCHED</button>
+                <button class='button primary' data-id="{{id}}" data-watched >ADD TO WATCHED</button>
                 <button class='button' data-id="{{id}}" {{#each genres}}data-genresId="{{id}}" {{/each}}data-queue>ADD TO QUEUE</button>
             </div>
     </div>
