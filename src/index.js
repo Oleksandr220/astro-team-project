@@ -8,5 +8,8 @@ import './js/modalTeam.js';
 import './js/loader.js';
 
 import './js/onImageClick.js';
+
+import './js/btnBackToTop';
+
 import './js/addToQueue.js';
 import './js/addToWatched.js';

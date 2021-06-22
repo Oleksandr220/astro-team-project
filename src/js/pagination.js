@@ -1,23 +1,34 @@
 import cardTpl from '../templates/film-card.hbs';
 import * as res from './fetchRequests.js';
-
-const gallery = document.querySelector('.js-gallery');
 import { API_KEY } from './API_KEY';
+import {onLoader, stopLoader} from './loader'
+const gallery = document.querySelector('.js-gallery');
 let numberOfPage = 1;
-let totalMovies = 20;
+let query = '';
 
-function createSection(key, page) {
-  res.fetchTrending(API_KEY, numberOfPage).then(movies => {
+function createSectionTrending(key, page) {
+  onLoader()
+  res.fetchTrending(key, page).then(movies => {
     gallery.innerHTML = cardTpl(movies.results);
+    stopLoader()
   });
 }
 
-res.fetchTrending(API_KEY, numberOfPage).then(movies => {
-  totalMovies = movies.total_results;
-  createPagination(totalMovies);
-});
+function createSectionSearch(key, page, query) {
+  res.fetchSearchMovie(key, page, query).then(movies => {
+    gallery.innerHTML = cardTpl(movies.results);
+    stopLoader()
+  })
+}
 
-function createPagination(totalMovies) {
+function createPagination(totalMovies, startPage, query) {
+  const paginationList = document.querySelector('#paginate');
+  if (totalMovies < 1) {
+    paginationList.classList.add('is-hidden');
+  } else {
+    paginationList.classList.remove('is-hidden');
+  }
+  numberOfPage = startPage;
   let perPage = 20;
 
   const state = {
@@ -84,7 +95,11 @@ function createPagination(totalMovies) {
 
   const list = {
     update() {
-      html.get('.js-gallery').innerHTML = createSection(API_KEY, numberOfPage);
+      if (query) {
+        html.get('.js-gallery').innerHTML = createSectionSearch(API_KEY, numberOfPage, query);
+      } else {
+        html.get('.js-gallery').innerHTML = createSectionTrending(API_KEY, numberOfPage);
+      }
     },
   };
 
@@ -149,3 +164,5 @@ function createPagination(totalMovies) {
 
   init();
 }
+
+export default createPagination;

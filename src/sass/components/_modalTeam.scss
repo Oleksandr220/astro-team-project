@@ -49,7 +49,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    width: 480px;
+    width: 90%;
     padding-left: 40px;
     padding-right: 40px;
   }
@@ -114,6 +114,7 @@
 
     @media screen and (max-width: 468px) {
       margin-bottom: 15px;
+      font-size: 15px;
     }
 
     @media screen and (min-width: $TabletWidth) {
@@ -128,7 +129,7 @@
 
 .modal-team-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 30px;
 }
 
@@ -186,7 +187,53 @@
   }
 }
 
-/* АНІМАШКА ДЛЯ ГОЛОВНОГО ФОТО */
+// СТИЛИ ДЛЯ ПАГИНАЦИИ В МОБИЛЬНОМ ОКНЕ
+#paginate-teamModal.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#paginate-teamModal,
+.controls-teamModal,
+.numbers-teamModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  line-height: 25px;
+  margin-right: 10px;
+}
+
+.first-teamModal,
+.prev-teamModal,
+.next-teamModal {
+  line-height: 25px;
+  margin-right: 10px;
+}
+
+.first-teamModal,
+.last-teamModal {
+  margin-bottom: 3px;
+}
+.numbers-teamModal div {
+  width: 30px;
+  height: 30px;
+  line-height: 25px;
+  margin-right: 10px;
+  text-align: center;
+  border: 1px solid var(--secondary-text-color);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.numbers-teamModal div:hover,
+.numbers-teamModal div.active {
+  cursor: pointer;
+  color: var(--accent-text-color);
+  border: 1px solid var(--accent-text-color);
+}
+
+/* АНІМАШКА ДЛЯ ФОТОК */
 .frame {
   position: absolute;
   top: 4px;
