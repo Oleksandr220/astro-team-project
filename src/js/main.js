@@ -7,9 +7,6 @@ import { API_KEY } from './API_KEY';
 import { onLoader, stopLoader } from './loader';
 import cardTpl from '../templates/film-card.hbs';
 
-const input = document.querySelector('.search-input');
-input.addEventListener('input', debounce(onInputMovieDetails, 300));
-
 const movieId = '10580';
 const mediaType = 'movie';
 let query = '';
