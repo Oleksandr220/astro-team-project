@@ -3,6 +3,7 @@ import imageCardsTpl from '../templates/filmCardDetail.hbs';
 
 
 const listOfMovie = document.querySelector('.js-gallery');
+const body = document.querySelector('body');
 
 const popUp = document.querySelector('[data-popup="backdrop"]');
 
@@ -29,9 +30,11 @@ function renderFilmCard(movie) {
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
   popUp.classList.remove('visually-hiden');
+  body.classList.add('modal-open');
   window.addEventListener('keydown', onEscPress);
   const closeBtn = document.querySelector('[data-popup="close"]');
   closeBtn.addEventListener('click', onCloseModal);
+
 }
 
 function onEscPress(e) {
@@ -41,8 +44,9 @@ function onEscPress(e) {
 }
 
 function onCloseModal() {
-    popUp.classList.add('visually-hiden');
-    popUp.innerHTML = '';
-    closeBtn.removeEventListener('click', onCloseModal);
-    window.removeEventListener('keydown', onCloseModal);
+  popUp.classList.add('visually-hiden');
+  body.classList.remove('modal-open');
+  popUp.innerHTML = '';
+  closeBtn.removeEventListener('click', onCloseModal);
+  window.removeEventListener('keydown', onCloseModal);
 }
