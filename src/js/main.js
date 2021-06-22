@@ -9,8 +9,6 @@ import { onLoader, stopLoader } from './loader';
 const input = document.querySelector('.search-input');
 input.addEventListener('input', debounce(onInputMovieDetails, 400));
 
-const movieId = '10580';
-const mediaType = 'movie';
 let query = '';
 let numberOfPage = 1;
 let totalMovies;
