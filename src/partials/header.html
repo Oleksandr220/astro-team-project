@@ -9,17 +9,23 @@
                         <a class="logo-link home-js logo-current" href="./index.html">HOME</a>
                     </li>
                     <li class="logo-item">
-                        <a class="logo-link library-js" href="./index.html">MY LIBRARY</a>
+                        <a class="logo-link library-js" href="#">MY LIBRARY</a>
                     </li>
                 </ul>
             </nav>
         </div>
         <form class="search form-js">
-            <input class="search-input" type="text" name="film" placeholder="Поиск фильмов">
+            <div class="search-input-box box-js">
+                <input class="search-input" type="text" name="film" placeholder="Поиск фильмов" autocomplete="off" data-input>
+                <span class="search-loap" data-loap>&#8981;</span>
+            </div>
+
+            <p class="search-erorr visually-hiden">Search result not successful. Enter the correct movie name and try again</p>
         </form>
+
         <ul class="library-buttons buttons-js visually-hiden">
-            <li class="library-item"><button class="library-button">WATCHED</button></li>
-            <li class="library-item"><button class="library-button">QUEUE</button></li>
+            <li class="library-item"><button class="library-button" data-watched-header>WATCHED</button></li>
+            <li class="library-item"><button class="library-button" data-queue-header>QUEUE</button></li>
         </ul>
     </div>
 </header>
