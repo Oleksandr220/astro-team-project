@@ -1,14 +1,6 @@
 {{#each this}}
   <li class='card__film' data-action='{{id}}' data-type='{{media_type}}'>
     <div class='thumb'>
-      <img
-        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-        alt='{{title}} {{name}}'
-        width='100%'
-        data-id='{{id}}'
-        data-action='{{id}}'
-        data-type='{{media_type}}'
-      />
       {{#if poster_path}}
         <img
           src='https://image.tmdb.org/t/p/w500{{poster_path}}'
@@ -18,18 +10,20 @@
         />
       {{else}}
         <img
-          src='/astro-team.7cb43d1e.png'
+          src='../images/astro-team.png'
           alt='{{title}} {{name}}'
-          width='250px'
+          width='100%'
           data-id='{{id}}'
         />
       {{/if}}
     </div>
-    <h2 class='card__title'>{{title}} {{name}}</h2>
-    <p class='card__text'>
-      <span>{{#each genres}} {{name}} {{/each}}</span>
-      |
-      <span>{{release_date}}</span>
-    </p>
+    <div>
+      <h2 class='card__title'>{{title}} {{name}}</h2>
+      <p class='card__text'>
+        <span>{{#each genres}} {{name}} {{/each}}</span>
+        |
+        <span>{{release_date}}</span>
+      </p>
+    </div>
   </li>
 {{/each}}
