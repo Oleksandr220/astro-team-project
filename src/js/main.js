@@ -4,7 +4,7 @@ import * as apiFetchRequest from './fetchRequests';
 import renderPage from './pagination';
 import debounce from 'lodash.debounce';
 import { API_KEY } from './API_KEY';
-
+import {onLoader, stopLoader} from './loader'
 const input = document.querySelector('.search-input');
 input.addEventListener('input', debounce(onInputMovieDetails, 300));
 
@@ -17,10 +17,13 @@ let totalMovies = 20;
 function startPageTrending(key, page) {
   console.log('page in Trending: ', page);
   console.log('key in Trending: ', key);
+  onLoader()
   apiFetchRequest.fetchTrending(key, page).then(movie => {
     totalMovies = movie.total_results;
     renderPage(movie.results);
+    stopLoader()
   });
+  
 }
 
 function onInputMovieDetails(e) {
@@ -30,16 +33,20 @@ function onInputMovieDetails(e) {
   //   onInputTrending(API_KEY);
   //   return;
   // }
+  onLoader()
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
     console.log('query: ', query);
     totalMovies = movie.total_results;
     renderPage(movie.results, query);
+    stopLoader()
   });
 }
 
 function onInputMovie(id, key) {
+  onLoader()
   apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
     console.log(movie);
+    stopLoader()
   });
 }
 
