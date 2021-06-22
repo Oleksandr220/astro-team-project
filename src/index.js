@@ -12,3 +12,5 @@ import './js/onImageClick.js';
 import './js/btnBackToTop.js';
 import './js/annoying.js'
 
+import './js/addToQueue.js';
+import './js/addToWatched.js';
