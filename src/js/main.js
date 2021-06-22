@@ -4,7 +4,7 @@ import * as apiFetchRequest from './fetchRequests';
 import renderPage from './pagination';
 import debounce from 'lodash.debounce';
 import { API_KEY } from './API_KEY';
-
+import {onLoader, stopLoader} from './loader'
 const input = document.querySelector('.search-input');
 input.addEventListener('input', debounce(onInputMovieDetails, 300));
 
@@ -19,6 +19,7 @@ function startPageTrending(key, page) {
     totalMovies = movie.total_results;
     renderPage(totalMovies, numberOfPage);
   });
+  
 }
 
 function onInputMovieDetails(e) {
@@ -35,8 +36,10 @@ function onInputMovieDetails(e) {
 }
 
 function onInputMovie(id, key) {
+  onLoader()
   apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
     console.log(movie);
+    stopLoader()
   });
 }
 

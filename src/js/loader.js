@@ -10,3 +10,4 @@ function stopLoader() {
     elLoader.classList.add("is-hidden");
     elContent.classList.remove("on-loader");
 }
+export {onLoader, stopLoader}

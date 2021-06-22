@@ -1,21 +1,24 @@
 import cardTpl from '../templates/film-card.hbs';
 import * as res from './fetchRequests.js';
 import { API_KEY } from './API_KEY';
-
+import {onLoader, stopLoader} from './loader'
 const gallery = document.querySelector('.js-gallery');
 let numberOfPage = 1;
 let query = '';
 
 function createSectionTrending(key, page) {
+  onLoader()
   res.fetchTrending(key, page).then(movies => {
     gallery.innerHTML = cardTpl(movies.results);
+    stopLoader()
   });
 }
 
 function createSectionSearch(key, page, query) {
   res.fetchSearchMovie(key, page, query).then(movies => {
     gallery.innerHTML = cardTpl(movies.results);
-  });
+    stopLoader()
+  })
 }
 
 function createPagination(totalMovies, startPage, query) {
