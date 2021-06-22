@@ -15,6 +15,7 @@ let totalMovies;
 
 function startPageTrending(key, page) {
   apiFetchRequest.fetchTrending(key, page).then(movie => {
+    console.log(movie)
     totalMovies = movie.total_results;
     renderPage(totalMovies, numberOfPage);
   });

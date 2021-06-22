@@ -20,10 +20,9 @@ function onDisplayBigImg(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
   }
-  const getIdFromImg = e.target.dataset.action;
-  const getMediaType = e.target.dataset.type;
-  
-  fetchMovieById(getIdFromImg, getMediaType);
+  const getIdFromImg = e.target.dataset.id;
+  fetchMovieById(getIdFromImg);
+  listOfMovie.removeEventListener('click', onDisplayBigImg);
 }
 
 function renderFilmCard(movie) {
@@ -47,6 +46,6 @@ function onCloseModal() {
   popUp.classList.add('visually-hiden');
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
-  closeBtn.removeEventListener('click', onCloseModal);
-  window.removeEventListener('keydown', onCloseModal);
+  // closeBtn.removeEventListener('click', onCloseModal);
+  // window.removeEventListener('keydown', onCloseModal);
 }
