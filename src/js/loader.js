@@ -7,7 +7,19 @@ function onLoader() {
 }
 /* для остановки спинера вызвать функцию stopLoader() */
 function stopLoader() {
-    elLoader.classList.add("is-hidden");
-    elContent.classList.remove("on-loader");
+    setTimeout(()=>{
+        const allCard = document.querySelectorAll('img[data-src]')
+         allCard.forEach(function(element) {
+         element.setAttribute('src', element.getAttribute('data-src'))
+         element.onload = element.removeAttribute('data-src');
+       })
+       },
+ 50)
+        
+ document.onload = stopSpin()
+ function stopSpin() {
+     elLoader.classList.add("is-hidden");
+     elContent.classList.remove("on-loader");
+}
 }
 export {onLoader, stopLoader}

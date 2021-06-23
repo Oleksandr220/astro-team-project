@@ -50,6 +50,7 @@ li {
     width: $MobileWidth;
   }
   @media screen and (min-width: $TabletWidth) {
+    padding: 0px 70px;
     width: $TabletWidth;
   }
   @media screen and (min-width: $DesktopWidth) {
@@ -68,4 +69,12 @@ li {
 
 .is-hidden {
   display: none;
+}
+img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+ 
+img[data-src] {
+  opacity: 0;
 }

@@ -7,6 +7,9 @@
     flex-wrap: wrap;
     padding-top: 60px;
     padding-bottom: 50px;
+    justify-content: space-between;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   background-color: var(--primary-background-color);
@@ -22,13 +25,17 @@
     width: 294px;
     display: flex;
     flex-wrap: wrap;
-    margin: -15px;
-    margin: 15px;
+   /*  margin: -15px;
+    margin: 15px; */
+
+
+
+
   }
 
   @media screen and (min-width: $DesktopWidth) {
     width: 274px;
-    margin: 15px;
+    /* margin: 15px; */
   }
 
   .thumb {
