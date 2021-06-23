@@ -8,6 +8,12 @@ import { onLoader, stopLoader } from './loader';
 
 const input = document.querySelector('.search-input');
 input.addEventListener('input', debounce(onInputMovieDetails, 400));
+input.addEventListener('keypress', event => {
+  if (event.which === 13 || event.keyCode === 13) {
+    event.preventDefault();
+    // return false;
+  }
+});
 
 const movieId = '10580';
 const mediaType = 'movie';

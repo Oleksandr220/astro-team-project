@@ -1,7 +1,7 @@
 .to-up {
   position: fixed;
   bottom: 28px;
-  right: 28px;
+  right: 15px;
   display: none;
   z-index: 22;
   cursor: pointer;
@@ -10,9 +10,9 @@
 .strelka-top-1 {
   margin: 20px 8px;
   border-radius: 50%;
-  border: 2px solid #8e8f8f;
-  width: 80px;
-  height: 80px;
+  border: 2px solid var(--modal-grey-text-color);
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   box-shadow: 0 0 12px 4px #a09f9f;
   background: radial-gradient(#fff, #6b6b6b);
@@ -22,4 +22,10 @@
   stroke: #282e33;
   transition: fill 0.5s ease-out;
   transform: rotate(90deg);
+}
+
+.strelka-top-1:hover {
+  border: 2px solid var(--accent-text-color);
+  background: radial-gradient(var(--primary-background-color), var(--accent-color));
+  stroke: var(--accent-text-color);
 }
