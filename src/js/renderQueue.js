@@ -1,19 +1,22 @@
-import { fetchTrending, fetchSearchMovie, fetchMovieDetails } from './fetchRequests';
-import renderPage from './pagination';
+import { fetchMovieDetails } from './fetchRequests';
+import { onLoader, stopLoader } from './loader';
+import cardTmpl from '../templates/film-card.hbs';
 
-const galerryContRef = document.querySelector('.js-gallery');
-const qeryToGet = 'queue'
+const elBtnQueue = document.querySelector('[data-queue-header');
+const listOfMovie = document.querySelector('.js-gallery');
+const qeryToGet = 'queue';
 
-let query = '';
-let numberOfPage = 1;
-let totalMovies;
+elBtnQueue.addEventListener('click', getQueueId)
 
 function getQueueId() {
     const savedItems = JSON.parse(localStorage.getItem(qeryToGet));
 
     savedItems.forEach(id => {
-        fetchMovieDetails(id).then(console.log)
+        fetchMovieDetails(id).then(movie => {
+            console.log(movie)
+            onLoader()
+            listOfMovie.innerHTML = cardTmpl(movie);
+            stopLoader()
+        })
     })
 };
-
-getQueueId()

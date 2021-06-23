@@ -45,12 +45,4 @@ function onInputMovieDetails(e) {
   });
 }
 
-function onInputMovie(id, key) {
-  onLoader();
-  apiFetchRequest.fetchMovieDetails(id, key).then(movie => {
-    console.log(movie);
-    stopLoader();
-  });
-}
-
 startPageTrending(API_KEY, numberOfPage);
