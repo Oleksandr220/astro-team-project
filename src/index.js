@@ -17,3 +17,5 @@ import './js/addToWatched.js';
 import './js/renderQueue.js';
 
 import './js/needFilm.js';
+
+import './js/btnClearLibrary'
