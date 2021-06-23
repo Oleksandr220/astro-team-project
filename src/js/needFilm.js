@@ -12,7 +12,7 @@ setTimeout(() => {
   const heightForm = orderTicket.offsetHeight;
   hideForm.style.bottom = -heightForm + 'px';
   orderTicket.style.height = heightForm + 'px';
-}, 1000);
+}, 3000);
 
 function sendData(data, callback, callBefore) {
   if (callBefore) callBefore();
