@@ -4,6 +4,7 @@ const containerInHeader = document.querySelector('.cont-header-js');
 const buttonsLibraryRef = document.querySelector('.buttons-js');
 const formToSearchRef = document.querySelector('.form-js');
 const boxForInputRef = document.querySelector('.box-js');
+const galerryContRef = document.querySelector('.js-gallery');
 
 
 homePageRef.addEventListener('click', onHomeClick);
@@ -21,6 +22,7 @@ function onHomeClick(e) {
 };
 
 function onLibraryClick(e) {
+    galerryContRef.innerHTML = ' ';
     e.target.classList.add('logo-current');
     containerInHeader.classList.add('cont-header-library');
     containerInHeader.style.paddingBottom = '75px';
@@ -29,6 +31,7 @@ function onLibraryClick(e) {
     boxForInputRef.classList.add('visually-hiden');
     homePageRef.classList.remove('logo-current');
 };
+
 //Queue current
 
 const buttonQueueHeaderRef = document.querySelector('[data-queue-header]');
