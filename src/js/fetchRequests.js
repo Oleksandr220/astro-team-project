@@ -19,8 +19,8 @@ function fetchSearchMovie(API_KEY, numberOfPage, query) {
     .catch(onError);
 }
 
-function fetchMovieDetails(id, media_type) {
-  return fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}&language=en-US`)
+function fetchMovieDetails(id) {
+  return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`)
     .then(response => {
       return response.json();
     })
