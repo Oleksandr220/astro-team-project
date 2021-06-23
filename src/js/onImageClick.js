@@ -4,7 +4,6 @@ import imageCardsTpl from '../templates/filmCardDetail.hbs';
 
 const listOfMovie = document.querySelector('.js-gallery');
 const body = document.querySelector('body');
-
 const popUp = document.querySelector('[data-popup="backdrop"]');
 
 listOfMovie.addEventListener('click', onDisplayBigImg);
@@ -22,7 +21,6 @@ function onDisplayBigImg(e) {
   }
   const getIdFromImg = e.target.dataset.id;
   fetchMovieById(getIdFromImg);
-  listOfMovie.removeEventListener('click', onDisplayBigImg);
 }
 
 function renderFilmCard(movie) {
@@ -42,10 +40,11 @@ function onEscPress(e) {
   }
 }
 
-function onCloseModal() {
+function onCloseModal(e) {
   popUp.classList.add('visually-hiden');
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
+  e.stopPropagation()
   // closeBtn.removeEventListener('click', onCloseModal);
   // window.removeEventListener('keydown', onCloseModal);
 }
