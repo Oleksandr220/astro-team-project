@@ -48,7 +48,10 @@
     overflow: hidden;
 
     outline: none;
-
+    &a:focus{
+      border: 1px solid var(--accent-color);
+      border-radius: 50%;
+    }
     &:focus,
     &:hover {
       border: 1px solid var(--accent-color);
