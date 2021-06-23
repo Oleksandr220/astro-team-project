@@ -13,6 +13,10 @@
   }
 
   background-color: var(--primary-background-color);
+
+  @media screen and (min-width: $DesktopWidth) {
+    justify-content: flex-start;
+  }
 }
 
 .card__film {
@@ -25,17 +29,15 @@
     width: 294px;
     display: flex;
     flex-wrap: wrap;
-   /*  margin: -15px;
-    margin: 15px; */
-
-
-
-
   }
 
   @media screen and (min-width: $DesktopWidth) {
     width: 274px;
-    /* margin: 15px; */
+    margin-right: 30px;
+
+    &:nth-child(3n + 3) {
+      margin-right: 0px;
+    }
   }
 
   .thumb {

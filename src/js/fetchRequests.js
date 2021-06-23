@@ -2,7 +2,7 @@ import { onError } from './main';
 import { API_KEY } from './API_KEY';
 
 function fetchTrending(key, page) {
-    return fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&page=${page}`)
+    return fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${page}`)
         .then(response => {
             return response.json();
         })
