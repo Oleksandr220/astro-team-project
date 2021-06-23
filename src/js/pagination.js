@@ -9,9 +9,23 @@ let query = '';
 function createSectionTrending(key, page) {
   onLoader()
   res.fetchTrending(key, page).then(movies => {
+    
     gallery.innerHTML = cardTpl(movies.results);
+    for (let i = 0; i < 20; i += 1) {
+      // console.log(movie.results[i].genre_ids);
+      const movieResult = movies.results[i].genre_ids;
+      // for (let i = 0; i < movieResult.length; i += 1)
+      // console.log(movieResult.genre_ids[i]);
+      console.log(movieResult);
+      if ()
+      
+    }
+
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!');
     stopLoader()
   });
+
+  
 }
 
 function createSectionSearch(key, page, query) {

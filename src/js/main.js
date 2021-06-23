@@ -13,11 +13,28 @@ let query = '';
 let numberOfPage = 1;
 let totalMovies;
 
+console.log(apiFetchRequest.fetchTrending(API_KEY, numberOfPage));
+
 function startPageTrending(key, page) {
   apiFetchRequest.fetchTrending(key, page).then(movie => {
-    console.log(movie)
+    console.log(movie);
+    // for (let i = 0; i < movie.total_results.length; i += 1) {
+    //   // console.log(movie.results[i].genre_ids);
+    //   const movieResult = movie.results[i].genre_ids;
+    //   // for (let i = 0; i < movieResult.length; i += 1)
+    //   // console.log(movieResult.genre_ids[i]);
+    //   console.log(movieResult);
+    // }
+    
     totalMovies = movie.total_results;
     renderPage(totalMovies, numberOfPage);
+    // for (let i = 0; i < 20; i += 1) {
+    //   // console.log(movie.results[i].genre_ids);
+    //   const movieResult = movie.results[i].genre_ids;
+    //   // for (let i = 0; i < movieResult.length; i += 1)
+    //   // console.log(movieResult.genre_ids[i]);
+    //   console.log(movieResult);
+    // }
   });
 
 }
