@@ -11,8 +11,8 @@ homePageRef.addEventListener('click', onHomeClick);
 libraryPageRef.addEventListener('click', onLibraryClick);
 
 function onHomeClick(e) {
-  e.target.classList.add('logo-current');
   paginationList.classList.remove('is-hidden');
+  e.target.classList.add('logo-current');
   containerInHeader.classList.remove('cont-header-library');
   containerInHeader.style.paddingBottom = '95px';
   buttonsLibraryRef.classList.add('visually-hiden');

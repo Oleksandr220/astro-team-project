@@ -1,17 +1,25 @@
 {{#each this}}
-<li class="card__film" data-action='{{id}}' data-type='{{media_type}}'>
-  <div class="thumb">
-    {{#if poster_path}}
-    <img  data-src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" width="100%" data-id="{{id}} class = "poster_img" />
-    {{else}}
-    <img src="/astro-team.7cb43d1e.png" alt="{{title}}" width="250px" data-id="{{id}}" />
-    {{/if}}
-  </div>
-  <div>
-    <h2 class="card__title">{{title}}</h2>
-    <p class="card__text">
-      <span>{{genre_ids}}</span> | <span>{{release_date}}</span>
-    </p>
-  </div>
-</li>
+  <li class='card__film' data-action='{{id}}' data-type='{{media_type}}'>
+    <div class='thumb'>
+      {{#if poster_path}}
+        <img
+          data-src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+          alt='{{title}}'
+          width='100%'
+          data-id='{{id}}'
+          class='poster_img'
+        />
+      {{else}}
+        <img src='/astro-team.7cb43d1e.png' alt='{{title}}' width='250px' data-id='{{id}}' />
+      {{/if}}
+    </div>
+    <div>
+      <h2 class='card__title'>{{title}}</h2>
+      <p class='card__text'>
+        <span>{{genre_ids}}</span>
+        |
+        <span>{{release_date}}</span>
+      </p>
+    </div>
+  </li>
 {{/each}}
