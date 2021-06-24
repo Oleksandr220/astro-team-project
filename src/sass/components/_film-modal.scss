@@ -35,7 +35,8 @@
     display: none;
   }
 
-  .icon-closeback {
+  .button-close {
+    box-sizing: border-box;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -46,16 +47,23 @@
     height: 33px;
     width: 33px;
     overflow: hidden;
-
     outline: none;
-    &a:focus{
-      border: 1px solid var(--accent-color);
-      border-radius: 50%;
-    }
+
     &:focus,
     &:hover {
-      border: 1px solid var(--accent-color);
-      border-radius: 50%;
+      .icon-closeback path {
+        stroke: var(--accent-color);
+      }
+    }
+
+    .icon-closeback {
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      path {
+        stroke: black;
+      }
     }
   }
 
@@ -220,14 +228,6 @@
   @media screen and (min-width: $DesktopWidth) {
     width: 136px;
   }
-}
-
-.button-x {
-  display: block;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  font-size: 30px;
 }
 
 .modal-open {
