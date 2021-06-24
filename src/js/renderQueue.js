@@ -9,7 +9,7 @@ const queryToGet = 'queue';
 
 elBtnQueue.addEventListener('click', getQueueId);
 const savedItems = JSON.parse(localStorage.getItem(queryToGet));
-const savedMovies = savedItems.slice(1);
+const savedMovies = savedItems.slice(0);
 
 let cardOnPage = 18;
 let countOfButtons = 0;
