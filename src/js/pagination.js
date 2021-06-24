@@ -1,32 +1,79 @@
 import cardTpl from '../templates/film-card.hbs';
 import * as res from './fetchRequests.js';
+import * as apiFetchGenres from './fetchGenres';
 import { API_KEY } from './API_KEY';
 import {onLoader, stopLoader} from './loader'
 const gallery = document.querySelector('.js-gallery');
 let numberOfPage = 1;
 let query = '';
 
+let genresList;
+
+apiFetchGenres.fetchMovieGenres().then(data => genresList = data.genres);
+
+// console.log(genresList);
+
+// const genresList = apiFetchGenres.fetchMovieGenres();
+// console.log(apiFetchGenres.fetchMovieGenres());
+
+// function getMovieGenres(key) {
+//   return apiFetchGenres.fetchMovieGenres(key).then(genres => {
+//     const genresList = genres.genres;
+//     return genresList;
+//   });
+// }
+
+// getMovieGenres (API_KEY);
+// console.log(genresList);
+
+// console.log(getMovieGenres(API_KEY));
+// console.log(apiFetchGenres.fetchMovieGenres(API_KEY));
+
 function createSectionTrending(key, page) {
   onLoader()
   res.fetchTrending(key, page).then(movies => {
-    
-    gallery.innerHTML = cardTpl(movies.results);
+    // apiFetchGenres.fetchMovieGenres().then(data => genresList = data.genres);
+    console.log(genresList);
     for (let i = 0; i < 20; i += 1) {
       // console.log(movie.results[i].genre_ids);
       const movieResult = movies.results[i].genre_ids;
       // for (let i = 0; i < movieResult.length; i += 1)
       // console.log(movieResult.genre_ids[i]);
       console.log(movieResult);
-      if ()
-      
+      for (let j = 0; j < genresList.length; j += 1)
+      {
+        if (genresList[j].id  === movieResult[j]) {
+          // console.log(movies.results[i].genre_ids[j]);
+          // console.log(genresList[j].id);
+          movies.results[i].genre_ids[j] = genresList[j].name;
+          
+          
+          
+          // console.log(movies.results[i].genre_ids[j]);
+          // console.log(genresList[j].name);
+          // break;
+        }
+        // console.log(j);
+      }
+      // if (movieResult[0] = 16) {
+      //   movies.results[i].genre_ids[0] = genresList[0].name;
+      // }
+      // console.log(i);
     }
+    gallery.innerHTML = cardTpl(movies.results);
+    
 
     console.log('!!!!!!!!!!!!!!!!!!!!!!!');
     stopLoader()
   });
-
-  
 }
+// function createSectionTrending(key, page) {
+//   onLoader()
+//   res.fetchTrending(key, page).then(movies => {
+//     gallery.innerHTML = cardTpl(movies.results);
+//     stopLoader()
+//   });
+// }
 
 function createSectionSearch(key, page, query) {
   res.fetchSearchMovie(key, page, query).then(movies => {
