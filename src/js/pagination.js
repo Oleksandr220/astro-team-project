@@ -3,6 +3,7 @@ import * as res from './fetchRequests.js';
 import { API_KEY } from './API_KEY';
 import {onLoader, stopLoader} from './loader'
 const gallery = document.querySelector('.js-gallery');
+
 let numberOfPage = 1;
 let query = '';
 

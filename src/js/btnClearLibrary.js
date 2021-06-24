@@ -1,4 +1,4 @@
-const btnClearLibrary = document.querySelector('.gallery-section')
+const btnClearLibrary = document.querySelector('.js-gallery')
 const libraryContRef = document.querySelector('.library-js')
 const homeContRef = document.querySelector('.home-js')
 

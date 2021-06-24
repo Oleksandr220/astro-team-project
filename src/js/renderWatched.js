@@ -26,6 +26,7 @@ function getWatchedId() {
     createButtonsArray(countOfButtons);
     showPage(buttons[0]);
     renderPageOnButtonClick(buttons);
+    console.log(buttons)
   } else if (
     document.documentElement.clientWidth < 769 &&
     document.documentElement.clientWidth > 468
@@ -70,6 +71,7 @@ function renderPageOnButtonClick(buttons) {
 function createListMarkup(data) {
   for (let id of data) {
     fetchMovieDetails(id).then(movie => {
+
       listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
     });
   }
