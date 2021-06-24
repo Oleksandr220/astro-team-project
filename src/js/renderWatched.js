@@ -26,7 +26,6 @@ function getWatchedId() {
     createButtonsArray(countOfButtons);
     showPage(buttons[0]);
     renderPageOnButtonClick(buttons);
-    console.log(buttons)
   } else if (
     document.documentElement.clientWidth < 769 &&
     document.documentElement.clientWidth > 468
@@ -95,3 +94,4 @@ let showPage = (function () {
     createListMarkup(renderDataMovies);
   };
 })();
+
