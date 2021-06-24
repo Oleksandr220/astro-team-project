@@ -14,7 +14,7 @@ const savedMovies = savedItems.slice(0);
 let cardOnPage = 18;
 let countOfButtons = 0;
 let buttons = [];
-let dataMovies = [...savedMovies];
+let dataMovies = [...savedItems];
 
 function getQueueId() {
   listOfMovie.innerHTML = '';
@@ -46,7 +46,7 @@ function getQueueId() {
 }
 
 function createCountOfButtons(cardOnPage) {
-  return Math.ceil(savedMovies.length / cardOnPage);
+  return Math.ceil(savedItems.length / cardOnPage);
 }
 
 function createButtonsArray(countOfButtons) {

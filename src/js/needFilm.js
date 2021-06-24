@@ -2,6 +2,7 @@ const hideForm = document.querySelector('.hide-form');
 const orderTicket = document.querySelector('.order-ticket');
 const orderTrigger = document.querySelector('.order-trigger');
 const orderTicketForm = document.querySelector('.order-ticket__form');
+const closeCross = document.querySelector('[data-modal-need-film]');
 
 const orderTicketFormWrapper = document.querySelector('.order-ticket__form-wrapper');
 const orderTicketPreloaderWrapper = document.querySelector('.order-ticket__preloader-wrapper');
@@ -42,7 +43,6 @@ function showThankYou(data) {
 
 function changeLayoutLabel(e) {
   const target = e.target;
-  console.log('target: ', target.validity);
   const label = target.labels[0];
   if (label && target.value) {
     label.classList.add('order-ticket__label-focus');
@@ -67,6 +67,7 @@ function submitForm(e) {
 
 orderTrigger.addEventListener('click', () => {
   hideForm.classList.toggle('hide-form-active');
+  closeCross.classList.toggle('is-hidden');
 });
 
 orderTicketForm.addEventListener('change', changeLayoutLabel);

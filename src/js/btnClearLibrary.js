@@ -1,11 +1,45 @@
-const btnClearLibrary = document.querySelector('.js-gallery')
-const libraryContRef = document.querySelector('.library-js')
-const homeContRef = document.querySelector('.home-js')
+const librarySectionEl = document.querySelector('.gallery-section');
+const gallerySectionEl = document.querySelector('.js-gallery');
+const libraryContRef = document.querySelector('.library-js');
+const homeContRef = document.querySelector('.home-js');
+const btnClearLibraryEl = document.querySelector('.btn-clear');
+const btnWatchedEl = document.querySelector('[data-watched-header');
+const btnQueueEl = document.querySelector('[data-queue-header');
 
-libraryContRef.addEventListener('click', function () {
-    btnClearLibrary.innerHTML = '<button class = "btn-clear">Clear library</button>';
-})
+// Add and remove button
+function addBtnClearLibrary() {
+    btnClearLibraryEl.classList.remove('is-hidden');
+}
 
-homeContRef.addEventListener('click', function () {
-    btnClearLibrary.style.display = 'none';
-})
+function removeBtnClearLibrary() {
+    btnClearLibraryEl.classList.add('is-hidden');
+}
+
+libraryContRef.addEventListener('click', addBtnClearLibrary)
+homeContRef.addEventListener('click', removeBtnClearLibrary)
+
+// Function button
+
+function clearWatchedLib() {
+    localStorage.removeItem('watched');
+}
+
+function clearQueueLib() {
+    localStorage.removeItem('queue');
+}
+
+function clearGallery() {
+    gallerySectionEl.innerHTML = '';
+}
+
+function clearLib () {
+    clearGallery()
+    if (btnWatchedEl.classList.contains('library-button-focus')) {
+        clearWatchedLib()
+    }
+    if (btnQueueEl.classList.contains('library-button-focus')) {
+        clearQueueLib()
+    }
+}
+
+btnClearLibraryEl.addEventListener('click', clearLib)
