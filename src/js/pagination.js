@@ -4,6 +4,7 @@ import * as apiFetchGenres from './fetchGenres';
 import { API_KEY } from './API_KEY';
 import {onLoader, stopLoader} from './loader'
 const gallery = document.querySelector('.js-gallery');
+
 let numberOfPage = 1;
 let query = '';
 let genresList;

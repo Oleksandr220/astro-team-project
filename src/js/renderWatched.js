@@ -3,11 +3,11 @@ import { onLoader, stopLoader } from './loader';
 import libraryCardTpl from '../templates/library-card.hbs';
 
 const paginationPageList = document.querySelector('[data-library-pagination]');
-const elBtnQueue = document.querySelector('[data-queue-header');
+const elBtnWatched = document.querySelector('[data-watched-header');
 const listOfMovie = document.querySelector('.js-gallery');
-const queryToGet = 'queue';
+const queryToGet = 'watched';
 
-elBtnQueue.addEventListener('click', getQueueId);
+elBtnWatched.addEventListener('click', getWatchedId);
 const savedItems = JSON.parse(localStorage.getItem(queryToGet));
 
 let cardOnPage = 18;
@@ -15,7 +15,7 @@ let countOfButtons = 0;
 let buttons = [];
 let dataMovies = [...savedItems];
 
-function getQueueId() {
+function getWatchedId() {
   listOfMovie.innerHTML = '';
   paginationPageList.innerHTML = '';
   onLoader();
@@ -92,3 +92,4 @@ let showPage = (function () {
     createListMarkup(renderDataMovies);
   };
 })();
+

@@ -21,13 +21,12 @@ let numberOfPage = 1;
 let totalMovies;
 
 function startPageTrending(key, page) {
-  onLoader()
+  onLoader();
   apiFetchRequest.fetchTrending(key, page).then(movie => {
-    // console.log(movie);
     totalMovies = movie.total_results;
     renderPage(totalMovies, numberOfPage);
-    
-    stopLoader()
+
+    stopLoader();
   });
 }
 
@@ -35,13 +34,11 @@ function onInputMovieDetails(e) {
   query = e.target.value.toLowerCase().trim();
   numberOfPage = 1;
 
-  onLoader()
+  onLoader();
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
-    
     totalMovies = movie.total_results;
     renderPage(totalMovies, numberOfPage, query);
-    stopLoader()
-
+    stopLoader();
   });
 }
 
