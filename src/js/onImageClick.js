@@ -1,6 +1,6 @@
 import * as apiFetchRequest from './fetchRequests.js';
 import imageCardsTpl from '../templates/filmCardDetail.hbs';
-
+import image from '../images/astro-team.png';
 
 const listOfMovie = document.querySelector('.js-gallery');
 const body = document.querySelector('body');
@@ -26,6 +26,9 @@ function onDisplayBigImg(e) {
 function renderFilmCard(movie) {
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
+  if (!movie.poster_path) {
+    document.querySelector('.modal-image').src = `${image}`;
+  }
   popUp.classList.remove('visually-hiden');
   body.classList.add('modal-open');
   window.addEventListener('keydown', onEscPress);
