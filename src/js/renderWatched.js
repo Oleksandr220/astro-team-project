@@ -9,12 +9,11 @@ const queryToGet = 'watched';
 
 elBtnWatched.addEventListener('click', getWatchedId);
 const savedItems = JSON.parse(localStorage.getItem(queryToGet));
-const savedMovies = savedItems.slice(1);
 
 let cardOnPage = 18;
 let countOfButtons = 0;
 let buttons = [];
-let dataMovies = [...savedMovies];
+let dataMovies = [...savedItems];
 
 function getWatchedId() {
   listOfMovie.innerHTML = '';
@@ -26,7 +25,6 @@ function getWatchedId() {
     createButtonsArray(countOfButtons);
     showPage(buttons[0]);
     renderPageOnButtonClick(buttons);
-    console.log(buttons)
   } else if (
     document.documentElement.clientWidth < 769 &&
     document.documentElement.clientWidth > 468
@@ -47,7 +45,7 @@ function getWatchedId() {
 }
 
 function createCountOfButtons(cardOnPage) {
-  return Math.ceil(savedMovies.length / cardOnPage);
+  return Math.ceil(savedItems.length / cardOnPage);
 }
 
 function createButtonsArray(countOfButtons) {
@@ -71,7 +69,6 @@ function renderPageOnButtonClick(buttons) {
 function createListMarkup(data) {
   for (let id of data) {
     fetchMovieDetails(id).then(movie => {
-
       listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
     });
   }
