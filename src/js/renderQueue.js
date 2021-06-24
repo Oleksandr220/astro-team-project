@@ -68,13 +68,10 @@ function renderPageOnButtonClick(buttons) {
 }
 
 function createListMarkup(data) {
-    for (let id of data) {
-      savedItems.forEach(id => {
-        fetchMovieDetails(id).then(movie => {
-        listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
-      });
-    })
-
+  for (let id of data) {
+    fetchMovieDetails(id).then(movie => {
+      listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
+    });
   }
 }
 
