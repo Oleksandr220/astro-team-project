@@ -19,6 +19,7 @@
   background-color: var(--primary-text-color);
 
   @media screen and (min-width: $TabletWidth) {
+    display: flex;
     margin: 231px auto 0;
     width: 618px;
     padding: 42px 30px;
@@ -47,7 +48,10 @@
     overflow: hidden;
 
     outline: none;
-
+    &a:focus{
+      border: 1px solid var(--accent-color);
+      border-radius: 50%;
+    }
     &:focus,
     &:hover {
       border: 1px solid var(--accent-color);
@@ -86,12 +90,13 @@
 
   @media screen and (min-width: $TabletWidth) {
     margin-bottom: 0;
+    margin-right: 32px;
     height: 374px;
     width: 264px;
   }
 
   @media screen and (min-width: $DesktopWidth) {
-    margin-bottom: 0;
+    margin-right: 30px;
     height: 478px;
     width: 396px;
   }

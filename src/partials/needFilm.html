@@ -1,0 +1,84 @@
+<div class="hide-form">
+  <button class="order-trigger">Didn`t find movie?</button>
+  <div class="order-ticket">
+    <form class="order-ticket__form">
+      <fieldset class="order-ticket__form-wrapper">
+        <legend class="order-ticket__title">Fill the form</legend>
+        <small class="order-ticket__description"
+          >And you will receive an email notification about the appearance of the film in our
+          catalog</small
+        >
+        <label class="order-ticket__label">
+          <input
+            class="order-ticket__input"
+            type="text"
+            required
+            oninvalid="this.setCustomValidity('Fill in this field!')"
+            oninput="setCustomValidity('')"
+            name="name"
+          />
+          <span class="order-ticket__label-text">Name</span>
+        </label>
+        <label class="order-ticket__label">
+          <input
+            class="order-ticket__input"
+            type="text"
+            required
+            oninvalid="this.setCustomValidity('Fill in this field!')"
+            oninput="setCustomValidity('')"
+            name="title"
+          />
+          <span class="order-ticket__label-text">Movie title</span>
+        </label>
+        <label class="order-ticket__label">
+          <input
+            class="order-ticket__input"
+            type="tel"
+            required
+            oninvalid="this.setCustomValidity('Fill in this field!')"
+            oninput="setCustomValidity('')"
+            name="phoneNumber"
+          />
+          <span class="order-ticket__label-text">Phone number</span>
+        </label>
+        <label class="order-ticket__label">
+          <input
+            class="order-ticket__input"
+            type="email"
+            required
+            oninvalid="this.setCustomValidity('Fill in this field!')"
+            oninput="setCustomValidity('')"
+            name="mail"
+          />
+          <span class="order-ticket__label-text">E-mail</span>
+        </label>
+        <label class="order-ticket__label">
+          <input
+            class="order-ticket__checkbox"
+            type="checkbox"
+            required
+            oninvalid="this.setCustomValidity('Check this box to continue')"
+            oninput="setCustomValidity('')"
+            name="personal"
+            value="agree"
+          />
+          <span class="order-ticket__label-checkbox-text"
+            >I agree to the processing of my <a href="#">personal data</a></span
+          >
+        </label>
+        <button class="send-form">Send</button>
+      </fieldset>
+      <div class="order-ticket__preloader-wrapper">
+        <!-- <video loop muted autoplay playsinline src="img/6.mp4" type="video/mp4"></video> -->
+        There will be loader
+      </div>
+      <fieldset class="order-ticket__thanks-wrapper">
+        <legend>Thank you, <span class="order-ticket__thanks-name">-name-</span>!</legend>
+        <p>
+          An email will be sent to notifying you when the movie has been added to the catalog in our
+          website.
+        </p>
+      </fieldset>
+    </form>
+  </div>
+</div>
