@@ -15,7 +15,7 @@ let countOfButtons = 0;
 let buttons = [];
 let dataMovies = [];
 
-if ((localStorage.length > 0)) {
+if (savedItems !== null) {
   dataMovies = [...savedItems]
 }
 

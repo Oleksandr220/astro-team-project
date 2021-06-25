@@ -14,8 +14,9 @@ let cardOnPage = 18;
 let countOfButtons = 0;
 let buttons = [];
 let dataMovies = [];
-
-if ((localStorage.length > 0)) {
+ 
+console.log(savedItems)
+if (savedItems !== null) {
   dataMovies = [...savedItems]
 }
 
