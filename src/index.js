@@ -14,8 +14,8 @@ import './js/annoying.js';
 
 import './js/addToQueue.js';
 import './js/addToWatched.js';
-import './js/renderQueue.js';
 import './js/renderWatched.js';
+import './js/renderQueue.js';
 
 import './js/needFilm.js';
 

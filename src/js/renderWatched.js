@@ -13,7 +13,12 @@ const savedItems = JSON.parse(localStorage.getItem(queryToGet));
 let cardOnPage = 18;
 let countOfButtons = 0;
 let buttons = [];
-let dataMovies = [...savedItems];
+let dataMovies = [];
+
+if ((localStorage.length > 0)) {
+  dataMovies = [...savedItems]
+}
+
 
 function getWatchedId() {
   listOfMovie.innerHTML = '';

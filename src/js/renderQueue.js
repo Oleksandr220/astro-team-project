@@ -9,12 +9,15 @@ const queryToGet = 'queue';
 
 elBtnQueue.addEventListener('click', getQueueId);
 const savedItems = JSON.parse(localStorage.getItem(queryToGet));
-const savedMovies = savedItems.slice(0);
 
 let cardOnPage = 18;
 let countOfButtons = 0;
 let buttons = [];
-let dataMovies = [...savedItems];
+let dataMovies = [];
+
+if ((localStorage.length > 0)) {
+  dataMovies = [...savedItems]
+}
 
 function getQueueId() {
   listOfMovie.innerHTML = '';
