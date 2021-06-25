@@ -2,7 +2,6 @@ import teamAPI from './teamAPI.json';
 import createTeamAnimationTPL from '../templates/createTeamAnimation.hbs';
 
 const openModalButton = document.querySelector('[data-team]');
-const closeModalButton = document.querySelector('[data-modal-close]');
 const modalBackdrop = document.querySelector('[data-modal]');
 const teamList = document.querySelector('.modal-team-list');
 const teamData = [...teamAPI];
@@ -234,3 +233,14 @@ function createTeamModalPagination() {
 
   init();
 }
+
+// Change background img
+// const firstPhotoElements = document.querySelectorAll('.slices');
+// for (const elem of firstPhotoElements) {
+//   let needElement = elem.dataset.id;
+//   let needElementChildrens = elem.children;
+//   let findElement = teamData.find(member => member.surname === needElement);
+//   console.log('findElement: ', findElement.photo1);
+//   elem.style.backgroundImage = `url(${findElement.photo1})`;
+//   console.log('elem: ', elem);
+// }
