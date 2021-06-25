@@ -1,4 +1,4 @@
-const librarySectionEl = document.querySelector('.gallery-section');
+
 const gallerySectionEl = document.querySelector('.js-gallery');
 const libraryContRef = document.querySelector('.library-js');
 const homeContRef = document.querySelector('.home-js');
@@ -33,7 +33,8 @@ function clearGallery() {
 }
 
 function clearLib () {
-    clearGallery()
+    clearGallery();
+    let dataMovies = [];
     if (btnWatchedEl.classList.contains('library-button-focus')) {
         clearWatchedLib()
     }
