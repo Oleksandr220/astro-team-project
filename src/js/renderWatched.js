@@ -24,27 +24,29 @@ function getWatchedId() {
   listOfMovie.innerHTML = '';
   paginationPageList.innerHTML = '';
   onLoader();
-  if (document.documentElement.clientWidth >= 769) {
-    cardOnPage = 18;
-    countOfButtons = createCountOfButtons(cardOnPage);
-    createButtonsArray(countOfButtons);
-    showPage(buttons[0]);
-    renderPageOnButtonClick(buttons);
-  } else if (
-    document.documentElement.clientWidth < 769 &&
-    document.documentElement.clientWidth > 468
-  ) {
-    cardOnPage = 2;
-    countOfButtons = createCountOfButtons(cardOnPage);
-    createButtonsArray(countOfButtons);
-    showPage(buttons[0]);
-    renderPageOnButtonClick(buttons);
-  } else if (document.documentElement.clientWidth < 469) {
-    cardOnPage = 1;
-    countOfButtons = createCountOfButtons(cardOnPage);
-    createButtonsArray(countOfButtons);
-    showPage(buttons[0]);
-    renderPageOnButtonClick(buttons);
+  if ((localStorage.length > 0)) {
+    if (document.documentElement.clientWidth >= 769) {
+      cardOnPage = 18;
+      countOfButtons = createCountOfButtons(cardOnPage);
+      createButtonsArray(countOfButtons);
+      showPage(buttons[0]);
+      renderPageOnButtonClick(buttons);
+    } else if (
+      document.documentElement.clientWidth < 769 &&
+      document.documentElement.clientWidth > 468
+    ) {
+      cardOnPage = 2;
+      countOfButtons = createCountOfButtons(cardOnPage);
+      createButtonsArray(countOfButtons);
+      showPage(buttons[0]);
+      renderPageOnButtonClick(buttons);
+    } else if (document.documentElement.clientWidth < 469) {
+      cardOnPage = 1;
+      countOfButtons = createCountOfButtons(cardOnPage);
+      createButtonsArray(countOfButtons);
+      showPage(buttons[0]);
+      renderPageOnButtonClick(buttons);
+    }
   }
   stopLoader();
 }
