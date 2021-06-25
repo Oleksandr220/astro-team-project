@@ -15,7 +15,6 @@ let countOfButtons = 0;
 let buttons = [];
 let dataMovies = [];
  
-console.log(savedItems)
 if (savedItems !== null) {
   dataMovies = [...savedItems]
 }

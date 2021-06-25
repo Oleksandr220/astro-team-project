@@ -19,7 +19,6 @@ if (savedItems !== null) {
   dataMovies = [...savedItems]
 }
 
-
 function getWatchedId() {
   listOfMovie.innerHTML = '';
   paginationPageList.innerHTML = '';
