@@ -1,15 +1,19 @@
 import cardTpl from '../templates/film-card.hbs';
 import * as res from './fetchRequests.js';
+import * as apiFetchGenres from './fetchGenres';
 import { API_KEY } from './API_KEY';
 import {onLoader, stopLoader} from './loader'
 const gallery = document.querySelector('.js-gallery');
 
 let numberOfPage = 1;
 let query = '';
+let genresList;
+apiFetchGenres.fetchMovieGenres().then(data => genresList = data.genres);
 
 function createSectionTrending(key, page) {
   onLoader()
   res.fetchTrending(key, page).then(movies => {
+    addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
     stopLoader()
   });
@@ -17,10 +21,28 @@ function createSectionTrending(key, page) {
 
 function createSectionSearch(key, page, query) {
   res.fetchSearchMovie(key, page, query).then(movies => {
+    addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
     stopLoader()
   })
 }
+
+function addedGenres (movies, genresList) {
+  if (movies.results[0] === undefined) {
+    return;
+  }
+  for (let i = 0; i < 20; i += 1) {
+  const movieResult = movies.results[i].genre_ids;
+    for (let j = 0; j < genresList.length; j += 1) {
+      for (let g = 0; g < movieResult.length; g += 1) {
+        if (genresList[j].id  === movieResult[g]) {
+          movies.results[i].genre_ids[g] = ' ' + genresList[j].name;
+        }
+      }
+    }
+  }
+}
+
 
 function createPagination(totalMovies, startPage, query) {
   const paginationList = document.querySelector('#paginate');
@@ -167,3 +189,5 @@ function createPagination(totalMovies, startPage, query) {
 }
 
 export default createPagination;
+
+
