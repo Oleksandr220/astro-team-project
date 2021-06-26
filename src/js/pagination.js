@@ -1,8 +1,9 @@
-import cardTpl from '../templates/film-card.hbs';
-import * as res from './fetchRequests.js';
-import * as apiFetchGenres from './fetchGenres';
-import { API_KEY } from './API_KEY';
-import {onLoader, stopLoader} from './loader'
+import cardTpl from '../templates/popular-film-section.hbs';
+import * as res from './fetches/fetchRequests.js';
+import * as apiFetchGenres from './fetches/fetchGenres';
+import { API_KEY } from './objects/API_KEY';
+import { onLoader, stopLoader } from './main/loader';
+
 const gallery = document.querySelector('.js-gallery');
 
 let numberOfPage = 1;
@@ -32,6 +33,9 @@ function addedGenres (movies, genresList) {
     return;
   }
   for (let i = 0; i < 20; i += 1) {
+    if (movies.results[i].genre_ids.length === 0) {
+     return
+    }
   const movieResult = movies.results[i].genre_ids;
     for (let j = 0; j < genresList.length; j += 1) {
       for (let g = 0; g < movieResult.length; g += 1) {

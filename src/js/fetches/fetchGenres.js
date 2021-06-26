@@ -1,7 +1,7 @@
-import { onError } from './main';
+import { onError } from '../renderPopularSection';
 
 
-import { API_KEY } from './API_KEY';
+import { API_KEY } from '../objects/API_KEY';
 
 
 function fetchMovieGenres () {

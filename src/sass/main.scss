@@ -1,15 +1,21 @@
+// import utils
 @import './utils/variables';
 @import './utils/breakpoints.scss';
+
+// import base
 @import './base/fonts';
 @import './base/common';
+
+//import components
 @import './components/header-home';
 @import './components/header-library';
 @import './components/films-gallery';
 @import './components/pagination';
-@import './components/modalTeam.scss';
+@import './components/modalTeam';
 @import './components/film-modal';
 @import './components/footer';
 @import './components/loader';
+@import './components/btnLibraryClear';
 @import './components/btnBackToTop';
 @import './components/annoying';
 @import './components/needFilm';

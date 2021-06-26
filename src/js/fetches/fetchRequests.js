@@ -1,5 +1,5 @@
-import { onError } from './main';
-import { API_KEY } from './API_KEY';
+import { onError } from '../renderPopularSection';
+import { API_KEY } from '../objects/API_KEY';
 
 function fetchTrending(key, page) {
   return fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${page}`)
