@@ -21,8 +21,21 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
+let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
+let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
+
+function declOfMovie(number, words) {  
+    return words[(number < 2) ? 0 : 1];
+}
+
 function onLibraryClick(e) {
-  galerryContRef.innerHTML = ' ';
+  if (itemsInQueue && itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length, ['movie', 'movies'])} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, ['movie', 'movies'])} in Queue List</h2>`;
+  } else if (itemsInQueue) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, ['movie', 'movies'])} in Queue List<h2 class="modal-title">`;
+  } else if (itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length, ['movie', 'movies'])} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
+  }
   paginationList.classList.add('is-hidden');
   e.target.classList.add('logo-current');
   containerInHeader.classList.add('cont-header-library');
