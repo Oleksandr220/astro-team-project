@@ -19,4 +19,7 @@ import './js/renderQueue.js';
 
 import './js/needFilm.js';
 
-import './js/btnClearLibrary'
+import './js/btnClearLibrary';
+
+import './js/auth.js';
+import './js/registration.js';
