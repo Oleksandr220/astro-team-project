@@ -1,8 +1,9 @@
 import cardTpl from '../templates/popular-film-section.hbs';
-import * as res from './fetchRequests.js';
-import * as apiFetchGenres from './fetchGenres';
-import { API_KEY } from './API_KEY';
-import {onLoader, stopLoader} from './loader'
+import * as res from './fetches/fetchRequests.js';
+import * as apiFetchGenres from './fetches/fetchGenres';
+import { API_KEY } from './objects/API_KEY';
+import { onLoader, stopLoader } from './main/loader';
+
 const gallery = document.querySelector('.js-gallery');
 
 let numberOfPage = 1;

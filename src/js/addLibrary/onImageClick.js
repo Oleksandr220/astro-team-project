@@ -1,6 +1,6 @@
-import * as apiFetchRequest from './fetchRequests.js';
-import imageCardsTpl from '../templates/filmCardDetail.hbs';
-import image from '../images/astro-team.png';
+import * as apiFetchRequest from '../fetches/fetchRequests';
+import imageCardsTpl from '../../templates/filmCardDetail.hbs';
+import image from '../../images/astro-team.png';
 
 let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
 let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
@@ -46,9 +46,6 @@ function renderFilmCard(movie) {
       buttonWatched.textContent = "DELETE FROM WATCHED"
       : buttonQueue.textContent = "DELETE FROM QUEUE"
   }
-  // } else if (itemsInQueue && itemsInQueue.includes(elementIdQueue)) {
-  //   buttonQueue.textContent = "DELETE FROM QUEUE"
-  // }
   popUp.classList.remove('visually-hiden');
   body.classList.add('modal-open');
   window.addEventListener('keydown', onEscPress);
@@ -68,6 +65,4 @@ function onCloseModal(e) {
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
   e.stopPropagation()
-  // closeBtn.removeEventListener('click', onCloseModal);
-  // window.removeEventListener('keydown', onCloseModal);
 }

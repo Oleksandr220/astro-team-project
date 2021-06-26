@@ -1,8 +1,8 @@
-import * as apiFetchRequest from './fetchRequests';
+import * as apiFetchRequest from './fetches/fetchRequests';
 import renderPage from './pagination';
 import debounce from 'lodash.debounce';
-import { API_KEY } from './API_KEY';
-import { onLoader, stopLoader } from './loader';
+import { API_KEY } from './objects/API_KEY';
+import { onLoader, stopLoader } from './main/loader';
 
 const input = document.querySelector('.search-input');
 input.addEventListener('input', debounce(onInputMovieDetails, 400));

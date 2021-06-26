@@ -1,5 +1,5 @@
-import teamAPI from './teamAPI.json';
-import createTeamAnimationTPL from '../templates/createTeamAnimation.hbs';
+import teamAPI from '../objects/teamAPI.json';
+import createTeamAnimationTPL from '../../templates/createTeamAnimation.hbs';
 
 const openModalButton = document.querySelector('[data-team]');
 const modalBackdrop = document.querySelector('[data-modal]');

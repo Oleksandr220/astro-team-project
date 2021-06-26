@@ -1,5 +1,5 @@
-import { fetchMovieDetails } from './fetchRequests';
-import { onLoader, stopLoader } from './loader';
+import { fetchMovieDetails } from './fetches/fetchRequests';
+import { onLoader, stopLoader } from './main/loader';
 import libraryCardTpl from '../templates/library-card.hbs';
 
 const paginationPageList = document.querySelector('[data-library-pagination]');
