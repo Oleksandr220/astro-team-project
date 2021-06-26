@@ -1,10 +1,13 @@
 import { API_KEY } from '../objects/API_KEY';
 
 function fetchTrending(key, page) {
-  return fetch(`https://api.themoviedb.org/3/person/popular?api_key=${key}&page=${page}`)
+  return fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&page=${page}`)
     .then(response => {
       return response.json();
     })
+      //этот then для показа результата
+      .then(mov => console.log(mov))
+      //
     .catch('onError');
 }
 fetchTrending(API_KEY,1)
