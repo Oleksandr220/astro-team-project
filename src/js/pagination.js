@@ -1,5 +1,5 @@
 import cardTpl from '../templates/popular-film-section.hbs';
-import * as res from './fetches/fetchRequests.js';
+import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
