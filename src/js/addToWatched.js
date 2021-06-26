@@ -21,8 +21,13 @@ function onWatchedClick(e) {
   if (indexOfEl >= 0 && buttonWatched.textContent === "DELETE FROM WATCHED") {
       buttonWatched.textContent = "ADD TO WATCHED";
       itemsInWatched.splice(indexOfEl, 1);
+
+      if (itemsInWatched.length === 0) {
+        localStorage.removeItem('watched');
+        return
+    }
+    
       localStorage.setItem('watched', JSON.stringify(itemsInWatched));
-      console.log('delete', itemsInWatched);
       return;
     }
  
@@ -30,6 +35,7 @@ function onWatchedClick(e) {
   const uniqueItems = unique(itemsInWatched);
   localStorage.setItem('watched', JSON.stringify(uniqueItems));
   buttonWatched.textContent = "DELETE FROM WATCHED";
+  
   return;
 }
 
