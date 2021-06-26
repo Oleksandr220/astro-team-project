@@ -1,24 +1,24 @@
 // import CSS
 import './sass/main.scss';
 
-// import js 
+// import main js 
 import './js/header';
+import './js/loader';
+import './js/needFilm';
+import './js/modalTeam';
+import './js/annoying';
+
+//import render section
 import './js/renderPopularSection';
-
-import './js/modalTeam.js';
-
-import './js/loader.js';
-
-import './js/onImageClick.js';
-
-import './js/btnBackToTop.js';
-import './js/annoying.js';
-
-import './js/addToQueue.js';
-import './js/addToWatched.js';
-import './js/renderWatched.js';
-import './js/renderQueue.js';
-
-import './js/needFilm.js';
-
+import './js/renderWatched';
+import './js/renderQueue';
+import './js/btnBackToTop';
 import './js/btnClearLibrary'
+
+//import add library
+import './js/addToQueue';
+import './js/addToWatched';
+import './js/onImageClick';
+
+
+
