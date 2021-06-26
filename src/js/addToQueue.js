@@ -19,11 +19,19 @@ function onQueueClick(e) {
     if (e.target !== buttonQueue) {
         return;
     }
+      const indexOfEl = itemsInQueue.indexOf(elementId);
+  if (indexOfEl >= 0 && buttonQueue.textContent === "DELETE FROM QUEUE") {
+      buttonQueue.textContent = "ADD TO QUEUE";
+      itemsInQueue.splice(indexOfEl, 1);
+      localStorage.setItem('queue', JSON.stringify(itemsInQueue));
+      return;
+    }
+
 
     itemsInQueue.push(elementId)
     const uniqueItems = unique(itemsInQueue);
     localStorage.setItem('queue', JSON.stringify(uniqueItems));
-
+    buttonQueue.textContent = "DELETE FROM QUEUE";
 };
 
 function unique(idItems) {
