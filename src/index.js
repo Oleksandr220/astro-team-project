@@ -1,8 +1,10 @@
+// import CSS
 import './sass/main.scss';
 
+// import js 
 import './js/header';
-import './js/main';
-// import './js/pagination.js';
+import './js/renderPopularSection';
+
 import './js/modalTeam.js';
 
 import './js/loader.js';

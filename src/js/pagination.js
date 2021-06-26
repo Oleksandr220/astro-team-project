@@ -1,4 +1,4 @@
-import cardTpl from '../templates/film-card.hbs';
+import cardTpl from '../templates/popular-film-section.hbs';
 import * as res from './fetchRequests.js';
 import * as apiFetchGenres from './fetchGenres';
 import { API_KEY } from './API_KEY';

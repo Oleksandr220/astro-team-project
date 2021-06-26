@@ -1,5 +1,3 @@
-import { error } from '@pnotify/core';
-import '@pnotify/core/dist/BrightTheme.css';
 import * as apiFetchRequest from './fetchRequests';
 import renderPage from './pagination';
 import debounce from 'lodash.debounce';

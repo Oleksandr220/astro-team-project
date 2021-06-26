@@ -1,4 +1,4 @@
-import { onError } from './main';
+import { onError } from './renderPopularSection';
 
 
 import { API_KEY } from './API_KEY';
