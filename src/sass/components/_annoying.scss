@@ -4,7 +4,7 @@ input {
 
 .modal {
   display: none;
-  background: #ff6b08;
+  background: var(--accent-text-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -39,12 +39,12 @@ input {
   box-sizing: content-box;
 }
 #close_modal:hover {
-  color: #fff;
+  color: var(--primary-text-color);
   transform: rotate(135deg);
 }
 .modal_txt {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
-  background: #fff;
+  background: var(--primary-background-color);
   padding: 30px;
   margin: 50px auto;
   max-width: 800px;
@@ -76,9 +76,9 @@ input {
 .modal-button {
   padding: 5px 5px 3px;
   // height: 40px;
-  background: #ff6b01;
+  background: var(--accent-color);
   border-radius: 5px;
-  color: #fff;
+  color: var(--primary-text-color);
   font-size: 20px;
 }
 
