@@ -19,6 +19,3 @@ import './js/btnClearLibrary'
 import './js/addToQueue';
 import './js/addToWatched';
 import './js/onImageClick';
-
-
-
