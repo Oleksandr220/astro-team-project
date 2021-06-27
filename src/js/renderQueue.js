@@ -13,21 +13,17 @@ export function renderQueueList() {
   const filmsCount = savedItems.length;
   if (filmsCount > 0) {
     let query = '';
-    const paginationRef = document.getElementById('pagination');
     if (document.documentElement.clientWidth >= 769) {
       if (document.documentElement.clientWidth >= 769) {
-        paginationRef.innerHTML = '';
         createPage(filmsCount, moviesOnPage, query, savedItems);
       } else if (
         document.documentElement.clientWidth < 769 &&
         document.documentElement.clientWidth > 468
       ) {
         moviesOnPage = 2;
-        paginationRef.innerHTML = '';
         createPage(filmsCount, moviesOnPage, query, savedItems);
       } else if (document.documentElement.clientWidth < 469) {
         moviesOnPage = 1;
-        paginationRef.innerHTML = '';
         createPage(filmsCount, moviesOnPage, query, savedItems);
       }
     }
