@@ -1,6 +1,7 @@
 import { fetchMovieDetails } from './fetches/fetchRequests';
 // import { onLoader, stopLoader } from './main/loader';
 import libraryCardTpl from '../templates/library-card.hbs';
+import createPage from './paginationWithDots';
 
 export function renderQueueList() {
   const paginationPageList = document.querySelector('[data-library-pagination]');
@@ -8,48 +9,39 @@ export function renderQueueList() {
   const queryToGet = 'queue';
   const savedItems = JSON.parse(localStorage.getItem(queryToGet)) || [];
 
-  let cardOnPage = 18;
-  let countOfButtons = 0;
+  let moviesOnPage = 18;
 
   listOfMovie.innerHTML = '';
+  document.getElementById('pagination').innerHTML = '';
   paginationPageList.innerHTML = '';
   // onLoader();
   const filmsCount = savedItems.length;
   if (filmsCount > 0) {
+    let query = '';
+    const paginationRef = document.getElementById('pagination');
     if (document.documentElement.clientWidth >= 769) {
-      cardOnPage = 18;
-      countOfButtons = createCountOfButtons(filmsCount, cardOnPage);
-      createButtonsArray(paginationPageList, countOfButtons);
-    } else if (
-      document.documentElement.clientWidth < 769 &&
-      document.documentElement.clientWidth > 468
-    ) {
-      cardOnPage = 2;
-      countOfButtons = createCountOfButtons(filmsCount, cardOnPage);
-      createButtonsArray(paginationPageList, countOfButtons);
-    } else if (document.documentElement.clientWidth < 469) {
-      cardOnPage = 1;
-      countOfButtons = createCountOfButtons(filmsCount, cardOnPage);
-      createButtonsArray(paginationPageList, countOfButtons);
+      if (document.documentElement.clientWidth >= 769) {
+        paginationRef.innerHTML = '';
+        createPage(filmsCount, moviesOnPage, query, savedItems);
+      } else if (
+        document.documentElement.clientWidth < 769 &&
+        document.documentElement.clientWidth > 468
+      ) {
+        moviesOnPage = 2;
+        paginationRef.innerHTML = '';
+        createPage(filmsCount, moviesOnPage, query, savedItems);
+      } else if (document.documentElement.clientWidth < 469) {
+        moviesOnPage = 1;
+        paginationRef.innerHTML = '';
+        createPage(filmsCount, moviesOnPage, query, savedItems);
+      }
     }
-  }
 
-  for (let id of savedItems) {
-    fetchMovieDetails(id).then(movie => {
-      listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
-    });
-  }
-  // stopLoader();
-}
-
-function createCountOfButtons(filmsCount, cardOnPage) {
-  return Math.ceil(filmsCount / cardOnPage);
-}
-
-function createButtonsArray(paginationRef, countOfButtons) {
-  for (let i = 1; i <= countOfButtons; i += 1) {
-    let paginationButton = document.createElement('li');
-    paginationButton.innerHTML = i;
-    paginationRef.appendChild(paginationButton);
+    for (let id of savedItems) {
+      fetchMovieDetails(id).then(movie => {
+        listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
+      });
+    }
+    // stopLoader();
   }
 }

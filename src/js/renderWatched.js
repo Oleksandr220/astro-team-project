@@ -1,6 +1,7 @@
 import { fetchMovieDetails } from './fetches/fetchRequests';
 // import { onLoader, stopLoader } from './main/loader';
 import libraryCardTpl from '../templates/library-card.hbs';
+import createPage from './paginationWithDots';
 
 export function renderWatchedList() {
   const paginationPageList = document.querySelector('[data-library-pagination]');
@@ -12,25 +13,27 @@ export function renderWatchedList() {
   let countOfButtons = 0;
 
   listOfMovie.innerHTML = '';
+  document.getElementById('pagination').innerHTML = '';
   paginationPageList.innerHTML = '';
   // onLoader();
   const filmsCount = savedItems.length;
   if (filmsCount > 0) {
+    let query = '';
+    const paginationRef = document.getElementById('pagination');
     if (document.documentElement.clientWidth >= 769) {
-      cardOnPage = 18;
-      countOfButtons = createCountOfButtons(filmsCount, cardOnPage);
-      createButtonsArray(paginationPageList, countOfButtons);
+      paginationRef.innerHTML = '';
+      createPage(filmsCount, moviesOnPage, query, savedItems);
     } else if (
       document.documentElement.clientWidth < 769 &&
       document.documentElement.clientWidth > 468
     ) {
-      cardOnPage = 2;
-      countOfButtons = createCountOfButtons(filmsCount, cardOnPage);
-      createButtonsArray(paginationPageList, countOfButtons);
+      moviesOnPage = 2;
+      paginationRef.innerHTML = '';
+      createPage(filmsCount, moviesOnPage, query, savedItems);
     } else if (document.documentElement.clientWidth < 469) {
-      cardOnPage = 1;
-      countOfButtons = createCountOfButtons(filmsCount, cardOnPage);
-      createButtonsArray(paginationPageList, countOfButtons);
+      moviesOnPage = 1;
+      paginationRef.innerHTML = '';
+      createPage(filmsCount, moviesOnPage, query, savedItems);
     }
   }
 
@@ -40,16 +43,4 @@ export function renderWatchedList() {
     });
   }
   // stopLoader();
-}
-
-function createCountOfButtons(filmsCount, cardOnPage) {
-  return Math.ceil(filmsCount / cardOnPage);
-}
-
-function createButtonsArray(paginationRef, countOfButtons) {
-  for (let i = 1; i <= countOfButtons; i += 1) {
-    let paginationButton = document.createElement('li');
-    paginationButton.innerHTML = i;
-    paginationRef.appendChild(paginationButton);
-  }
 }

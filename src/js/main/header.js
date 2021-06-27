@@ -32,7 +32,6 @@ function declOfMovie(number, words) {
 }
 
 function onLibraryClick(e) {
-  galerryContRef.style.marginTop = '60px';
   if (itemsInQueue && itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
       itemsInWatched.length,
@@ -54,7 +53,8 @@ function onLibraryClick(e) {
       ['movie', 'movies'],
     )} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
   }
-  paginationList.classList.add('is-hidden');
+  // paginationList.classList.add('is-hidden');
+  document.getElementById('pagination').innerHTML = '';
   e.target.classList.add('logo-current');
   containerInHeader.classList.add('cont-header-library');
   containerInHeader.style.paddingBottom = '75px';
