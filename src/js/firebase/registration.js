@@ -1,6 +1,8 @@
+import { openModalauth, logOut } from './auth';
+
 const menuBtnReg = document.querySelector('[data-registration-button]');
 const modalReg = document.querySelector('[data-modal-reg]');
-
+const menuBtnRef = document.querySelector('[data-auth-button]');
 const btnRegClose = document.querySelector('[data-reg-close]');
 const regForm = document.querySelector('#reg-form');
 
@@ -34,6 +36,10 @@ function RegFormHandler(event) {
   const password = event.target.querySelector('#password');
 
   SignUpEmailAndPassword(email.value, password.value).then(data => {
+    menuBtnReg.classList.add('is-hidden');
+    menuBtnRef.removeEventListener('click', openModalauth);
+    menuBtnRef.innerHTML = 'log out';
+    menuBtnRef.addEventListener('click', logOut);
     localStorage.setItem('token', data.idToken);
     localStorage.setItem('userId', data.localId);
     localStorage.removeItem('watched');

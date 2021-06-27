@@ -1,4 +1,6 @@
 import { addQueueToLocalStorage, addWatchedToLocalStorage } from './getDataFromDb';
+const menuBtnReg = document.querySelector('[data-registration-button]');
+const menuBtnRef = document.querySelector('[data-auth-button]');
 
 window.addEventListener('load', () => {
   const key = localStorage.getItem('userId');
