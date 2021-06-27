@@ -1,5 +1,6 @@
 import * as apiFetchRequest from './fetches/fetchRequests';
-import renderPage from './pagination';
+// import renderPage from './pagination';
+import createPage from './paginationWithDots';
 import debounce from 'lodash.debounce';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
@@ -15,25 +16,25 @@ input.addEventListener('keypress', event => {
   }
 });
 
-let query = '';
-let numberOfPage = 1;
-let totalMovies;
+const numberOfPage = 1;
 
 function startPageTrending(key, page) {
   onLoader();
   apiFetchRequest.fetchTrending(key, page).then(movie => {
-    totalMovies = movie.total_results;
-    renderPage(totalMovies, numberOfPage);
+    let totalMovies = movie.total_results;
+    let moviesOnPage = movie.results.length;
+    document.getElementById('pagination').innerHTML = '';
+    createPage(totalMovies, moviesOnPage);
 
     stopLoader();
   });
 }
 
 function onInputMovieDetails(e) {
-  query = e.target.value.toLowerCase().trim();
-  numberOfPage = 1;
+  let query = e.target.value.toLowerCase().trim();
+  document.getElementById('pagination').innerHTML = '';
 
-  if (!searchErorr.classList.contains('visually-hiden')){
+  if (!searchErorr.classList.contains('visually-hiden')) {
     searchErorr.classList.add('visually-hiden');
   }
 
@@ -44,12 +45,13 @@ function onInputMovieDetails(e) {
 
   onLoader();
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
-     totalMovies = movie.total_results;
+    let totalMovies = movie.total_results;
+    let moviesOnPage = movie.results.length;
 
-    if (totalMovies===0) {
-       searchErorr.classList.remove('visually-hiden')
+    if (totalMovies === 0) {
+      searchErorr.classList.remove('visually-hiden');
     }
-    renderPage(totalMovies, numberOfPage, query);
+    createPage(totalMovies, moviesOnPage, query);
     stopLoader();
   });
 }
