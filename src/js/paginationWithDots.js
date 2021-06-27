@@ -35,9 +35,11 @@ function createSectionOnSearch(key, page, query) {
 }
 
 function createLibraryGallery(data) {
+  gallery.innerHTML = '';
   for (let id of data) {
     res.fetchMovieDetails(id).then(movie => {
-      document.querySelector('.js-gallery').insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
+      console.log('movie: ', movie);
+      gallery.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
     });
   }
 }
@@ -82,6 +84,7 @@ function createDotsPagination(
         gallery.innerHTML = createGallerySection(API_KEY, numberOfPage);
       }
     }
+    gallery.lastChild.remove();
     return;
   }
 
