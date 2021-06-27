@@ -1,0 +1,46 @@
+const menuBtnReg = document.querySelector('[data-registration-button]');
+const modalReg = document.querySelector('[data-modal-reg]');
+
+const btnRegClose = document.querySelector('[data-reg-close]');
+const regForm = document.querySelector('#reg-form');
+
+menuBtnReg.addEventListener('click', () => {
+  modalReg.classList.add('is-open');
+  modalReg.classList.remove('is-hidden');
+});
+
+btnRegClose.addEventListener('click', () => {
+  modalReg.classList.remove('is-open');
+  modalReg.classList.add('is-hidden');
+});
+
+regForm.addEventListener('submit', RegFormHandler);
+
+function SignUpEmailAndPassword(email, password) {
+  const fireBaseKey = 'AIzaSyAQwNTK0lyyNa5eBMBZzViLjP2SCsqhR8E';
+  return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${fireBaseKey}`, {
+    method: 'POST',
+    body: JSON.stringify({ email, password, returnSecureToken: true }),
+    headers: {
+      'Content-Type': 'applicatiom/json',
+    },
+  }).then(response => response.json());
+}
+
+function RegFormHandler(event) {
+  event.preventDefault();
+
+  const email = event.target.querySelector('#email');
+  const password = event.target.querySelector('#password');
+
+  SignUpEmailAndPassword(email.value, password.value).then(data => {
+    localStorage.setItem('token', data.idToken);
+    localStorage.setItem('userId', data.localId);
+    localStorage.removeItem('watched');
+    localStorage.removeItem('queue');
+    email.value = '';
+    password.value = '';
+    modalReg.classList.remove('is-open');
+    modalReg.classList.add('is-hidden');
+  });
+}

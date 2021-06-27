@@ -1,38 +1,30 @@
-import { onLoader, stopLoader } from './main/loader';
+// import { onLoader, stopLoader } from './main/loader';
 import createPage from './paginationWithDots';
 
-const elBtnQueue = document.querySelector('[data-queue-header');
-const listOfMovie = document.querySelector('.js-gallery');
-const queryToGet = 'queue';
+export function renderQueueList() {
+  const savedItems = JSON.parse(localStorage.getItem('queue')) || [];
 
-elBtnQueue.addEventListener('click', getQueueId);
-const savedItemsQueue = JSON.parse(localStorage.getItem(queryToGet));
+  let moviesOnPage = 18;
 
-let dataMoviesQueue;
-if (savedItemsQueue !== null) {
-  dataMoviesQueue = [...savedItemsQueue];
-}
-
-function getQueueId() {
-  listOfMovie.innerHTML = '';
   document.getElementById('pagination').innerHTML = '';
-  onLoader();
-  if (localStorage.length > 0) {
+  // onLoader();
+  const filmsCount = savedItems.length;
+  if (filmsCount > 0) {
     let query = '';
-    let totalMovies = dataMoviesQueue.length;
     if (document.documentElement.clientWidth >= 769) {
-      let moviesOnPage = 18;
-      createPage(totalMovies, moviesOnPage, query, dataMoviesQueue);
-    } else if (
-      document.documentElement.clientWidth < 769 &&
-      document.documentElement.clientWidth > 468
-    ) {
-      let moviesOnPage = 2;
-      createPage(totalMovies, moviesOnPage, query, dataMoviesQueue);
-    } else if (document.documentElement.clientWidth < 469) {
-      let moviesOnPage = 1;
-      createPage(totalMovies, moviesOnPage, query, dataMoviesQueue);
+      if (document.documentElement.clientWidth >= 769) {
+        createPage(filmsCount, moviesOnPage, query, savedItems);
+      } else if (
+        document.documentElement.clientWidth < 769 &&
+        document.documentElement.clientWidth > 468
+      ) {
+        moviesOnPage = 2;
+        createPage(filmsCount, moviesOnPage, query, savedItems);
+      } else if (document.documentElement.clientWidth < 469) {
+        moviesOnPage = 1;
+        createPage(filmsCount, moviesOnPage, query, savedItems);
+      }
     }
+    // stopLoader();
   }
-  stopLoader();
 }
