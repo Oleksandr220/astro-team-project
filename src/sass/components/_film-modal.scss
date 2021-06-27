@@ -228,6 +228,15 @@
   @media screen and (min-width: $DesktopWidth) {
     width: 136px;
   }
+
+  &.auth {
+    &:focus,
+    &:hover {
+      background-color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      color: var(--primary-text-color);
+    }
+  }
 }
 
 .modal-open {
