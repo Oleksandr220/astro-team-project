@@ -26,8 +26,9 @@
 }
 
 .pagination button.activePage {
-  background-color: #ff6b08;
+  background-color: var(--accent-text-color);
   border-radius: 5px;
+  color: var(--primary-text-color);
 }
 
 .pagination button:hover,
@@ -36,7 +37,7 @@
   -webkit-box-shadow: 3px 3px 8px -2px rgba(77, 77, 77, 0.82);
   -moz-box-shadow: 3px 3px 8px -2px rgba(77, 77, 77, 0.82);
   box-shadow: 3px 3px 8px -2px rgba(77, 77, 77, 0.82);
-  background-color: #ff6b08;
+  background-color: var(--accent-text-color);
   border-radius: 5px;
 }
 
