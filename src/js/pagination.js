@@ -3,8 +3,8 @@ import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
-import image from '../images/deadpool.263c7d2b.png';
-
+// import image from './deadpool.263c7d2b.png';
+import image from '../images/deadpool.png';
 
 const gallery = document.querySelector('.js-gallery');
 

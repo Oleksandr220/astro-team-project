@@ -9,6 +9,7 @@ const listOfMovie = document.querySelector('.js-gallery');
 const body = document.querySelector('body');
 const popUp = document.querySelector('[data-popup="backdrop"]');
 
+
 listOfMovie.addEventListener('click', onDisplayBigImg);
 
 function fetchMovieById(id, type) {
@@ -51,6 +52,9 @@ function renderFilmCard(movie) {
   window.addEventListener('keydown', onEscPress);
   const closeBtn = document.querySelector('[data-popup="close"]');
   closeBtn.addEventListener('click', onCloseModal);
+
+  const overleyEl = document.querySelector('.info-backdrop');
+  overleyEl.addEventListener('click', onCloseModalOverlay);
   return
 }
 
@@ -65,4 +69,10 @@ function onCloseModal(e) {
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
   e.stopPropagation()
+}
+
+function onCloseModalOverlay(event) {
+    if (event.target === event.currentTarget) {
+        onCloseModal(event)
+      }
 }
