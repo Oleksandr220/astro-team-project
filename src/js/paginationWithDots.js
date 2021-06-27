@@ -38,7 +38,6 @@ function createLibraryGallery(data) {
   gallery.innerHTML = '';
   for (let id of data) {
     res.fetchMovieDetails(id).then(movie => {
-      console.log('movie: ', movie);
       gallery.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
     });
   }
@@ -72,9 +71,9 @@ function createDotsPagination(
   let totalMovies = quantityOfTotalMovies;
   let moviesOnPage = quantityOfMoviesOnPage;
 
-  let numberOfPages = Math.floor(totalMovies / moviesOnPage);
+  let numberOfPages = Math.ceil(totalMovies / moviesOnPage);
 
-  if (numberOfPages === 0) {
+  if (numberOfPages === 1) {
     if (movies) {
       gallery.innerHTML = createLibraryGallery(movies);
     } else {
@@ -84,11 +83,10 @@ function createDotsPagination(
         gallery.innerHTML = createGallerySection(API_KEY, numberOfPage);
       }
     }
-    gallery.lastChild.remove();
     return;
   }
 
-  if (numberOfPages > 0) {
+  if (numberOfPages > 1) {
     // Initialize Previous Button
     const paginationDOM = document.getElementById('pagination');
     const previous = document.createElement('button');
@@ -157,6 +155,10 @@ function createDotsPagination(
         page.style.display = 'none';
       }
     });
+  } else {
+    pages.forEach(function (page) {
+      page.style.display = 'inline-block';
+    });
   }
 
   function pagination(e) {
@@ -195,28 +197,30 @@ function createDotsPagination(
           document.getElementById(`${l - 1}`).style.display = 'inline-block';
         }
       }
-
       for (let m = Number(activePage) + 2; m < numberOfPages; m += 1) {
         if (m + 1 <= numberOfPages - 1) {
           document.getElementById(`${m}`).style.display = 'none';
         }
       }
     }
-
     if (Number(activePage) === 1) {
       document.getElementById('previous').disabled = true;
       document.getElementById('previous').classList.add('inactiveLink');
       document.getElementById('next').disabled = false;
       document.getElementById('next').classList.remove('inactiveLink');
       document.getElementById(`${Number(activePage)}`).style.display = 'inline-block';
-      document.getElementById(`${Number(activePage) + 1}`).style.display = 'inline-block';
+      if (numberOfPages > 2) {
+        document.getElementById(`${Number(activePage) + 1}`).style.display = 'inline-block';
+      }
     } else if (Number(activePage) === numberOfPages) {
       document.getElementById('next').disabled = true;
       document.getElementById('next').classList.add('inactiveLink');
       document.getElementById('previous').disabled = false;
       document.getElementById('previous').classList.remove('inactiveLink');
       document.getElementById(`${numberOfPages - 2}`).style.display = 'inline-block';
-      document.getElementById(`${numberOfPages - 3}`).style.display = 'inline-block';
+      if (numberOfPages > 2) {
+        document.getElementById(`${numberOfPages - 3}`).style.display = 'inline-block';
+      }
     } else {
       document.getElementById('previous').classList.remove('inactiveLink');
       document.getElementById('next').classList.remove('inactiveLink');
@@ -227,7 +231,6 @@ function createDotsPagination(
     if (document.getElementById('1').style.display === 'inline-block') {
       document.getElementById('previousDots').style.display = 'none';
     }
-
     if (document.getElementById(`${numberOfPages - 2}`).style.display === 'inline-block') {
       document.getElementById('nextDots').style.display = 'none';
     } else {
@@ -235,11 +238,17 @@ function createDotsPagination(
     }
 
     let numberOfPage = Number(activePage);
-
-    if (query) {
-      gallery.innerHTML = createSectionOnSearch(API_KEY, numberOfPage, query);
+    if (movies) {
+      let start = (numberOfPage - 1) * moviesOnPage;
+      let end = start + moviesOnPage;
+      let renderMovies = movies.slice(start, end);
+      createLibraryGallery(renderMovies);
     } else {
-      gallery.innerHTML = createGallerySection(API_KEY, numberOfPage);
+      if (query) {
+        createSectionOnSearch(API_KEY, numberOfPage, query);
+      } else {
+        createGallerySection(API_KEY, numberOfPage);
+      }
     }
   }
 
