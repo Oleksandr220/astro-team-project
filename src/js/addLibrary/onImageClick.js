@@ -72,7 +72,7 @@ function onCloseModal(e) {
 }
 
 function onCloseModalOverlay(event) {
-    if (event.target === event.currentTarget) {
-        onCloseModal(event)
-      }
+  if (event.target === event.currentTarget) {
+    onCloseModal(event)
+  }
 }
