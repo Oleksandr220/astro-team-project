@@ -40,7 +40,7 @@ function addedGenres (movies, genresList) {
     return;
   }
   for (let i = 0; i < 20; i += 1) {
-    if (movies.results[i].genre_ids.length === 0) {
+    if (!movies.results[i] || movies.results[i].genre_ids.length === 0) {
      return
     }
   const movieResult = movies.results[i].genre_ids;
