@@ -3,7 +3,7 @@ import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
-import image from '../images/astro-team.png';
+import image from '../images/deadpool.png';
 
 
 const gallery = document.querySelector('.js-gallery');
@@ -26,7 +26,7 @@ function createSectionSearch(key, page, query) {
   res.fetchSearchMovie(key, page, query).then(movies => {
     if (!movies.results.length) {
       console.log('alarm')
-      gallery.innerHTML = `<img src=${image}/>`;
+      gallery.innerHTML = `<img width="100%" src=${image}/>`;
       return
     }
     addedGenres(movies, genresList);
