@@ -55,7 +55,9 @@ function addedGenres(movies, genresList) {
 function createDotsPagination(quantityOfTotalMovies, quantityOfMoviesOnPage, query = '') {
   console.log('query: ', query);
   let totalMovies = quantityOfTotalMovies;
+  console.log('totalMovies: ', totalMovies);
   let moviesOnPage = quantityOfMoviesOnPage;
+  console.log('moviesOnPage: ', moviesOnPage);
 
   let numberOfPages = Math.floor(totalMovies / moviesOnPage);
 
@@ -207,6 +209,7 @@ function createDotsPagination(quantityOfTotalMovies, quantityOfMoviesOnPage, que
     }
 
     let numberOfPage = Number(activePage);
+
     if (query) {
       gallery.innerHTML = createSectionOnSearch(API_KEY, numberOfPage, query);
     } else {
