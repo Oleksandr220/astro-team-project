@@ -2,13 +2,11 @@
 import createPage from './paginationWithDots';
 
 export function renderWatchedList() {
-  const paginationPageList = document.querySelector('[data-library-pagination]');
   const savedItems = JSON.parse(localStorage.getItem('watched')) || [];
 
   let moviesOnPage = 18;
 
   document.getElementById('pagination').innerHTML = '';
-  paginationPageList.innerHTML = '';
   // onLoader();
   const filmsCount = savedItems.length;
   if (filmsCount > 0) {
