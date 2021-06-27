@@ -1,3 +1,5 @@
+import { addQueueToLocalStorage, addWatchedToLocalStorage } from './getDataFromDb';
+
 const menuBtnRef = document.querySelector('[data-auth-button]');
 
 const modalAuth = document.querySelector('[data-modal-auth]');
@@ -27,16 +29,29 @@ function authWithEmailAndPassword(email, password) {
         'Content-Type': 'applicatiom/json',
       },
     },
-  ).then(response => response.json().then(data => console.log(data)));
+  ).then(response => response.json());
 }
 
 function authFormHandler(event) {
   event.preventDefault();
 
-  const email = event.target.querySelector('#email').value;
-  const password = event.target.querySelector('#password').value;
+  const email = event.target.querySelector('#email');
+  const password = event.target.querySelector('#password');
 
-  authWithEmailAndPassword(email, password);
+  authWithEmailAndPassword(email.value, password.value).then(data => {
+    localStorage.setItem('token', data.idToken);
+    localStorage.setItem('userId', data.localId);
+    addWatchedToLocalStorage(data.localId).then(resp => {
+      localStorage.setItem('watched', JSON.stringify(resp ? resp : []));
+    });
+    addQueueToLocalStorage(data.localId).then(resp => {
+      localStorage.setItem('queue', JSON.stringify(resp ? resp : []));
+    });
+    email.value = '';
+    password.value = '';
+    modalAuth.classList.remove('is-open');
+    modalAuth.classList.add('is-hidden');
+  });
 }
 
 // authWithEmailAndPassword(email, password);

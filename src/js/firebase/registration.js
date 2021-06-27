@@ -1,11 +1,8 @@
 const menuBtnReg = document.querySelector('[data-registration-button]');
 const modalReg = document.querySelector('[data-modal-reg]');
-console.log(modalReg);
 
 const btnRegClose = document.querySelector('[data-reg-close]');
 const regForm = document.querySelector('#reg-form');
-
-console.log(regForm);
 
 menuBtnReg.addEventListener('click', () => {
   modalReg.classList.add('is-open');
@@ -27,14 +24,23 @@ function SignUpEmailAndPassword(email, password) {
     headers: {
       'Content-Type': 'applicatiom/json',
     },
-  }).then(response => response.json().then(data => console.log(data)));
+  }).then(response => response.json());
 }
 
 function RegFormHandler(event) {
   event.preventDefault();
 
-  const email = event.target.querySelector('#email').value;
-  const password = event.target.querySelector('#password').value;
+  const email = event.target.querySelector('#email');
+  const password = event.target.querySelector('#password');
 
-  SignUpEmailAndPassword(email, password);
+  SignUpEmailAndPassword(email.value, password.value).then(data => {
+    localStorage.setItem('token', data.idToken);
+    localStorage.setItem('userId', data.localId);
+    localStorage.removeItem('watched');
+    localStorage.removeItem('queue');
+    email.value = '';
+    password.value = '';
+    modalReg.classList.remove('is-open');
+    modalReg.classList.add('is-hidden');
+  });
 }

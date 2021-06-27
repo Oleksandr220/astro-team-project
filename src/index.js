@@ -2,13 +2,14 @@
 import './sass/main.scss';
 
 // import main js
+import './js/firebase/main';
 import './js/main/header';
 import './js/main/loader';
 import './js/main/needFilm';
 import './js/main/modalTeam';
 import './js/main/annoying';
-import './js/registration';
-import './js/auth.js';
+import './js/firebase/registration';
+import './js/firebase/auth.js';
 
 //import render section
 import './js/renderPopularSection';

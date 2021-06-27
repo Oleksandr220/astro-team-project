@@ -16,14 +16,14 @@ let buttons = [];
 let dataMovies = [];
 
 if (savedItems !== null) {
-  dataMovies = [...savedItems]
+  dataMovies = [...savedItems];
 }
 
 function getWatchedId() {
   listOfMovie.innerHTML = '';
   paginationPageList.innerHTML = '';
   onLoader();
-  if ((localStorage.length > 0)) {
+  if (localStorage.length > 0) {
     if (document.documentElement.clientWidth >= 769) {
       cardOnPage = 18;
       countOfButtons = createCountOfButtons(cardOnPage);
@@ -98,4 +98,3 @@ let showPage = (function () {
     createListMarkup(renderDataMovies);
   };
 })();
-
