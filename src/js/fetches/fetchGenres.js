@@ -1,6 +1,3 @@
-import { onError } from '../renderPopularSection';
-
-
 import { API_KEY } from '../objects/API_KEY';
 
 
@@ -9,7 +6,7 @@ function fetchMovieGenres () {
     .then(response =>  {
         return response.json()
     })
-    .catch(onError);
+    .catch('onError');
 }
 
 function fetchTvGenres () {
@@ -17,7 +14,7 @@ function fetchTvGenres () {
      .then(response =>  {
          return response.json()
      })
-     .catch(onError);
+     .catch('onError');
  }
 
 export { fetchMovieGenres, fetchTvGenres };

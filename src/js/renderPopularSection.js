@@ -33,15 +33,15 @@ function onInputMovieDetails(e) {
   query = e.target.value.toLowerCase().trim();
   numberOfPage = 1;
 
-     if (!searchErorr.classList.contains('visually-hiden')){
-       searchErorr.classList.add('visually-hiden');
-    }
-
+  if (!searchErorr.classList.contains('visually-hiden')){
+    searchErorr.classList.add('visually-hiden');
+  }
 
   if (!query) {
     startPageTrending(API_KEY, numberOfPage);
     return;
   }
+
   onLoader();
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
      totalMovies = movie.total_results;
