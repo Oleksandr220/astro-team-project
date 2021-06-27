@@ -68,7 +68,7 @@ function onCloseModal(e) {
   popUp.classList.add('visually-hiden');
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
-  e.stopPropagation()
+  e.stopImmediatePropagation()
 }
 
 function onCloseModalOverlay(event) {
