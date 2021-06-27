@@ -60,7 +60,7 @@ function renderFilmCard(movie) {
 
 function onEscPress(e) {
   if (e.code === 'Escape') {
-    onCloseModal();
+    onCloseModal(e);
   }
 }
 
