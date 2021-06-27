@@ -1,18 +1,12 @@
-import { fetchMovieDetails } from './fetches/fetchRequests';
 // import { onLoader, stopLoader } from './main/loader';
-import libraryCardTpl from '../templates/library-card.hbs';
 import createPage from './paginationWithDots';
 
 export function renderWatchedList() {
   const paginationPageList = document.querySelector('[data-library-pagination]');
-  const listOfMovie = document.querySelector('.js-gallery');
-  const queryToGet = 'watched';
-  const savedItems = JSON.parse(localStorage.getItem(queryToGet)) || [];
+  const savedItems = JSON.parse(localStorage.getItem('watched')) || [];
 
-  let cardOnPage = 18;
-  let countOfButtons = 0;
+  let moviesOnPage = 18;
 
-  listOfMovie.innerHTML = '';
   document.getElementById('pagination').innerHTML = '';
   paginationPageList.innerHTML = '';
   // onLoader();
@@ -35,12 +29,6 @@ export function renderWatchedList() {
       paginationRef.innerHTML = '';
       createPage(filmsCount, moviesOnPage, query, savedItems);
     }
-  }
-
-  for (let id of savedItems) {
-    fetchMovieDetails(id).then(movie => {
-      listOfMovie.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
-    });
   }
   // stopLoader();
 }

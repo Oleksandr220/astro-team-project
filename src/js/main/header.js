@@ -24,14 +24,13 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
-let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
-let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
-
 function declOfMovie(number, words) {
   return words[number < 2 ? 0 : 1];
 }
 
 function onLibraryClick(e) {
+  let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
+  let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
   if (itemsInQueue && itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
       itemsInWatched.length,
