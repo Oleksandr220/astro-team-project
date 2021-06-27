@@ -33,7 +33,7 @@ function onInputMovieDetails(e) {
   query = e.target.value.toLowerCase().trim();
   numberOfPage = 1;
 
-  if (!searchErorr.classList.contains('visually-hiden')){
+  if (!searchErorr.classList.contains('visually-hiden')) {
     searchErorr.classList.add('visually-hiden');
   }
 
@@ -44,10 +44,10 @@ function onInputMovieDetails(e) {
 
   onLoader();
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
-     totalMovies = movie.total_results;
+    totalMovies = movie.total_results;
 
-    if (totalMovies===0) {
-       searchErorr.classList.remove('visually-hiden')
+    if (totalMovies === 0) {
+      searchErorr.classList.remove('visually-hiden');
     }
     renderPage(totalMovies, numberOfPage, query);
     stopLoader();

@@ -1,3 +1,6 @@
+import { renderQueueList } from '../renderQueue';
+import { renderWatchedList } from '../renderWatched';
+
 const homePageRef = document.querySelector('.home-js');
 const libraryPageRef = document.querySelector('.library-js');
 const containerInHeader = document.querySelector('.cont-header-js');
@@ -24,18 +27,32 @@ function onHomeClick(e) {
 let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
 let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
 
-function declOfMovie(number, words) {  
-    return words[(number < 2) ? 0 : 1];
+function declOfMovie(number, words) {
+  return words[number < 2 ? 0 : 1];
 }
 
 function onLibraryClick(e) {
   galerryContRef.style.marginTop = '60px';
   if (itemsInQueue && itemsInWatched) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length, ['movie', 'movies'])} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, ['movie', 'movies'])} in Queue List</h2>`;
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
+      itemsInWatched.length,
+      ['movie', 'movies'],
+    )} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, [
+      'movie',
+      'movies',
+    ])} in Queue List</h2>`;
   } else if (itemsInQueue) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, ['movie', 'movies'])} in Queue List<h2 class="modal-title">`;
+    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${
+      itemsInQueue.length
+    } ${declOfMovie(itemsInQueue.length, [
+      'movie',
+      'movies',
+    ])} in Queue List<h2 class="modal-title">`;
   } else if (itemsInWatched) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length, ['movie', 'movies'])} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
+      itemsInWatched.length,
+      ['movie', 'movies'],
+    )} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
   }
   paginationList.classList.add('is-hidden');
   e.target.classList.add('logo-current');
@@ -45,6 +62,11 @@ function onLibraryClick(e) {
   formToSearchRef.classList.add('visually-hiden');
   boxForInputRef.classList.add('visually-hiden');
   homePageRef.classList.remove('logo-current');
+
+  const elBtnWatched = document.querySelector('[data-watched-header');
+  elBtnWatched.addEventListener('click', renderWatchedList);
+  const elBtnQueue = document.querySelector('[data-queue-header');
+  elBtnQueue.addEventListener('click', renderQueueList);
 }
 
 //Queue current
