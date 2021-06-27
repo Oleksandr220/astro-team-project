@@ -1,7 +1,11 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $TabletWidth) {
+    margin-bottom: 60px;
+  }
 }
 
 .pagination button:not(:last-child) {

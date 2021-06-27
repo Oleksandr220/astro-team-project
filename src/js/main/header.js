@@ -29,7 +29,6 @@ function declOfMovie(number, words) {
 }
 
 function onLibraryClick(e) {
-  galerryContRef.style.marginTop = '60px';
   if (itemsInQueue && itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
       itemsInWatched.length,
