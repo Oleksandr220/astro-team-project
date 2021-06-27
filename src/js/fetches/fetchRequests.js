@@ -1,4 +1,3 @@
-import { onError } from '../renderPopularSection';
 import { API_KEY } from '../objects/API_KEY';
 
 function fetchTrending(key, page) {
@@ -6,7 +5,7 @@ function fetchTrending(key, page) {
     .then(response => {
       return response.json();
     })
-    .catch(onError);
+    .catch('onError');
 }
 
 function fetchSearchMovie(API_KEY, numberOfPage, query) {
@@ -16,7 +15,7 @@ function fetchSearchMovie(API_KEY, numberOfPage, query) {
     .then(response => {
       return response.json();
     })
-    .catch(onError);
+    .catch('onError');
 }
 
 function fetchMovieDetails(id) {
@@ -24,7 +23,7 @@ function fetchMovieDetails(id) {
     .then(response => {
       return response.json();
     })
-    .catch(onError);
+    .catch('onError');
 }
 
 export { fetchTrending, fetchSearchMovie, fetchMovieDetails };

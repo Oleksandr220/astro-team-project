@@ -7,7 +7,7 @@
   height: 50px;
   border: 1px solid #000;
   border-radius: 20px;
-  background: radial-gradient(#fff, #cacaca);
+  background: radial-gradient(#fff, var(--err-text-color));
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.3s ease;

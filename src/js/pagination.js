@@ -1,8 +1,10 @@
 import cardTpl from '../templates/popular-film-section.hbs';
-import * as res from './fetches/fetchRequests.js';
+import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
+// import image from './deadpool.263c7d2b.png';
+import image from '../images/deadpool.png';
 
 const gallery = document.querySelector('.js-gallery');
 
@@ -22,6 +24,11 @@ function createSectionTrending(key, page) {
 
 function createSectionSearch(key, page, query) {
   res.fetchSearchMovie(key, page, query).then(movies => {
+    if (!movies.results.length) {
+      console.log('alarm')
+      gallery.innerHTML = `<img width="100%" src=${image}/>`;
+      return
+    }
     addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
     stopLoader()
@@ -33,7 +40,7 @@ function addedGenres (movies, genresList) {
     return;
   }
   for (let i = 0; i < 20; i += 1) {
-    if (movies.results[i].genre_ids.length === 0) {
+    if (!movies.results[i] || movies.results[i].genre_ids.length === 0) {
      return
     }
   const movieResult = movies.results[i].genre_ids;

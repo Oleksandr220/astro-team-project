@@ -61,12 +61,14 @@ function renderFilmCard(movie) {
   const closeBtn = document.querySelector('[data-popup="close"]');
   closeBtn.addEventListener('click', onCloseModal);
 
+  const overleyEl = document.querySelector('.info-backdrop');
+  overleyEl.addEventListener('click', onCloseModalOverlay);
   return;
 }
 
 function onEscPress(e) {
   if (e.code === 'Escape') {
-    onCloseModal();
+    onCloseModal(e);
   }
 }
 
@@ -74,4 +76,11 @@ function onCloseModal(e) {
   popUp.classList.add('visually-hiden');
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
+  e.stopImmediatePropagation();
+}
+
+function onCloseModalOverlay(event) {
+  if (event.target === event.currentTarget) {
+    onCloseModal(event);
+  }
 }
