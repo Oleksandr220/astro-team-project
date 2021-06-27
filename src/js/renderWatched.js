@@ -1,5 +1,5 @@
 import { onLoader, stopLoader } from './main/loader';
-import createPaginationForLibrary from './paginationWithoutDots';
+import createPage from './paginationWithDots';
 
 const paginationPageList = document.querySelector('[data-library-pagination]');
 const elBtnWatched = document.querySelector('[data-watched-header');
@@ -20,19 +20,23 @@ function getWatchedId() {
   paginationPageList.innerHTML = '';
   onLoader();
   if (localStorage.length > 0) {
-    let cardOnPage;
+    let query = '';
+    let totalMovies = dataMoviesWatched.length;
     if (document.documentElement.clientWidth >= 769) {
-      cardOnPage = 18;
-      createPaginationForLibrary(cardOnPage, dataMoviesWatched);
+      let moviesOnPage = 18;
+      document.getElementById('pagination').innerHTML = '';
+      createPage(totalMovies, moviesOnPage, query, dataMoviesWatched);
     } else if (
       document.documentElement.clientWidth < 769 &&
       document.documentElement.clientWidth > 468
     ) {
-      cardOnPage = 2;
-      createPaginationForLibrary(cardOnPage, dataMoviesWatched);
+      let moviesOnPage = 2;
+      document.getElementById('pagination').innerHTML = '';
+      createPage(totalMovies, moviesOnPage, query, dataMoviesWatched);
     } else if (document.documentElement.clientWidth < 469) {
-      cardOnPage = 1;
-      createPaginationForLibrary(cardOnPage, dataMoviesWatched);
+      let moviesOnPage = 1;
+      document.getElementById('pagination').innerHTML = '';
+      createPage(totalMovies, moviesOnPage, query, dataMoviesWatched);
     }
   }
   stopLoader();

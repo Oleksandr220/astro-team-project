@@ -51,6 +51,7 @@ function onLibraryClick(e) {
     )} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
   }
   // paginationList.classList.add('is-hidden');
+  document.getElementById('pagination').innerHTML = '';
   e.target.classList.add('logo-current');
   containerInHeader.classList.add('cont-header-library');
   containerInHeader.style.paddingBottom = '75px';

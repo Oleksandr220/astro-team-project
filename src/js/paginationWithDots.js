@@ -1,4 +1,5 @@
 import cardTpl from '../templates/popular-film-section.hbs';
+import libraryCardTpl from '../templates/library-card.hbs';
 import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
@@ -33,6 +34,14 @@ function createSectionOnSearch(key, page, query) {
   });
 }
 
+function createLibraryGallery(data) {
+  for (let id of data) {
+    res.fetchMovieDetails(id).then(movie => {
+      document.querySelector('.js-gallery').insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
+    });
+  }
+}
+
 function addedGenres(movies, genresList) {
   if (movies.results[0] === undefined) {
     return;
@@ -52,14 +61,29 @@ function addedGenres(movies, genresList) {
   }
 }
 
-function createDotsPagination(quantityOfTotalMovies, quantityOfMoviesOnPage, query = '') {
-  console.log('query: ', query);
+function createDotsPagination(
+  quantityOfTotalMovies,
+  quantityOfMoviesOnPage,
+  query = '',
+  movies = '',
+) {
   let totalMovies = quantityOfTotalMovies;
-  console.log('totalMovies: ', totalMovies);
   let moviesOnPage = quantityOfMoviesOnPage;
-  console.log('moviesOnPage: ', moviesOnPage);
 
   let numberOfPages = Math.floor(totalMovies / moviesOnPage);
+
+  if (numberOfPages === 0) {
+    if (movies) {
+      gallery.innerHTML = createLibraryGallery(movies);
+    } else {
+      if (query) {
+        gallery.innerHTML = createSectionOnSearch(API_KEY, numberOfPage, query);
+      } else {
+        gallery.innerHTML = createGallerySection(API_KEY, numberOfPage);
+      }
+    }
+    return;
+  }
 
   if (numberOfPages > 0) {
     // Initialize Previous Button
@@ -117,7 +141,6 @@ function createDotsPagination(quantityOfTotalMovies, quantityOfMoviesOnPage, que
   }
 
   const pages = document.querySelectorAll('.pages');
-  console.log('pages: ', pages);
 
   pages.forEach(function (page) {
     page.addEventListener('click', e => pagination(e.target));
