@@ -29,6 +29,7 @@ function declOfMovie(number, words) {
 }
 
 function onLibraryClick(e) {
+  galerryContRef.style.marginTop = '60px';
   if (itemsInQueue && itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length, ['movie', 'movies'])} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, ['movie', 'movies'])} in Queue List</h2>`;
   } else if (itemsInQueue) {
