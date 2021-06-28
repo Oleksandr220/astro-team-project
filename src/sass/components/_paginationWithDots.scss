@@ -49,3 +49,20 @@
   pointer-events: none;
   cursor: default;
 }
+.next{
+display: block;
+left: 571px;
+top: 2190px;
+background: var(--footer-background-color);
+border-radius: 5px;
+
+}
+.previous{
+
+  left: 571px;
+  top: 2190px;
+  
+  background: var(--footer-background-color);
+  border-radius: 5px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}

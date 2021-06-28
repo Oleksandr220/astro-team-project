@@ -22,6 +22,7 @@ function createGallerySection(key, page) {
 }
 
 function createSectionOnSearch(key, page, query) {
+  
   res.fetchSearchMovie(key, page, query).then(movies => {
     if (!movies.results.length) {
       console.log('alarm');
@@ -91,12 +92,9 @@ function createDotsPagination(
   if (numberOfPages > 0) {
     // Initialize Previous Button
     const paginationDOM = document.getElementById('pagination');
-    const previous = document.createElement('button');
-    const previousText = document.createTextNode('<-');
-    previous.appendChild(previousText);
-    previous.classList.add('previous');
-    previous.setAttribute('id', 'previous');
-    paginationDOM.appendChild(previous);
+    const svgArrow = `<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667L12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+    const arrowLeft = `<button class="previous" id="previous">${svgArrow}</button>`
+    paginationDOM.insertAdjacentHTML('beforeend', arrowLeft);
 
     // Initialize Previous Dots Button
     const previousDots = document.createElement('button');
@@ -135,12 +133,9 @@ function createDotsPagination(
     nextDots.style.display = 'inline-block';
 
     // Initialize Next Button
-    const next = document.createElement('button');
-    const nextText = document.createTextNode('->');
-    next.appendChild(nextText);
-    next.classList.add('next');
-    next.setAttribute('id', 'next');
-    paginationDOM.appendChild(next);
+
+    const arrowRight = `<button class="next" id="next">${svgArrow}</button>`
+    paginationDOM.insertAdjacentHTML('beforeend', arrowRight);
   }
 
   const pages = document.querySelectorAll('.pages');
@@ -244,10 +239,10 @@ function createDotsPagination(
   }
 
   function nextPrevious(e) {
-    if (e.target.getAttribute('id') === 'next') {
+    if (e.currentTarget.getAttribute('id') === 'next') {
       let nextButton = document.getElementById(Number(activePage));
       pagination(nextButton);
-    } else if (e.target.getAttribute('id') === 'previous') {
+    } else if (e.currentTarget.getAttribute('id') === 'previous') {
       let previousButton = document.getElementById(Number(activePage) - 2);
       pagination(previousButton);
     }
