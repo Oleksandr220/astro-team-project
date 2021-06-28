@@ -1,15 +1,26 @@
 import { addQueueToLocalStorage, addWatchedToLocalStorage } from './getDataFromDb';
 
 const menuBtnRef = document.querySelector('[data-auth-button]');
+const menuBtnReg = document.querySelector('[data-registration-button]');
 
 const modalAuth = document.querySelector('[data-modal-auth]');
 const btnAuthClose = document.querySelector('[data-auth-close]');
 const authForm = document.querySelector('#auth-form');
 
-menuBtnRef.addEventListener('click', () => {
+export function openModalauth() {
   modalAuth.classList.add('is-open');
   modalAuth.classList.remove('is-hidden');
-});
+}
+
+const key = localStorage.getItem('userId');
+
+if (key) {
+  menuBtnRef.addEventListener('click', logOut);
+  menuBtnReg.classList.add('is-hidden');
+  menuBtnRef.innerHTML = 'log out';
+} else {
+  menuBtnRef.addEventListener('click', openModalauth);
+}
 
 btnAuthClose.addEventListener('click', () => {
   modalAuth.classList.remove('is-open');
@@ -35,12 +46,18 @@ function authWithEmailAndPassword(email, password) {
 function authFormHandler(event) {
   event.preventDefault();
 
-  const email = event.target.querySelector('#email');
-  const password = event.target.querySelector('#password');
+  const email = event.target.querySelector('#email-auth');
+  const password = event.target.querySelector('#password-auth');
 
   authWithEmailAndPassword(email.value, password.value).then(data => {
     localStorage.setItem('token', data.idToken);
     localStorage.setItem('userId', data.localId);
+    menuBtnReg.classList.add('is-hidden');
+
+    menuBtnRef.removeEventListener('click', openModalauth);
+    menuBtnRef.innerHTML = 'log out';
+    menuBtnRef.addEventListener('click', logOut);
+
     addWatchedToLocalStorage(data.localId).then(resp => {
       localStorage.setItem('watched', JSON.stringify(resp ? resp : []));
     });
@@ -52,6 +69,19 @@ function authFormHandler(event) {
     modalAuth.classList.remove('is-open');
     modalAuth.classList.add('is-hidden');
   });
+}
+
+export function logOut() {
+  localStorage.removeItem('watched');
+  localStorage.removeItem('queue');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('token');
+
+  menuBtnReg.classList.remove('is-hidden');
+
+  menuBtnRef.removeEventListener('click', logOut);
+  menuBtnRef.innerHTML = 'Sign In';
+  menuBtnRef.addEventListener('click', openModalauth);
 }
 
 // authWithEmailAndPassword(email, password);
