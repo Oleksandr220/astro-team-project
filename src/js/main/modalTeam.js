@@ -1,5 +1,6 @@
 import teamAPI from '../objects/teamAPI.json';
-import createTeamAnimationTPL from '../../templates/createTeamAnimation.hbs';
+// import createTeamAnimationTPL from '../../templates/createTeamAnimation.hbs';
+import createPhotoTeamTPL from '../../templates/teamPhoto.hbs';
 
 const openModalButton = document.querySelector('[data-team]');
 const modalBackdrop = document.querySelector('[data-modal]');
@@ -52,7 +53,7 @@ function renderTeamListOnButtonClick(buttons) {
 }
 
 function createListMarkup(teamRenderData) {
-  return createTeamAnimationTPL(teamRenderData);
+  return createPhotoTeamTPL(teamRenderData);
 }
 
 let showPage = (function () {
