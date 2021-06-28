@@ -19,24 +19,26 @@ const paginationPageList = document.querySelector('[data-modal-pagination]');
 const paginationMobileList = document.querySelector('#paginate-teamModal');
 let cardOnPage;
 
-if (document.documentElement.clientWidth >= 769) {
-  cardOnPage = 3;
-} else if (
-  document.documentElement.clientWidth < 769 &&
-  document.documentElement.clientWidth > 468
-) {
-  cardOnPage = 2;
-} else if (document.documentElement.clientWidth < 469) {
-  cardOnPage = 1;
-}
-
 openModalButton.addEventListener('click', openModalTeam);
 
 function openModalTeam() {
+  if (document.documentElement.clientWidth >= 769) {
+    cardOnPage = 3;
+  } else if (
+    document.documentElement.clientWidth < 769 &&
+    document.documentElement.clientWidth > 468
+  ) {
+    cardOnPage = 2;
+  } else if (document.documentElement.clientWidth < 469) {
+    cardOnPage = 1;
+  }
+  console.log('cardOnPage: ', cardOnPage);
   modalBackdrop.classList.remove('is-hidden');
   if (document.documentElement.clientWidth < 469) {
+    console.log('МОБИЛЬНОЕ ОКНО');
     createTeamModalPagination(cardOnPage, teamList, teamData);
   } else {
+    console.log('НЕЕЕЕЕЕЕЕЕЕЕЕ МОБИЛЬНОЕ ОКНО');
     createPaginationForTeamWindow(cardOnPage, teamData);
   }
   changePhoto();

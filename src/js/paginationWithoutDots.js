@@ -4,6 +4,8 @@ import createPhotoTeamTPL from '../templates/teamPhoto.hbs';
 function createPaginationForTeamWindow(cardOnPage, data) {
   const paginationPageList = document.querySelector('[data-modal-pagination]');
   paginationPageList.innerHTML = '';
+  const paginationMobileList = document.querySelector('#paginate-teamModal');
+  paginationMobileList.classList.add('is-hidden');
   let buttons = [];
   let countOfButtons = createCountOfButtons(cardOnPage);
   createButtonsArray(countOfButtons);
