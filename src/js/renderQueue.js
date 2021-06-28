@@ -27,7 +27,7 @@ export function renderQueueList() {
       }
     }
   } else {
-    const watchList = localStorage.getItem('watch');
+    const watchList = localStorage.getItem('watched');
     const length = watchList ? watchList.length : 0;
     document.querySelector(
       '.js-gallery',
