@@ -3,7 +3,7 @@ import createPhotoTeamTPL from '../../templates/teamPhoto.hbs';
 import imageDanilo from '../../images/modalTeam/Danilo.jpg';
 import imageBohdan from '../../images/modalTeam/Bohdan1.jpg';
 import imageSvitlana from '../../images/modalTeam/Svitlana1.jpg';
-import imageAlexandr from '../../images/modalTeam/Alexandr1.jpg';
+import imageAlexandr from '../../images/modalTeam/Alexandr2.jpg';
 import imageAleksey from '../../images/modalTeam/Aleksey1.jpg';
 import imageVladislav from '../../images/modalTeam/Vladislav1.jpg';
 import imageIgor from '../../images/modalTeam/Igor1.jpg';
