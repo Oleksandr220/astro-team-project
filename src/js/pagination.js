@@ -36,7 +36,13 @@ function createSectionSearch(key, page, query) {
 }
 
 function addedGenres (movies, genresList) {
-  for (let i = 0; i < movies.results.length; i += 1) {
+  if (movies.results[0] === undefined) {
+    return;
+  }
+  for (let i = 0; i < 20; i += 1) {
+    if (!movies.results[i] || movies.results[i].genre_ids.length === 0) {
+     return
+    }
   const movieResult = movies.results[i].genre_ids;
     for (let j = 0; j < genresList.length; j += 1) {
       for (let g = 0; g < movieResult.length; g += 1) {

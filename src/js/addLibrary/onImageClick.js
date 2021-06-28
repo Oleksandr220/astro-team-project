@@ -1,14 +1,11 @@
 import * as apiFetchRequest from '../fetches/fetchRequests';
 import imageCardsTpl from '../../templates/filmCardDetail.hbs';
 import image from '../../images/astro-team.png';
-
-let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
-let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
+import { saveToDb, deleteFromDb } from '../firebase/addToDbWatched.js';
 
 const listOfMovie = document.querySelector('.js-gallery');
 const body = document.querySelector('body');
 const popUp = document.querySelector('[data-popup="backdrop"]');
-
 
 listOfMovie.addEventListener('click', onDisplayBigImg);
 
@@ -28,25 +25,36 @@ function onDisplayBigImg(e) {
 }
 
 function renderFilmCard(movie) {
+  const itemsInWatched = JSON.parse(localStorage.getItem('watched'));
+  const itemsInQueue = JSON.parse(localStorage.getItem('queue'));
+
   const markup = imageCardsTpl(movie);
   popUp.innerHTML = markup;
   if (!movie.poster_path) {
     document.querySelector('.modal-image').src = `${image}`;
   }
   const buttonWatched = document.querySelector('[data-watched]');
-  const buttonQueue = document.querySelector('[data-queue]')
+  const buttonQueue = document.querySelector('[data-queue]');
   const elementIdWatched = buttonWatched.dataset.id;
-  const elementIdQueue = buttonWatched.dataset.id;
+  const elementIdQueue = buttonQueue.dataset.id;
 
-  if (itemsInWatched && itemsInWatched.includes(elementIdWatched) || itemsInQueue && itemsInQueue.includes(elementIdQueue)) {
-    if (itemsInWatched && itemsInWatched.includes(elementIdWatched) && itemsInQueue && itemsInQueue.includes(elementIdQueue)) {
-        buttonWatched.textContent = "DELETE FROM WATCHED"
-        buttonQueue.textContent = "DELETE FROM QUEUE"
-    }
-    itemsInWatched && itemsInWatched.includes(elementIdWatched) ?
-      buttonWatched.textContent = "DELETE FROM WATCHED"
-      : buttonQueue.textContent = "DELETE FROM QUEUE"
+  const isWatched = itemsInWatched?.includes(elementIdWatched);
+  const isQueue = itemsInQueue?.includes(elementIdQueue);
+
+  if (isWatched) {
+    buttonWatched.textContent = 'DELETE FROM WATCHED';
+    deleteFromDb(buttonWatched);
+  } else {
+    saveToDb(buttonWatched);
   }
+
+  if (isQueue) {
+    buttonQueue.textContent = 'DELETE FROM QUEUE';
+    deleteFromDb(buttonQueue);
+  } else {
+    saveToDb(buttonQueue);
+  }
+
   popUp.classList.remove('visually-hiden');
   body.classList.add('modal-open');
   window.addEventListener('keydown', onEscPress);
@@ -55,7 +63,7 @@ function renderFilmCard(movie) {
 
   const overleyEl = document.querySelector('.info-backdrop');
   overleyEl.addEventListener('click', onCloseModalOverlay);
-  return
+  return;
 }
 
 function onEscPress(e) {
@@ -68,11 +76,11 @@ function onCloseModal(e) {
   popUp.classList.add('visually-hiden');
   body.classList.remove('modal-open');
   popUp.innerHTML = '';
-  e.stopImmediatePropagation()
+  e.stopImmediatePropagation();
 }
 
 function onCloseModalOverlay(event) {
   if (event.target === event.currentTarget) {
-    onCloseModal(event)
+    onCloseModal(event);
   }
 }
