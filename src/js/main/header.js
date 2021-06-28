@@ -24,16 +24,14 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
-export function declOfMovie(number) {
+function declOfMovie(number) {
   const words = ['movie', 'movies']
   return words[number < 2 ? 0 : 1];
 }
-
-function onLibraryClick(e) {
-  galerryContRef.style.marginTop = '60px';
+export function numberOfMovieInLIbrary() {
   let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
   let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
-  if (!itemsInQueue && !itemsInWatched) {
+    if (!itemsInQueue && !itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / 0 movies in Queue List</h2>`;
   } else if (itemsInQueue && itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List</h2>`;
@@ -42,7 +40,13 @@ function onLibraryClick(e) {
   } else if (itemsInWatched) {
     galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
   }
-  // paginationList.classList.add('is-hidden');
+
+}
+
+function onLibraryClick(e) {
+  galerryContRef.style.marginTop = '60px';
+  numberOfMovieInLIbrary();
+
   document.getElementById('pagination').innerHTML = '';
   e.target.classList.add('logo-current');
   containerInHeader.classList.add('cont-header-library');
