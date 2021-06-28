@@ -63,7 +63,7 @@ function createDotsPagination(
 
   let numberOfPages = Math.ceil(totalMovies / moviesOnPage);
   if (!numberOfPages) {
-    gallery.innerHTML = `<img width="100%" src=${image}/>`;
+    gallery.innerHTML = `<img class="dedpool" width="100%" src=${image}/>`;
     return;
   } else if (numberOfPages === 1) {
     if (movies) {
