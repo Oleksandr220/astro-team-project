@@ -47,7 +47,6 @@ function onInputMovieDetails(e) {
   apiFetchRequest.fetchSearchMovie(API_KEY, numberOfPage, query).then(movie => {
     let totalMovies = movie.total_results;
     let moviesOnPage = movie.results.length;
-
     if (totalMovies === 0) {
       searchErorr.classList.remove('visually-hiden');
     }

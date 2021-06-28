@@ -1,3 +1,5 @@
+import { renderQueueList } from '../renderQueue';
+
 const addToQueueBtnRef = document.querySelector('[data-popup="backdrop"]');
 const key = localStorage.getItem('userId');
 if (!key) {
@@ -13,6 +15,7 @@ if (!key) {
 
   function onQueueClick(e) {
     const buttonQueue = document.querySelector('[data-queue]');
+    const labraryBtn = document.querySelector('.library-js');
 
     if (e.target !== buttonQueue) {
       return;
@@ -25,10 +28,16 @@ if (!key) {
 
       if (itemsInQueue.length === 0) {
         localStorage.removeItem('queue');
+        if (labraryBtn.classList.contains('logo-current')) {
+          renderQueueList();
+        }
         return;
       }
 
       localStorage.setItem('queue', JSON.stringify(itemsInQueue));
+      if (labraryBtn.classList.contains('logo-current')) {
+        renderQueueList();
+      }
       return;
     }
 
@@ -36,6 +45,9 @@ if (!key) {
     const uniqueItems = unique(itemsInQueue);
     localStorage.setItem('queue', JSON.stringify(uniqueItems));
     buttonQueue.textContent = 'DELETE FROM QUEUE';
+    if (labraryBtn.classList.contains('logo-current')) {
+      renderQueueList();
+    }
   }
 
   function unique(idItems) {

@@ -24,8 +24,7 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
-function declOfMovie(number) {
-  const words = ['movie', 'movies']
+export function declOfMovie(number, words) {
   return words[number < 2 ? 0 : 1];
 }
 
