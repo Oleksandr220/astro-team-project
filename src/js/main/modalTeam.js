@@ -1,5 +1,4 @@
 import teamAPI from '../objects/teamAPI.json';
-// import createTeamAnimationTPL from '../../templates/createTeamAnimation.hbs';
 import createPhotoTeamTPL from '../../templates/teamPhoto.hbs';
 import imageDanilo from '../../images/modalTeam/Danilo.jpg';
 import imageBohdan from '../../images/modalTeam/Bohdan1.jpg';
@@ -233,6 +232,7 @@ function createTeamModalPagination() {
   function update() {
     list.update();
     buttons.update();
+    changePhoto();
   }
 
   function init() {

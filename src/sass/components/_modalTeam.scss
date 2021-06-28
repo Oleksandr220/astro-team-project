@@ -45,7 +45,7 @@
     padding-top: 40px;
   }
 
-  @media screen and (min-width: $MobileWidth) and (max-width: 420px) {
+  @media screen and (min-width: $MobileWidth) and (max-width: 425px) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
@@ -59,13 +59,13 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     width: 650px;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   @media screen and (min-width: $DesktopWidth) {
-    width: 1200px;
-    padding: 40px 80px;
+    width: 1000px;
+    padding: 30px 40px;
   }
 
   &-close {
@@ -149,6 +149,17 @@
   }
 }
 
+.telephone {
+  text-align: center;
+  color: #212121;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.telephone-number {
+  color: var(--accent-text-color);
+}
+
 .modal-team-pagination {
   display: flex;
   justify-content: center;
@@ -219,119 +230,9 @@
   border: 1px solid var(--accent-text-color);
 }
 
-/* АНІМАШКА ДЛЯ ФОТОК */
-/*
-.frame {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 180px;
-  height: 275px;
-  border-radius: 15px;
-  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  background: #333;
-  color: var(--primary-text-color);
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.slices {
-  position: absolute;
-  width: 200px;
-  height: 100%;
-  background: center center no-repeat;
-  background-size: 200px 100%;
-  cursor: pointer;
-}
-
-.slices:hover .slice {
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-  opacity: 1;
-}
-.slices .slice {
-  position: relative;
-  z-index: 2;
-  float: left;
-  box-sizing: border-box;
-  width: 25px;
-  height: 100%;
-  background: center center no-repeat;
-  background-size: 200px 100%;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-.slices .slice-1 {
-  background-position: 0px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-2 {
-  background-position: -25px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-3 {
-  background-position: -50px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-4 {
-  background-position: -75px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-5 {
-  background-position: -100px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-6 {
-  background-position: -125px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-7 {
-  background-position: -150px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-8 {
-  background-position: -175px 0;
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
-  opacity: 0;
-}
-.slices .slice-2 {
-  -webkit-transform: translateY(40px);
-  transform: translateY(40px);
-}
-.slices .slice-4 {
-  -webkit-transform: translateY(40px);
-  transform: translateY(40px);
-}
-.slices .slice-6 {
-  -webkit-transform: translateY(40px);
-  transform: translateY(40px);
-}
-.slices .slice-8 {
-  -webkit-transform: translateY(40px);
-  transform: translateY(40px);
-}
-*/
-
 // NEW ANIMATION
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
-figure.snip1104 {
+figure.photo-card-anime {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
   overflow: hidden;
@@ -345,21 +246,21 @@ figure.snip1104 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
-figure.snip1104 * {
+figure.photo-card-anime * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-figure.snip1104 img {
+figure.photo-card-anime img {
   width: 100%;
   height: 100%;
   position: relative;
   opacity: 0.4;
 }
 
-figure.snip1104 figcaption {
+figure.photo-card-anime figcaption {
   position: absolute;
   top: 0;
   left: 0;
@@ -367,7 +268,7 @@ figure.snip1104 figcaption {
   right: 0;
 }
 
-figure.snip1104 h2 {
+figure.photo-card-anime h2 {
   position: absolute;
   left: 40px;
   right: 40px;
@@ -382,11 +283,11 @@ figure.snip1104 h2 {
   font-weight: 400;
 }
 
-figure.snip1104 h2 span {
+figure.photo-card-anime h2 span {
   font-weight: 800;
 }
 
-figure.snip1104:before {
+figure.photo-card-anime:before {
   height: 100%;
   width: 100%;
   top: 0;
@@ -400,54 +301,38 @@ figure.snip1104:before {
   transform: rotate(110deg) translateY(-50%);
 }
 
-figure.snip1104 a {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  z-index: 1;
-}
+// figure.photo-card-anime a {
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   position: absolute;
+//   z-index: 1;
+// }
 
-figure.snip1104.blue {
-  background: #123851;
-}
-
-figure.snip1104.blue h2 {
-  background: #0a212f;
-}
-
-figure.snip1104.red {
+figure.photo-card-anime.red {
   background: #581a14;
 }
 
-figure.snip1104.red h2 {
+figure.photo-card-anime.red h2 {
   background: #36100c;
 }
 
-figure.snip1104.yellow {
-  background: #7f5006;
-}
-
-figure.snip1104.yellow h2 {
-  background: #583804;
-}
-
-figure.snip1104:hover img,
-figure.snip1104.hover img {
+figure.photo-card-anime:hover img,
+figure.photo-card-anime.hover img {
   opacity: 1;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
 
-figure.snip1104:hover h2,
-figure.snip1104.hover h2 {
+figure.photo-card-anime:hover h2,
+figure.photo-card-anime.hover h2 {
   -webkit-transform: skew(-10deg) rotate(-10deg) translate(-150%, -50%);
   transform: skew(-10deg) rotate(-10deg) translate(-150%, -50%);
 }
 
-figure.snip1104:hover:before,
-figure.snip1104.hover:before {
+figure.photo-card-anime:hover:before,
+figure.photo-card-anime.hover:before {
   -webkit-transform: rotate(110deg) translateY(-150%);
   transform: rotate(110deg) translateY(-150%);
 }
