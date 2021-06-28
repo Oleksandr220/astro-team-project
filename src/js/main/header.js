@@ -24,7 +24,7 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
-function declOfMovie(number) {
+export function declOfMovie(number) {
   const words = ['movie', 'movies']
   return words[number < 2 ? 0 : 1];
 }
@@ -33,9 +33,10 @@ function onLibraryClick(e) {
   galerryContRef.style.marginTop = '60px';
   let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
   let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
-  if (itemsInQueue && itemsInWatched) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
-      itemsInWatched.length)} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List</h2>`;
+  if (!itemsInQueue && !itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / 0 movies in Queue List</h2>`;
+  } else if (itemsInQueue && itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List</h2>`;
   } else if (itemsInQueue) {
     galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List<h2 class="modal-title">`;
   } else if (itemsInWatched) {
