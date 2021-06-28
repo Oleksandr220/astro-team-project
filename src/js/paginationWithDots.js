@@ -5,7 +5,7 @@ import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
 import image from '../partials/dedpool.html';
-import cardImageTpl from '../templates/noImageFetchGal.hbs'
+import noImg from '../images/astro-team.png';
 
 const gallery = document.querySelector('.js-gallery');
 
@@ -19,8 +19,8 @@ function createGallerySection(key, page) {
     gallery.innerHTML = cardTpl(movies.results);
     for (let index = 0; index < movies.results.length; index++) {
       if (movies.results[index].poster_path === null) {
-        let imgGalleryEl = gallery.querySelector('.thumb')
-        imgGalleryEl.innerHTML = cardImageTpl(movies.results[index]);
+        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`)
+        imgGalleryEl.src = `${noImg}`
       }
     }
     stopLoader();
@@ -34,8 +34,8 @@ function createSectionOnSearch(key, page, query) {
     gallery.innerHTML = cardTpl(movies.results);
     for (let index = 0; index < movies.results.length; index++) {
       if (movies.results[index].poster_path === null) {
-        let imgGalleryEl = gallery.querySelector('.thumb')
-        imgGalleryEl.innerHTML = cardImageTpl(movies.results[index]);
+        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`)
+        imgGalleryEl.src = `${noImg}`
       }
     }
     stopLoader();
