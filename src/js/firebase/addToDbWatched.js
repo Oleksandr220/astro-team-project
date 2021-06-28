@@ -21,6 +21,21 @@ export function deleteFromDb(btnRef) {
   btnRef.addEventListener('click', remove);
 }
 
+export function clearDb(query) {
+  const key = localStorage.getItem('userId');
+  if (!key) {
+    return;
+  }
+
+  fetch(`https://astroteam-project-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`, {
+    method: 'PATCH',
+    body: JSON.stringify({ [key]: [] }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
 function addToDb(e) {
   const key = localStorage.getItem('userId');
   const elementId = e.target.dataset.id;
