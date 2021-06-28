@@ -9,6 +9,7 @@ const formToSearchRef = document.querySelector('.form-js');
 const boxForInputRef = document.querySelector('.box-js');
 const galerryContRef = document.querySelector('.js-gallery');
 const paginationList = document.querySelector('#paginate');
+const searchErorr = document.querySelector('.search-erorr');
 
 homePageRef.addEventListener('click', onHomeClick);
 libraryPageRef.addEventListener('click', onLibraryClick);
@@ -47,6 +48,10 @@ const buttonWatchedHeaderRef = document.querySelector('[data-watched-header]');
 
 
 function onLibraryClick(e) {
+    if (!searchErorr.classList.contains('visually-hiden')) {
+    searchErorr.classList.add('visually-hiden');
+  }
+
   galerryContRef.style.marginTop = '60px';
   numberOfMovieInLIbrary();
 
