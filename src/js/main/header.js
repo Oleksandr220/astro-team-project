@@ -24,7 +24,8 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
-export function declOfMovie(number, words) {
+export function declOfMovie(number) {
+  const words = ['movie', 'movies'];
   return words[number < 2 ? 0 : 1];
 }
 
@@ -37,7 +38,8 @@ function onLibraryClick(e) {
       itemsInWatched.length)} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List</h2>`;
   } else if (itemsInQueue) {
     galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List<h2 class="modal-title">`;
-  } else if (itemsInWatched) {galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
+  } else if (itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
   }
   // paginationList.classList.add('is-hidden');
   document.getElementById('pagination').innerHTML = '';

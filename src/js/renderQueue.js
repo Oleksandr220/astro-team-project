@@ -31,10 +31,7 @@ export function renderQueueList() {
     const length = watchList ? watchList.length : 0;
     document.querySelector(
       '.js-gallery',
-    ).innerHTML = `<h2 class="modal-title">${length} ${declOfMovie(length, [
-      'movie',
-      'movies',
-    ])} in Watched List / 0 movies in Queue List</h2>`;
+    ).innerHTML = `<h2 class="modal-title">${length} ${declOfMovie(length)} in Watched List / 0 movies in Queue List</h2>`;
   }
   // stopLoader();
 }
