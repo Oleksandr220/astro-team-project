@@ -1,5 +1,14 @@
 import teamAPI from '../objects/teamAPI.json';
-import createTeamAnimationTPL from '../../templates/createTeamAnimation.hbs';
+import createPhotoTeamTPL from '../../templates/teamPhoto.hbs';
+import imageDanilo from '../../images/modalTeam/Danilo.jpg';
+import imageBohdan from '../../images/modalTeam/Bohdan1.jpg';
+import imageSvitlana from '../../images/modalTeam/Svitlana1.jpg';
+import imageAlexandr from '../../images/modalTeam/Alexandr1.jpg';
+import imageAleksey from '../../images/modalTeam/Aleksey1.jpg';
+import imageVladislav from '../../images/modalTeam/Vladislav1.jpg';
+import imageIgor from '../../images/modalTeam/Igor1.jpg';
+import imageStanislav from '../../images/modalTeam/Stanislav1.jpg';
+import imageAndrii from '../../images/modalTeam/Andrii1.jpg';
 
 const openModalButton = document.querySelector('[data-team]');
 const modalBackdrop = document.querySelector('[data-modal]');
@@ -11,6 +20,7 @@ let teamRenderData = [];
 openModalButton.addEventListener('click', () => {
   modalBackdrop.classList.remove('is-hidden');
   showPage;
+  changePhoto();
   modalBackdrop.addEventListener('click', closeModal);
   window.addEventListener('keydown', closeModal);
 });
@@ -47,12 +57,13 @@ function renderTeamListOnButtonClick(buttons) {
   for (let button of buttons) {
     button.addEventListener('click', function () {
       showPage(this);
+      changePhoto();
     });
   }
 }
 
 function createListMarkup(teamRenderData) {
-  return createTeamAnimationTPL(teamRenderData);
+  return createPhotoTeamTPL(teamRenderData);
 }
 
 let showPage = (function () {
@@ -224,6 +235,7 @@ function createTeamModalPagination() {
   function update() {
     list.update();
     buttons.update();
+    changePhoto();
   }
 
   function init() {
@@ -234,13 +246,38 @@ function createTeamModalPagination() {
   init();
 }
 
-// Change background img
-// const firstPhotoElements = document.querySelectorAll('.slices');
-// for (const elem of firstPhotoElements) {
-//   let needElement = elem.dataset.id;
-//   let needElementChildrens = elem.children;
-//   let findElement = teamData.find(member => member.surname === needElement);
-//   console.log('findElement: ', findElement.photo1);
-//   elem.style.backgroundImage = `url(${findElement.photo1})`;
-//   console.log('elem: ', elem);
-// }
+// Change img src
+function changePhoto() {
+  const photoElements = document.querySelectorAll('figure img');
+  for (const elem of photoElements) {
+    console.log('altElement: ', elem.alt);
+    if (elem.alt === 'Danilo') {
+      elem.src = `${imageDanilo}`;
+    }
+    if (elem.alt === 'Bohdan') {
+      elem.src = `${imageBohdan}`;
+    }
+    if (elem.alt === 'Svitlana') {
+      console.log('elem.alt: ', elem.alt);
+      elem.src = `${imageSvitlana}`;
+    }
+    if (elem.alt === 'Alexandr') {
+      elem.src = `${imageAlexandr}`;
+    }
+    if (elem.alt === 'Aleksey') {
+      elem.src = `${imageAleksey}`;
+    }
+    if (elem.alt === 'Vladislav') {
+      elem.src = `${imageVladislav}`;
+    }
+    if (elem.alt === 'Igor') {
+      elem.src = `${imageIgor}`;
+    }
+    if (elem.alt === 'Stanislav') {
+      elem.src = `${imageStanislav}`;
+    }
+    if (elem.alt === 'Andrii') {
+      elem.src = `${imageAndrii}`;
+    }
+  }
+}

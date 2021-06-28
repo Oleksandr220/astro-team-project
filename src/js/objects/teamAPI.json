@@ -3,7 +3,7 @@
     "name": "Danilo",
     "surname": "Prokhorchuk",
     "photo1":
-      "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/207136037_109950584671053_7212808070701723576_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=0debeb&_nc_ohc=bQJoePHp2oQAX9-AoAZ&_nc_ht=scontent.fiev19-1.fna&oh=69d13849dea85a681ef7de2de3b249b3&oe=60DAF947",
+      "../images/modalTeam/Danilo.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Team Lead"
@@ -12,7 +12,7 @@
     "name": "Andrii",
     "surname": "Lanyk",
     "photo1":
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+      "../../images/modalTeam/Andrii1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
@@ -21,7 +21,7 @@
     "name": "Bohdan",
     "surname": "Dyachenko",
     "photo1":
-      "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/205124279_109950481337730_2442339105790420176_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=0debeb&_nc_ohc=a5uZr2RvkrUAX-2wJr4&_nc_ht=scontent.fiev19-1.fna&oh=c4bb3e854e65da0394fa82b0569328f5&oe=60DBD7A4",
+      "../images/modalTeam/Bohdan1.jpg",
     "photo2":
       "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/205855612_109941421338636_882390188010272553_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=0debeb&_nc_ohc=V7t3AO_nvEMAX_uF5a2&_nc_ht=scontent.fiev19-1.fna&oh=38941a5f13adb377c7acec7d7a99db64&oe=60DAF806",
     "role": "Scrum Master"
@@ -30,7 +30,7 @@
     "name": "Igor",
     "surname": "Mokhnatskyy",
     "photo1":
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+      "../../images/modalTeam/Igor1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
@@ -39,7 +39,7 @@
     "name": "Svitlana",
     "surname": "Nedilko",
     "photo1":
-      "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/206235854_109950908004354_4360632337682377909_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=0debeb&_nc_ohc=xg7P6oYNXTAAX-6kU44&_nc_ht=scontent.fiev19-1.fna&oh=b5be38b858a2b27a457c618320636786&oe=60DAD755",
+      "../images/modalTeam/Svitlana1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
@@ -48,7 +48,7 @@
     "name": "Stanislav",
     "surname": "Sheludyakov",
     "photo1":
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+      "../../images/modalTeam/Stanislav1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
@@ -57,7 +57,7 @@
     "name": "Alexandr",
     "surname": "Maslov",
     "photo1":
-      "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/205732574_109949934671118_8624540643460168596_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=0debeb&_nc_ohc=iwHKOwyC4gQAX-8nJIW&_nc_ht=scontent.fiev19-1.fna&oh=cb867ce54073902b36a4a587efcb1bb6&oe=60DB8E84",
+      "../images/modalTeam/Alexandr2.jpg",
     "photo2":
       "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/207230570_109950208004424_8650608130335931502_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=0debeb&_nc_ohc=kdku5BaBlAEAX9WkX4j&_nc_ht=scontent.fiev19-1.fna&oh=d988b9c84cbb1e36794e4611b4cb7f3e&oe=60DB6EB0",
     "role": "Backend Developer"
@@ -66,7 +66,7 @@
     "name": "Aleksey",
     "surname": "Krikun",
     "photo1":
-      "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/204173370_109949588004486_6137567624214356379_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=0debeb&_nc_ohc=nn2igIvfoIgAX8Cbqgj&_nc_ht=scontent.fiev19-1.fna&oh=312d127f59cf94a3a972f724494a8f6a&oe=60DA5A7E",
+      "../images/modalTeam/Aleksey1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "UI/UX Designer"
@@ -75,7 +75,7 @@
     "name": "Vladislav",
     "surname": "Yuskiv",
     "photo1":
-      "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/204475532_109951224670989_4688997711913338342_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=0debeb&_nc_ohc=4xLcOaDu58MAX9rzP1m&_nc_ht=scontent.fiev19-1.fna&oh=cf1b30f12be707d60702c252ced17fc5&oe=60DB2FBF",
+      "../images/modalTeam/Vladislav1.jpg",
     "photo2":
       "https://scontent.fiev19-1.fna.fbcdn.net/v/t1.6435-9/204595174_109951488004296_3590061043661081575_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=0debeb&_nc_ohc=vLnaLDEMqgYAX_X73o3&_nc_ht=scontent.fiev19-1.fna&oh=51c805bb6a1014e6b7e60e35628bfcc1&oe=60DA3732",
     "role": "Frontend Developer"
