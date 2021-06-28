@@ -6,6 +6,9 @@ import imageSvitlana from '../../images/modalTeam/Svitlana1.jpg';
 import imageAlexandr from '../../images/modalTeam/Alexandr1.jpg';
 import imageAleksey from '../../images/modalTeam/Aleksey1.jpg';
 import imageVladislav from '../../images/modalTeam/Vladislav1.jpg';
+import imageIgor from '../../images/modalTeam/Igor1.jpg';
+import imageStanislav from '../../images/modalTeam/Stanislav1.jpg';
+import imageAndrii from '../../images/modalTeam/Andrii1.jpg';
 
 const openModalButton = document.querySelector('[data-team]');
 const modalBackdrop = document.querySelector('[data-modal]');
@@ -266,6 +269,15 @@ function changePhoto() {
     }
     if (elem.alt === 'Vladislav') {
       elem.src = `${imageVladislav}`;
+    }
+    if (elem.alt === 'Igor') {
+      elem.src = `${imageIgor}`;
+    }
+    if (elem.alt === 'Stanislav') {
+      elem.src = `${imageStanislav}`;
+    }
+    if (elem.alt === 'Andrii') {
+      elem.src = `${imageAndrii}`;
     }
   }
 }

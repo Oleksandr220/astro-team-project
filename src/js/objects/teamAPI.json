@@ -12,7 +12,7 @@
     "name": "Andrii",
     "surname": "Lanyk",
     "photo1":
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+      "../../images/modalTeam/Andrii1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
@@ -30,7 +30,7 @@
     "name": "Igor",
     "surname": "Mokhnatskyy",
     "photo1":
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+      "../../images/modalTeam/Igor1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
@@ -48,7 +48,7 @@
     "name": "Stanislav",
     "surname": "Sheludyakov",
     "photo1":
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMX-4NdBezdSyY8yWR6sCERsGRWi4izTc2A&usqp=CAU",
+      "../../images/modalTeam/Stanislav1.jpg",
     "photo2":
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCrMaBv3K1YucqEzGV5uC3tTsTY8OPknVFw&usqp=CAU",
     "role": "Frontend Developer"
