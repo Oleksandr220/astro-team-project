@@ -76,9 +76,9 @@ function createDotsPagination(
       createLibraryGallery(movies);
     } else {
       if (query) {
-        createSectionOnSearch(API_KEY, numberOfPage, query);
+        createSectionOnSearch(API_KEY, numberOfPages, query);
       } else {
-        createGallerySection(API_KEY, numberOfPage);
+        createGallerySection(API_KEY, numberOfPages);
       }
     }
     return;
