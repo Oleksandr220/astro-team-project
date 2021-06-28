@@ -53,4 +53,8 @@
 
   color: var(--primary-text-color);
   background-color: var(--accent-color);
+
+  &:nth-child(2) {
+    margin-left: 40px;
+  }
 }

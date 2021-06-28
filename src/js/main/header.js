@@ -24,35 +24,32 @@ function onHomeClick(e) {
   libraryPageRef.classList.remove('logo-current');
 }
 
-function declOfMovie(number, words) {
+function declOfMovie(number) {
+  const words = ['movie', 'movies']
   return words[number < 2 ? 0 : 1];
 }
-
-function onLibraryClick(e) {
+export function numberOfMovieInLIbrary() {
   let itemsInQueue = JSON.parse(localStorage.getItem('queue'));
   let itemsInWatched = JSON.parse(localStorage.getItem('watched'));
-  if (itemsInQueue && itemsInWatched) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
-      itemsInWatched.length,
-      ['movie', 'movies'],
-    )} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length, [
-      'movie',
-      'movies',
-    ])} in Queue List</h2>`;
+    if (!itemsInQueue && !itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / 0 movies in Queue List</h2>`;
+  } else if (itemsInQueue && itemsInWatched) {
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List</h2>`;
   } else if (itemsInQueue) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${
-      itemsInQueue.length
-    } ${declOfMovie(itemsInQueue.length, [
-      'movie',
-      'movies',
-    ])} in Queue List<h2 class="modal-title">`;
+    galerryContRef.innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${itemsInQueue.length} ${declOfMovie(itemsInQueue.length)} in Queue List<h2 class="modal-title">`;
   } else if (itemsInWatched) {
-    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(
-      itemsInWatched.length,
-      ['movie', 'movies'],
-    )} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
+    galerryContRef.innerHTML = `<h2 class="modal-title">${itemsInWatched.length} ${declOfMovie(itemsInWatched.length)} in Watched List / 0 movies in Queue List<h2 class="modal-title">`;
   }
-  // paginationList.classList.add('is-hidden');
+
+}
+const buttonQueueHeaderRef = document.querySelector('[data-queue-header]');
+const buttonWatchedHeaderRef = document.querySelector('[data-watched-header]');
+
+
+function onLibraryClick(e) {
+  galerryContRef.style.marginTop = '60px';
+  numberOfMovieInLIbrary();
+
   document.getElementById('pagination').innerHTML = '';
   e.target.classList.add('logo-current');
   containerInHeader.classList.add('cont-header-library');
@@ -66,12 +63,13 @@ function onLibraryClick(e) {
   elBtnWatched.addEventListener('click', renderWatchedList);
   const elBtnQueue = document.querySelector('[data-queue-header');
   elBtnQueue.addEventListener('click', renderQueueList);
+  renderQueueList()
+  buttonQueueHeaderRef.classList.add('library-button-focus');
 }
 
 //Queue current
 
-const buttonQueueHeaderRef = document.querySelector('[data-queue-header]');
-const buttonWatchedHeaderRef = document.querySelector('[data-watched-header]');
+
 
 buttonQueueHeaderRef.addEventListener('click', onQueueHeaderClick);
 buttonWatchedHeaderRef.addEventListener('click', onWatchedHeaderClick);

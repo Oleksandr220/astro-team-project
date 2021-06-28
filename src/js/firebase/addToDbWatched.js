@@ -1,3 +1,8 @@
+import { renderWatchedList } from '../renderWatched';
+import { renderQueueList } from '../renderQueue';
+
+const labraryBtn = document.querySelector('.library-js');
+
 export function saveToDb(btnRef) {
   const key = localStorage.getItem('userId');
   if (!key) {
@@ -37,6 +42,9 @@ function addToDb(e) {
       e.target.disabled = false;
       e.target.removeEventListener('click', addToDb);
       e.target.addEventListener('click', remove);
+      if (labraryBtn.classList.contains('logo-current')) {
+        query === 'watched' ? renderWatchedList() : renderQueueList();
+      }
     });
 }
 
@@ -56,10 +64,13 @@ function remove(e) {
     .then(response => response.json())
     .then(response => {
       const data = response ? response[key] : [];
-      localStorage.setItem(query, JSON.stringify(data));
+      localStorage.setItem(query, JSON.stringify(data ? data : []));
       e.target.textContent = query === 'watched' ? 'ADD TO WATCHED' : 'ADD TO QUEUE';
       e.target.disabled = false;
       e.target.removeEventListener('click', remove);
       e.target.addEventListener('click', addToDb);
+      if (labraryBtn.classList.contains('logo-current')) {
+        query === 'watched' ? renderWatchedList() : renderQueueList();
+      }
     });
 }

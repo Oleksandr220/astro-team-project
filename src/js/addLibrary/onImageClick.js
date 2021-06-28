@@ -17,7 +17,7 @@ function fetchMovieById(id, type) {
 }
 
 function onDisplayBigImg(e) {
-  if (e.target.nodeName !== 'IMG') {
+  if (e.target.nodeName !== 'IMG' || e.target.classList.value === 'dedpool') {
     return;
   }
   const getIdFromImg = e.target.dataset.id;

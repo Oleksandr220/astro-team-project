@@ -1,3 +1,5 @@
+import { renderWatchedList } from '../renderWatched';
+
 const addToWatchedBtnRef = document.querySelector('[data-popup="backdrop"]');
 
 const key = localStorage.getItem('userId');
@@ -14,7 +16,7 @@ if (!key) {
 
   function onWatchedClick(e) {
     const buttonWatched = document.querySelector('[data-watched]');
-
+    const labraryBtn = document.querySelector('.library-js');
     if (e.target !== buttonWatched) {
       return;
     }
@@ -26,10 +28,17 @@ if (!key) {
 
       if (itemsInWatched.length === 0) {
         localStorage.removeItem('watched');
+
+        if (labraryBtn.classList.contains('logo-current')) {
+          renderWatchedList();
+        }
         return;
       }
 
       localStorage.setItem('watched', JSON.stringify(itemsInWatched));
+      if (labraryBtn.classList.contains('logo-current')) {
+        renderWatchedList();
+      }
       return;
     }
 
@@ -37,6 +46,10 @@ if (!key) {
     const uniqueItems = unique(itemsInWatched);
     localStorage.setItem('watched', JSON.stringify(uniqueItems));
     buttonWatched.textContent = 'DELETE FROM WATCHED';
+
+    if (labraryBtn.classList.contains('logo-current')) {
+      renderWatchedList();
+    }
 
     return;
   }
