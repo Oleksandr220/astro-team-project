@@ -72,12 +72,12 @@ function createDotsPagination(
     return;
   } else if (numberOfPages === 1) {
     if (movies) {
-      gallery.innerHTML = createLibraryGallery(movies);
+      createLibraryGallery(movies);
     } else {
       if (query) {
-        gallery.innerHTML = createSectionOnSearch(API_KEY, numberOfPage, query);
+        createSectionOnSearch(API_KEY, numberOfPage, query);
       } else {
-        gallery.innerHTML = createGallerySection(API_KEY, numberOfPage);
+        createGallerySection(API_KEY, numberOfPage);
       }
     }
     return;
