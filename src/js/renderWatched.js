@@ -1,4 +1,5 @@
 // import { onLoader, stopLoader } from './main/loader';
+import { declOfMovie } from './main/header';
 import createPage from './paginationWithDots';
 
 export function renderWatchedList() {
@@ -23,6 +24,15 @@ export function renderWatchedList() {
       moviesOnPage = 1;
       createPage(filmsCount, moviesOnPage, query, savedItems);
     }
+  } else {
+    const queueList = localStorage.getItem('queue');
+    const length = queueList ? queueList.length : 0;
+    document.querySelector(
+      '.js-gallery',
+    ).innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${length} ${declOfMovie(
+      length,
+      ['movie', 'movies'],
+    )} in Queue List</h2>`;
   }
   // stopLoader();
 }
