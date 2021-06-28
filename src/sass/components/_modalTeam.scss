@@ -64,7 +64,7 @@
   }
 
   @media screen and (min-width: $DesktopWidth) {
-    width: 1000px;
+    width: 1200px;
     padding: 40px 80px;
   }
 
@@ -135,31 +135,17 @@
 
 .photo-card {
   position: relative;
-  width: 191px;
-  height: 340px;
+  width: 280px;
+  height: 430px;
   background-color: var(--accent-text-color);
   padding: 7px;
   border-radius: 15px;
 
-  &-img {
-    border-radius: 15px;
-    margin-bottom: 10px;
-  }
-
-  &-name,
   &-role {
     text-align: center;
     color: #212121;
-  }
-
-  &-name {
-    margin-top: 280px;
     font-weight: 800;
-    margin-bottom: 5px;
-  }
-
-  &-role {
-    font-weight: 400;
+    font-size: 20px;
   }
 }
 
@@ -234,6 +220,7 @@
 }
 
 /* АНІМАШКА ДЛЯ ФОТОК */
+/*
 .frame {
   position: absolute;
   top: 4px;
@@ -339,4 +326,128 @@
 .slices .slice-8 {
   -webkit-transform: translateY(40px);
   transform: translateY(40px);
+}
+*/
+
+// NEW ANIMATION
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+figure.snip1104 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 5px 5px 10px;
+  border-radius: 15px;
+  height: 90%;
+  width: 96%;
+  background: #000000;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+figure.snip1104 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+figure.snip1104 img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  opacity: 0.4;
+}
+
+figure.snip1104 figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+figure.snip1104 h2 {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  display: inline-block;
+  background: #000000;
+  -webkit-transform: skew(-10deg) rotate(-10deg) translate(0, -50%);
+  transform: skew(-10deg) rotate(-10deg) translate(0, -50%);
+  padding: 12px 5px;
+  margin: 0;
+  top: 50%;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+figure.snip1104 h2 span {
+  font-weight: 800;
+}
+
+figure.snip1104:before {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  content: '';
+  background: #ffffff;
+  position: absolute;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: rotate(110deg) translateY(-50%);
+  transform: rotate(110deg) translateY(-50%);
+}
+
+figure.snip1104 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+figure.snip1104.blue {
+  background: #123851;
+}
+
+figure.snip1104.blue h2 {
+  background: #0a212f;
+}
+
+figure.snip1104.red {
+  background: #581a14;
+}
+
+figure.snip1104.red h2 {
+  background: #36100c;
+}
+
+figure.snip1104.yellow {
+  background: #7f5006;
+}
+
+figure.snip1104.yellow h2 {
+  background: #583804;
+}
+
+figure.snip1104:hover img,
+figure.snip1104.hover img {
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+figure.snip1104:hover h2,
+figure.snip1104.hover h2 {
+  -webkit-transform: skew(-10deg) rotate(-10deg) translate(-150%, -50%);
+  transform: skew(-10deg) rotate(-10deg) translate(-150%, -50%);
+}
+
+figure.snip1104:hover:before,
+figure.snip1104.hover:before {
+  -webkit-transform: rotate(110deg) translateY(-150%);
+  transform: rotate(110deg) translateY(-150%);
 }
