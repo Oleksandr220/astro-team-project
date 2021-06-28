@@ -4,8 +4,8 @@ import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
-// import image from './deadpool.263c7d2b.png';
 import image from '../partials/dedpool.html';
+import noImg from '../images/astro-team.png';
 
 const gallery = document.querySelector('.js-gallery');
 
@@ -17,6 +17,12 @@ function createGallerySection(key, page) {
   res.fetchTrending(key, page).then(movies => {
     addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
+    for (let index = 0; index < movies.results.length; index++) {
+      if (movies.results[index].poster_path === null) {
+        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`)
+        imgGalleryEl.src = `${noImg}`
+      }
+    }
     stopLoader();
   });
 }
@@ -26,8 +32,20 @@ function createSectionOnSearch(key, page, query) {
   res.fetchSearchMovie(key, page, query).then(movies => {
     addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
+    for (let index = 0; index < movies.results.length; index++) {
+      if (movies.results[index].poster_path === null) {
+        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`)
+        imgGalleryEl.src = `${noImg}`
+      }
+    }
     stopLoader();
   });
+}
+
+function checkImage(src) {
+    if (src === '') {
+        
+    }
 }
 
 function createLibraryGallery(data) {

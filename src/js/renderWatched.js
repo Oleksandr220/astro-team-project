@@ -1,4 +1,4 @@
-// import { onLoader, stopLoader } from './main/loader';
+import { onLoader, stopLoader } from './main/loader';
 import { numberOfMovieInLIbrary } from './main/header';
 import createPage from './paginationWithDots';
 
@@ -8,7 +8,7 @@ export function renderWatchedList() {
   let moviesOnPage = 18;
 
   document.getElementById('pagination').innerHTML = '';
-  // onLoader();
+  onLoader();
   const filmsCount = savedItemsWatched.length;
   if (filmsCount > 0) {
     let query = '';
@@ -27,5 +27,5 @@ export function renderWatchedList() {
   } else {
     numberOfMovieInLIbrary();
   }
-  // stopLoader();
+  stopLoader();
 }
