@@ -27,12 +27,10 @@ export function renderWatchedList() {
   } else {
     const queueList = localStorage.getItem('queue');
     const length = queueList ? queueList.length : 0;
+    console.log(queueList.length)
     document.querySelector(
       '.js-gallery',
-    ).innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${length} ${declOfMovie(
-      length,
-      ['movie', 'movies'],
-    )} in Queue List</h2>`;
+    ).innerHTML = `<h2 class="modal-title">0 movies in Watched List / ${length} ${declOfMovie(length)} in Queue List</h2>`;
   }
   // stopLoader();
 }
