@@ -5,7 +5,7 @@ import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
 import { onLoader, stopLoader } from './main/loader';
 // import image from './deadpool.263c7d2b.png';
-import image from '../images/deadpool.png';
+import image from '../partials/dedpool.html';
 
 const gallery = document.querySelector('.js-gallery');
 
@@ -63,7 +63,8 @@ function createDotsPagination(
 
   let numberOfPages = Math.ceil(totalMovies / moviesOnPage);
   if (!numberOfPages) {
-    gallery.innerHTML = `<img class="dedpool" width="100%" src=${image}/>`;
+    gallery.textContent = '';
+    gallery.insertAdjacentHTML('afterbegin', image);
     return;
   } else if (numberOfPages === 1) {
     if (movies) {
