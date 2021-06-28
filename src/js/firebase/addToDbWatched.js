@@ -27,13 +27,16 @@ export function clearDb(query) {
     return;
   }
 
-  fetch(`https://astroteam-project-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`, {
-    method: 'PATCH',
-    body: JSON.stringify({ [key]: [] }),
-    headers: {
-      'Content-Type': 'application/json',
+  fetch(
+    `https://astro-project-f2e2a-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`,
+    {
+      method: 'PATCH',
+      body: JSON.stringify({ [key]: [] }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 }
 
 function addToDb(e) {
@@ -43,13 +46,16 @@ function addToDb(e) {
   const saved = JSON.parse(localStorage.getItem(query)) || [];
   saved.push(elementId);
   e.target.disabled = true;
-  fetch(`https://astroteam-project-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`, {
-    method: 'PATCH',
-    body: JSON.stringify({ [key]: saved }),
-    headers: {
-      'Content-Type': 'application/json',
+  fetch(
+    `https://astro-project-f2e2a-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`,
+    {
+      method: 'PATCH',
+      body: JSON.stringify({ [key]: saved }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  })
+  )
     .then(response => response.json())
     .then(response => {
       localStorage.setItem(query, JSON.stringify(saved));
@@ -69,13 +75,16 @@ function remove(e) {
   const query = e.target.dataset.list;
   const saved = JSON.parse(localStorage.getItem(query));
   e.target.disabled = true;
-  fetch(`https://astroteam-project-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`, {
-    method: 'PATCH',
-    body: JSON.stringify({ [key]: saved.filter(film => film !== elementId) }),
-    headers: {
-      'Content-Type': 'application/json',
+  fetch(
+    `https://astro-project-f2e2a-default-rtdb.europe-west1.firebasedatabase.app/${query}.json`,
+    {
+      method: 'PATCH',
+      body: JSON.stringify({ [key]: saved.filter(film => film !== elementId) }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  })
+  )
     .then(response => response.json())
     .then(response => {
       const data = response ? response[key] : [];

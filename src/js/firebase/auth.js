@@ -31,7 +31,7 @@ btnAuthClose.addEventListener('click', () => {
 authForm.addEventListener('submit', authFormHandler);
 
 function authWithEmailAndPassword(email, password) {
-  const fireBaseKey = 'AIzaSyAQwNTK0lyyNa5eBMBZzViLjP2SCsqhR8E';
+  const fireBaseKey = 'AIzaSyAOhjczYQKwysy9Aip6uCwpuH9UbHQ7AR4';
   return fetch(
     `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${fireBaseKey}`,
     {

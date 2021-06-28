@@ -20,7 +20,7 @@ btnRegClose.addEventListener('click', () => {
 regForm.addEventListener('submit', RegFormHandler);
 
 function SignUpEmailAndPassword(email, password) {
-  const fireBaseKey = 'AIzaSyAQwNTK0lyyNa5eBMBZzViLjP2SCsqhR8E';
+  const fireBaseKey = 'AIzaSyAOhjczYQKwysy9Aip6uCwpuH9UbHQ7AR4';
   return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${fireBaseKey}`, {
     method: 'POST',
     body: JSON.stringify({ email, password, returnSecureToken: true }),
