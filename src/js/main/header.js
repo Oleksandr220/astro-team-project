@@ -42,6 +42,9 @@ export function numberOfMovieInLIbrary() {
   }
 
 }
+const buttonQueueHeaderRef = document.querySelector('[data-queue-header]');
+const buttonWatchedHeaderRef = document.querySelector('[data-watched-header]');
+
 
 function onLibraryClick(e) {
   galerryContRef.style.marginTop = '60px';
@@ -60,12 +63,13 @@ function onLibraryClick(e) {
   elBtnWatched.addEventListener('click', renderWatchedList);
   const elBtnQueue = document.querySelector('[data-queue-header');
   elBtnQueue.addEventListener('click', renderQueueList);
+  renderQueueList()
+  buttonQueueHeaderRef.classList.add('library-button-focus');
 }
 
 //Queue current
 
-const buttonQueueHeaderRef = document.querySelector('[data-queue-header]');
-const buttonWatchedHeaderRef = document.querySelector('[data-watched-header]');
+
 
 buttonQueueHeaderRef.addEventListener('click', onQueueHeaderClick);
 buttonWatchedHeaderRef.addEventListener('click', onWatchedHeaderClick);
