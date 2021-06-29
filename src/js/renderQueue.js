@@ -12,18 +12,7 @@ export function renderQueueList() {
   const filmsCount = savedItemsQueue.length;
   if (filmsCount > 0) {
     let query = '';
-      if (document.documentElement.clientWidth >= 769) {
-        createPage(filmsCount, moviesOnPage, query, savedItemsQueue);
-      } else if (
-        document.documentElement.clientWidth < 769 &&
-        document.documentElement.clientWidth > 468
-      ) {
-        /* moviesOnPage = 2; */
-        createPage(filmsCount, moviesOnPage, query, savedItems);
-      } else if (document.documentElement.clientWidth < 469) {
-        /* moviesOnPage = 1; */
-        createPage(filmsCount, moviesOnPage, query, savedItemsQueue);
-      }
+    createPage(filmsCount, moviesOnPage, query, savedItemsQueue);
   } else {
     numberOfMovieInLIbrary();
   }
