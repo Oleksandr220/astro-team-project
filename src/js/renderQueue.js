@@ -12,7 +12,6 @@ export function renderQueueList() {
   const filmsCount = savedItemsQueue.length;
   if (filmsCount > 0) {
     let query = '';
-    if (document.documentElement.clientWidth >= 769) {
       if (document.documentElement.clientWidth >= 769) {
         createPage(filmsCount, moviesOnPage, query, savedItemsQueue);
       } else if (
@@ -25,7 +24,6 @@ export function renderQueueList() {
         /* moviesOnPage = 1; */
         createPage(filmsCount, moviesOnPage, query, savedItemsQueue);
       }
-    }
   } else {
     numberOfMovieInLIbrary();
   }

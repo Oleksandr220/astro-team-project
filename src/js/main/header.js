@@ -80,8 +80,6 @@ function onLibraryClick(e) {
 
 //Queue current
 
-
-
 buttonQueueHeaderRef.addEventListener('click', onQueueHeaderClick);
 buttonWatchedHeaderRef.addEventListener('click', onWatchedHeaderClick);
 
