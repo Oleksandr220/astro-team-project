@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toTopBtn.style.display = 'none';
         changeStyleSvg.classList.remove("strelka-change");
     }
-    console.log(window.onscroll)
 }
 
 // плавный скролл наверх 
