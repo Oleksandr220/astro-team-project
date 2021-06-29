@@ -33,6 +33,7 @@ function clearQueueLib() {
 
 function clearGallery() {
   gallerySectionEl.innerHTML = '';
+  document.getElementById('pagination').innerHTML = '';
 }
 
 function clearLib() {
