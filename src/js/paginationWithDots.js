@@ -28,6 +28,7 @@ function createGallerySection(key, page) {
 }
 
 function createSectionOnSearch(key, page, query) {
+  onLoader();
   res.fetchSearchMovie(key, page, query).then(movies => {
     addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
@@ -42,12 +43,14 @@ function createSectionOnSearch(key, page, query) {
 }
 
 function createLibraryGallery(data) {
+  onLoader();
   gallery.innerHTML = '';
   for (let id of data) {
     res.fetchMovieDetails(id).then(movie => {
       gallery.insertAdjacentHTML('afterbegin', libraryCardTpl(movie));
     });
   }
+  stopLoader();
 }
 
 function addedGenres(movies, genresList) {
