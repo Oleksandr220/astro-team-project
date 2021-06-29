@@ -104,6 +104,7 @@
 }
 
 .order-ticket__preloader-wrapper {
+  position: relative;
   display: none;
 }
 
@@ -157,5 +158,27 @@
   &.is-hidden {
     visibility: hidden;
     opacity: 0;
+  }
+}
+
+.loader-need-film {
+  width: 75px;
+  height: 75px;
+  border: 10px solid var(--primary-text-color);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  transform: translate(-50%, -50%);
+  animation: 1s spin infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
