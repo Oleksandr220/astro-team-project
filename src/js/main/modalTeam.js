@@ -32,13 +32,11 @@ function openModalTeam() {
   } else if (document.documentElement.clientWidth < 469) {
     cardOnPage = 1;
   }
-  console.log('cardOnPage: ', cardOnPage);
+
   modalBackdrop.classList.remove('is-hidden');
   if (document.documentElement.clientWidth < 469) {
-    console.log('МОБИЛЬНОЕ ОКНО');
     createTeamModalPagination(cardOnPage, teamList, teamData);
   } else {
-    console.log('НЕЕЕЕЕЕЕЕЕЕЕЕ МОБИЛЬНОЕ ОКНО');
     createPaginationForTeamWindow(cardOnPage, teamData);
   }
   changePhoto();
