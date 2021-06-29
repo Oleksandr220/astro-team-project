@@ -1,3 +1,17 @@
+@keyframes changeScale {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .films-gallery {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -43,6 +57,8 @@
 
   .thumb {
     margin-bottom: 10px;
+    animation-name: changeScale;
+    animation-duration: 500ms;
   }
 
   h2 {

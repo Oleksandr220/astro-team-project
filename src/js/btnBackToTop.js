@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         toTopBtn.style.display = 'block'
     } else {
         toTopBtn.style.display = 'none';
-        changeStyleSvg.classList.remove("strelka-change")
+        changeStyleSvg.classList.remove("strelka-change");
     }
+    console.log(window.onscroll)
 }
 
 // плавный скролл наверх 
