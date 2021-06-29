@@ -30,7 +30,7 @@ footer {
   }
   a {
     color: inherit;
-    text-decoration: underline;
+    // text-decoration: underline;
   }
   p {
     vertical-align: middle;
@@ -42,4 +42,33 @@ footer {
   @media screen and (min-width: $TabletWidth) {
     min-height: calc(100vh - 309px);
   }
+}
+
+// For Animation
+
+a {
+  position: relative;
+  text-decoration: none;
+  transition: margin 0.25s;
+}
+a svg {
+  width: 110px;
+  height: 55px;
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translate(-50%, 9px) translateZ(0);
+  fill: none;
+  stroke: var(--stroke, var(--accent-text-color));
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke-dasharray: var(--offset, 69px) 278px;
+  stroke-dashoffset: 361px;
+  transition: stroke 0.25s ease var(--stroke-delay, 0s), stroke-dasharray 0.35s;
+}
+a svg:hover {
+  --spacing: 4px;
+  --stroke: var(--accent-color);
+  --stroke-delay: 0.1s;
+  --offset: 180px;
 }
