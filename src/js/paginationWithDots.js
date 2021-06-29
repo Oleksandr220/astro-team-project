@@ -19,8 +19,8 @@ function createGallerySection(key, page) {
     gallery.innerHTML = cardTpl(movies.results);
     for (let index = 0; index < movies.results.length; index++) {
       if (movies.results[index].poster_path === null) {
-        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`)
-        imgGalleryEl.src = `${noImg}`
+        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`);
+        imgGalleryEl.src = `${noImg}`;
       }
     }
     stopLoader();
@@ -28,24 +28,17 @@ function createGallerySection(key, page) {
 }
 
 function createSectionOnSearch(key, page, query) {
-  
   res.fetchSearchMovie(key, page, query).then(movies => {
     addedGenres(movies, genresList);
     gallery.innerHTML = cardTpl(movies.results);
     for (let index = 0; index < movies.results.length; index++) {
       if (movies.results[index].poster_path === null) {
-        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`)
-        imgGalleryEl.src = `${noImg}`
+        let imgGalleryEl = gallery.querySelector(`[data-id="${movies.results[index].id}"]`);
+        imgGalleryEl.src = `${noImg}`;
       }
     }
     stopLoader();
   });
-}
-
-function checkImage(src) {
-    if (src === '') {
-        
-    }
 }
 
 function createLibraryGallery(data) {
@@ -100,8 +93,8 @@ function createDotsPagination(
   if (numberOfPages > 1) {
     // Initialize Previous Button
     const paginationDOM = document.getElementById('pagination');
-    const svgArrow = `<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667L12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-    const arrowLeft = `<button class="previous" id="previous">${svgArrow}</button>`
+    const svgArrow = `<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667L12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const arrowLeft = `<button class="previous" id="previous">${svgArrow}</button>`;
     paginationDOM.insertAdjacentHTML('beforeend', arrowLeft);
 
     // Initialize Previous Dots Button
@@ -142,7 +135,7 @@ function createDotsPagination(
 
     // Initialize Next Button
 
-    const arrowRight = `<button class="next" id="next">${svgArrow}</button>`
+    const arrowRight = `<button class="next" id="next">${svgArrow}</button>`;
     paginationDOM.insertAdjacentHTML('beforeend', arrowRight);
   }
 
