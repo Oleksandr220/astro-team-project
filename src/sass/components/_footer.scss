@@ -10,8 +10,8 @@
 }
 
 footer {
-  padding-top: 29px;
-  padding-bottom: 29px;
+  padding-top: 19px;
+  padding-bottom: 39px;
   text-align: center;
   height: 100px;
   background: var(--footer-background-color);
@@ -27,6 +27,10 @@ footer {
     line-height: 20px;
     display: flex;
     justify-content: center;
+  }
+  @media screen and (min-width: $TabletWidth) {
+    padding-top: 29px;
+    padding-bottom: 29px;
   }
   a {
     color: inherit;
