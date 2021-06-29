@@ -19,10 +19,10 @@ export function renderQueueList() {
         document.documentElement.clientWidth < 769 &&
         document.documentElement.clientWidth > 468
       ) {
-        moviesOnPage = 2;
+        /* moviesOnPage = 2; */
         createPage(filmsCount, moviesOnPage, query, savedItems);
       } else if (document.documentElement.clientWidth < 469) {
-        moviesOnPage = 1;
+        /* moviesOnPage = 1; */
         createPage(filmsCount, moviesOnPage, query, savedItemsQueue);
       }
     }
