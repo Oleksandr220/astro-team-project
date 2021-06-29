@@ -1,23 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+  let toTopBtn = document.querySelector('.to-up');
+  const changeStyleSvg = document.querySelector('.strelka-top-1');
 
-    let toTopBtn = document.querySelector('.to-up');
-    const changeStyleSvg = document.querySelector('.strelka-top-1')
-
-    window.onscroll = function () {   
+  window.onscroll = function () {
     if (window.pageYOffset > 580) {
-        toTopBtn.style.display = 'block'
+      toTopBtn.style.display = 'block';
     } else {
-        toTopBtn.style.display = 'none';
-        changeStyleSvg.classList.remove("strelka-change");
+      toTopBtn.style.display = 'none';
+      changeStyleSvg.classList.remove('strelka-change');
     }
-}
+  };
 
-// плавный скролл наверх 
-toTopBtn.addEventListener('click', function () {
+  // плавный скролл наверх
+  toTopBtn.addEventListener('click', function () {
     window.scrollBy({
-        top: -document.documentElement.scrollHeight,
-        behavior: 'smooth'
+      top: -document.documentElement.scrollHeight,
+      behavior: 'smooth',
     });
-        changeStyleSvg.classList.add("strelka-change");
-    });
+    changeStyleSvg.classList.add('strelka-change');
+  });
 });

@@ -61,21 +61,21 @@
 }
 
 .button-auth {
-    padding: 5px 10px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.4;
-    text-align: center;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border: 1px solid var(--accent-text-color);
-    border-radius: 5px;
-    color: var(--primary-text-color);
-    background-color: var(--accent-color);
-    &:nth-child(2) {
-        margin-left: 10px;
-        @media screen and (max-width: $TabletWidth) {
-            margin-left: 90px;
-        }
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-text-color);
+  border-radius: 5px;
+  color: var(--primary-text-color);
+  background-color: var(--accent-color);
+  &:nth-child(2) {
+    margin-left: 10px;
+    @media screen and (max-width: $TabletWidth) {
+      margin-left: 90px;
     }
+  }
 }
