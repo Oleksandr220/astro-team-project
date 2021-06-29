@@ -1,22 +1,20 @@
 .btn-clear {
-  top: 280px;
-  right: 20px;
-  font-size: 16px;
-  position: absolute;
-  width: 120px;
-  height: 50px;
-  border: 1px solid #000;
-  border-radius: 20px;
-  background: radial-gradient(#fff, var(--err-text-color));
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.6;
-  }
-
-  @media screen and(min-width: $TabletWidth) {
-    top: 310px;
-  }
+    top: 280px;
+    right: 20px;
+    font-size: 16px;
+    position: absolute;
+    width: 120px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    background: radial-gradient(circle at 100%, rgb(245, 104, 104)30%, var(--err-text-color));
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    &:hover {
+        opacity: 0.6;
+    }
+    @media screen and(min-width: $TabletWidth) {
+        top: 310px;
+    }
 }
