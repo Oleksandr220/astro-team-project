@@ -1,5 +1,4 @@
 import * as apiFetchRequest from './fetches/fetchRequests';
-// import renderPage from './pagination';
 import createPage from './paginationWithDots';
 import debounce from 'lodash.debounce';
 import { API_KEY } from './objects/API_KEY';
@@ -25,7 +24,6 @@ function startPageTrending(key, page) {
     let moviesOnPage = movie.results.length;
     document.getElementById('pagination').innerHTML = '';
     createPage(totalMovies, moviesOnPage);
-
     stopLoader();
   });
 }
