@@ -60,5 +60,8 @@
     background-color: var(--accent-color);
     &:nth-child(2) {
         margin-left: 10px;
+        @media screen and (max-width: $TabletWidth) {
+            margin-left: 90px;
+        }
     }
 }
