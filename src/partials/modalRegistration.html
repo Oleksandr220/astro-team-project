@@ -1,6 +1,6 @@
 <div data-modal-reg class="backdrop-auth is-hidden">
-  <div class="modal-body block">
-    <button class="button-close" data-reg-close>
+    <div class="modal-body block">
+        <button class="button-close" data-reg-close>
       <svg tabindex="0" class="icon-closeback">
         <path
           fill="none"
@@ -12,22 +12,22 @@
         ></path>
       </svg>
     </button>
-    <h1>Sign up</h1>
-    <div class="modal-content">
-      <form id="reg-form">
-        <div class="auth-input">
-          <input type="email" id="email" required />
-          <label for="email">Email</label>
+        <h1>Sign up</h1>
+        <div class="modal-content">
+            <form id="reg-form">
+                <div class="auth-input">
+                    <input type="email" id="email" required />
+                    <label for="email">Email</label>
+                </div>
+                <div class="auth-input">
+                    <input type="password" id="password" required minlength="6" />
+                    <label for="password">Password</label>
+                </div>
+                <p class="error-message-reg is-hidden">User with such email is exists</p>
+                <div class="container-btn-submit">
+                    <button type="submit" class="button auth">Sign up</button>
+                </div>
+            </form>
         </div>
-        <div class="auth-input">
-          <input type="password" id="password" required minlength="6" />
-          <label for="password">Password</label>
-        </div>
-        <p class="error-message-reg is-hidden">User with such email is exists</p>
-        <div class="container-btn-submit">
-          <button type="submit" class="button auth">Sign in</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
