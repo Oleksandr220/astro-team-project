@@ -30,8 +30,10 @@ function sendData(data, callback, callBefore) {
 }
 
 function showPreloader() {
+  
   orderTicketFormWrapper.style.display = 'none';
   orderTicketPreloaderWrapper.style.display = 'block';
+  
 }
 
 function showThankYou(data) {

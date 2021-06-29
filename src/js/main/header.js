@@ -10,8 +10,8 @@ const boxForInputRef = document.querySelector('.box-js');
 const galerryContRef = document.querySelector('.js-gallery');
 const paginationList = document.querySelector('#paginate');
 
-homePageRef.addEventListener('click', onHomeClick);
-libraryPageRef.addEventListener('click', onLibraryClick);
+homePageRef.addEventListener('click', onHomeClick, false);
+libraryPageRef.addEventListener('click', onLibraryClick, false);
 
 function onHomeClick(e) {
   paginationList.classList.remove('is-hidden');
@@ -22,6 +22,7 @@ function onHomeClick(e) {
   formToSearchRef.classList.remove('visually-hiden');
   boxForInputRef.classList.remove('visually-hiden');
   libraryPageRef.classList.remove('logo-current');
+  homePageRef.removeEventListener('click', onHomeClick, false);
 }
 
 function declOfMovie(number) {
@@ -64,7 +65,12 @@ function onLibraryClick(e) {
   const elBtnQueue = document.querySelector('[data-queue-header');
   elBtnQueue.addEventListener('click', renderQueueList);
   renderQueueList()
+  
+    document.querySelector('.search-erorr').classList.add('visually-hiden');
+  
   buttonQueueHeaderRef.classList.add('library-button-focus');
+  libraryPageRef.removeEventListener('click', onLibraryClick, false);
+
 }
 
 //Queue current
