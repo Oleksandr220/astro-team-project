@@ -39,6 +39,8 @@ function showThankYou(data) {
   orderTicketPreloaderWrapper.style.display = 'none';
   orderTicketThanksWrapper.style.display = 'block';
   orderTicketThanksName.textContent = data.name;
+  setTimeout(closeOrOpenForm, 4000);
+  setTimeout(reLoadForm, 5000);
 }
 
 function changeLayoutLabel(e) {
@@ -65,10 +67,20 @@ function submitForm(e) {
   sendData(data, showThankYou, showPreloader);
 }
 
-orderTrigger.addEventListener('click', () => {
+function closeOrOpenForm() {
   hideForm.classList.toggle('hide-form-active');
   closeCross.classList.toggle('is-hidden');
-});
+}
+
+function reLoadForm() {
+  orderTicketFormWrapper.style.display = 'flex';
+  orderTicketThanksWrapper.style.display = 'none';
+  orderTicketForm.reset();
+  const arrayOfLabel = orderTicketForm.querySelectorAll('label');
+  arrayOfLabel.forEach(label => label.classList.remove('order-ticket__label-focus'));
+}
+
+orderTrigger.addEventListener('click', closeOrOpenForm);
 
 orderTicketForm.addEventListener('change', changeLayoutLabel);
 

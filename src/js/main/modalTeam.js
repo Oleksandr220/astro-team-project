@@ -1,4 +1,5 @@
 import teamAPI from '../objects/teamAPI.json';
+import createPaginationForTeamWindow from '../paginationWithoutDots';
 import createPhotoTeamTPL from '../../templates/teamPhoto.hbs';
 import imageDanilo from '../../images/modalTeam/Danilo.jpg';
 import imageBohdan from '../../images/modalTeam/Bohdan1.jpg';
@@ -14,99 +15,47 @@ const openModalButton = document.querySelector('[data-team]');
 const modalBackdrop = document.querySelector('[data-modal]');
 const teamList = document.querySelector('.modal-team-list');
 const teamData = [...teamAPI];
+const paginationPageList = document.querySelector('[data-modal-pagination]');
 const paginationMobileList = document.querySelector('#paginate-teamModal');
-let teamRenderData = [];
+let cardOnPage;
 
-openModalButton.addEventListener('click', () => {
+openModalButton.addEventListener('click', openModalTeam);
+
+function openModalTeam() {
+  if (document.documentElement.clientWidth >= 769) {
+    cardOnPage = 3;
+  } else if (
+    document.documentElement.clientWidth < 769 &&
+    document.documentElement.clientWidth > 468
+  ) {
+    cardOnPage = 2;
+  } else if (document.documentElement.clientWidth < 469) {
+    cardOnPage = 1;
+  }
+
   modalBackdrop.classList.remove('is-hidden');
-  showPage;
+  if (document.documentElement.clientWidth < 469) {
+    createTeamModalPagination(cardOnPage, teamList, teamData);
+  } else {
+    createPaginationForTeamWindow(cardOnPage, teamData);
+  }
   changePhoto();
-  modalBackdrop.addEventListener('click', closeModal);
-  window.addEventListener('keydown', closeModal);
-});
+  modalBackdrop.addEventListener('click', closeModalTeam);
+  window.addEventListener('keydown', closeModalTeam);
+}
 
-function closeModal(e) {
+function closeModalTeam(e) {
   if (e.code === 'Escape' || e.target.dataset.modal === '' || e.target.dataset.modalClose === '') {
     modalBackdrop.classList.add('is-hidden');
-    modalBackdrop.removeEventListener('keydown', closeModal);
-    window.removeEventListener('keydown', closeModal);
+    modalBackdrop.removeEventListener('keydown', closeModalTeam);
+    window.removeEventListener('keydown', closeModalTeam);
   }
-}
-
-// Create Pagination
-const paginationList = document.querySelector('[data-modal-pagination]');
-let cardOnPage = 0;
-let countOfButtons = 0;
-let buttons = [];
-
-function createCountOfButtons(cardOnPage) {
-  return Math.ceil(teamData.length / cardOnPage);
-}
-
-function createButtonsArray(countOfButtons) {
-  for (let i = 1; i <= countOfButtons; i += 1) {
-    let paginationButton = document.createElement('li');
-    paginationButton.innerHTML = i;
-    paginationList.appendChild(paginationButton);
-    buttons.push(paginationButton);
-  }
-  return buttons;
-}
-
-function renderTeamListOnButtonClick(buttons) {
-  for (let button of buttons) {
-    button.addEventListener('click', function () {
-      showPage(this);
-      changePhoto();
-    });
-  }
-}
-
-function createListMarkup(teamRenderData) {
-  return createPhotoTeamTPL(teamRenderData);
-}
-
-let showPage = (function () {
-  let active;
-
-  return function (item) {
-    if (active) {
-      active.classList.remove('active');
-    }
-    active = item;
-    item.classList.add('active');
-    let pageNum = +item.innerHTML;
-    let start = (pageNum - 1) * cardOnPage;
-    let end = start + cardOnPage;
-    teamRenderData = teamData.slice(start, end);
-
-    teamList.innerHTML = '';
-    teamList.insertAdjacentHTML('beforeend', createListMarkup(teamRenderData));
-  };
-})();
-
-if (document.documentElement.clientWidth >= 769) {
-  cardOnPage = 3;
-  countOfButtons = createCountOfButtons(cardOnPage);
-  createButtonsArray(countOfButtons);
-  showPage(buttons[0]);
-  renderTeamListOnButtonClick(buttons);
-} else if (
-  document.documentElement.clientWidth < 769 &&
-  document.documentElement.clientWidth > 468
-) {
-  cardOnPage = 2;
-  countOfButtons = createCountOfButtons(cardOnPage);
-  createButtonsArray(countOfButtons);
-  showPage(buttons[0]);
-  renderTeamListOnButtonClick(buttons);
-} else if (document.documentElement.clientWidth < 469) {
-  createTeamModalPagination();
 }
 
 // Create pagination on mobile window
 function createTeamModalPagination() {
   if (document.documentElement.clientWidth < 469) {
+    paginationPageList.classList.add('is-hidden');
     paginationMobileList.classList.remove('is-hidden');
   } else {
     paginationMobileList.classList.add('is-hidden');
@@ -178,7 +127,7 @@ function createTeamModalPagination() {
       let page = state.page - 1;
       let start = page * state.perPage;
       let end = start + state.perPage;
-      teamRenderData = teamData.slice(start, end);
+      let teamRenderData = teamData.slice(start, end);
       teamList.insertAdjacentHTML('beforeend', createListMarkup(teamRenderData));
     },
   };
@@ -243,6 +192,10 @@ function createTeamModalPagination() {
     controls.createListeners();
   }
 
+  function createListMarkup(teamRenderData) {
+    return createPhotoTeamTPL(teamRenderData);
+  }
+
   init();
 }
 
@@ -250,7 +203,6 @@ function createTeamModalPagination() {
 function changePhoto() {
   const photoElements = document.querySelectorAll('figure img');
   for (const elem of photoElements) {
-    console.log('altElement: ', elem.alt);
     if (elem.alt === 'Danilo') {
       elem.src = `${imageDanilo}`;
     }
@@ -258,7 +210,6 @@ function changePhoto() {
       elem.src = `${imageBohdan}`;
     }
     if (elem.alt === 'Svitlana') {
-      console.log('elem.alt: ', elem.alt);
       elem.src = `${imageSvitlana}`;
     }
     if (elem.alt === 'Alexandr') {
@@ -281,3 +232,5 @@ function changePhoto() {
     }
   }
 }
+
+export default changePhoto;

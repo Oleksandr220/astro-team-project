@@ -1,3 +1,5 @@
+import { clearDb } from './firebase/addToDbWatched';
+
 const gallerySectionEl = document.querySelector('.js-gallery');
 const libraryContRef = document.querySelector('.library-js');
 const homeContRef = document.querySelector('.home-js');
@@ -7,39 +9,42 @@ const btnQueueEl = document.querySelector('[data-queue-header');
 
 // Add and remove button
 function addBtnClearLibrary() {
-    btnClearLibraryEl.classList.remove('is-hidden');
+  btnClearLibraryEl.classList.remove('is-hidden');
 }
 
 function removeBtnClearLibrary() {
-    btnClearLibraryEl.classList.add('is-hidden');
+  btnClearLibraryEl.classList.add('is-hidden');
 }
 
-libraryContRef.addEventListener('click', addBtnClearLibrary)
-homeContRef.addEventListener('click', removeBtnClearLibrary)
+libraryContRef.addEventListener('click', addBtnClearLibrary);
+homeContRef.addEventListener('click', removeBtnClearLibrary);
 
 // Function button
 
 function clearWatchedLib() {
-    localStorage.removeItem('watched');
+  localStorage.removeItem('watched');
+  clearDb('watched');
 }
 
 function clearQueueLib() {
-    localStorage.removeItem('queue');
+  localStorage.removeItem('queue');
+  clearDb('queue');
 }
 
 function clearGallery() {
-    gallerySectionEl.innerHTML = '';
+  gallerySectionEl.innerHTML = '';
+  document.getElementById('pagination').innerHTML = '';
 }
 
-function clearLib () {
-    clearGallery();
-    let declOfMovie = 1;
-    if (btnWatchedEl.classList.contains('library-button-focus')) {
-        clearWatchedLib();
-    }
-    if (btnQueueEl.classList.contains('library-button-focus')) {
-        clearQueueLib()
-    }
+function clearLib() {
+  clearGallery();
+  let declOfMovie = 1;
+  if (btnWatchedEl.classList.contains('library-button-focus')) {
+    clearWatchedLib();
+  }
+  if (btnQueueEl.classList.contains('library-button-focus')) {
+    clearQueueLib();
+  }
 }
 
-btnClearLibraryEl.addEventListener('click', clearLib)
+btnClearLibraryEl.addEventListener('click', clearLib);
