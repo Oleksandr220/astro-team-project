@@ -76,9 +76,9 @@ function authFormHandler(event) {
       modalAuth.classList.remove('is-open');
       modalAuth.classList.add('is-hidden');
       ErrorMessageEl.classList.add('is-hidden');
+      window.location.replace('/');
     })
     .catch(() => {
-      console.log(ErrorMessageEl);
       ErrorMessageEl.classList.remove('is-hidden');
     });
 }
@@ -94,4 +94,5 @@ export function logOut() {
   menuBtnRef.removeEventListener('click', logOut);
   menuBtnRef.innerHTML = 'Sign In';
   menuBtnRef.addEventListener('click', openModalauth);
+  window.location.replace('/');
 }
