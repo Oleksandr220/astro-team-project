@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  padding: 0 20px;
 
   @media screen and (min-width: $TabletWidth) {
     margin-bottom: 60px;
@@ -51,16 +52,58 @@
 }
 .next {
   display: block;
-  left: 571px;
-  top: 2190px;
   background: var(--footer-background-color);
   border-radius: 5px;
 }
 .previous {
-  left: 571px;
-  top: 2190px;
-
   background: var(--footer-background-color);
   border-radius: 5px;
   transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.previousDots,
+.nextDots {
+  position: relative;
+}
+
+.inputInNextDots,
+.inputInPreviousDots {
+  position: absolute;
+  top: -40px;
+  width: 100%;
+  height: 40px;
+  padding: 0 5px;
+  color: #212121;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.33;
+  text-align: center;
+  border: 2px solid var(--accent-text-color);
+  background-color: var(--footer-background-color);
+}
+
+.inputInNextDots:focus,
+.inputInPreviousDots:focus {
+  border: 4px solid var(--accent-text-color);
+  outline: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']:hover,
+input[type='number']:focus {
+  -moz-appearance: number-input;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
