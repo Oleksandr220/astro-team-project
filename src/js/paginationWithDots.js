@@ -98,7 +98,7 @@ function createDotsPagination(
     // Initialize Previous Button
     const paginationDOM = document.getElementById('pagination');
     const svgArrow = `<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667L12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-    const arrowLeft = `<button class="previous" id="previous">${svgArrow}</button>`;
+    const arrowLeft = `<button class="previous" id="previous" aria-label="Previous Page">${svgArrow}</button>`;
     paginationDOM.insertAdjacentHTML('beforeend', arrowLeft);
 
     // Initialize Previous Dots Button
@@ -149,7 +149,7 @@ function createDotsPagination(
 
     // Initialize Next Button
 
-    const arrowRight = `<button class="next" id="next">${svgArrow}</button>`;
+    const arrowRight = `<button class="next" id="next" aria-label="Next Page">${svgArrow}</button>`;
     paginationDOM.insertAdjacentHTML('beforeend', arrowRight);
   }
 
