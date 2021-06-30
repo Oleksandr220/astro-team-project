@@ -56,7 +56,7 @@ function RegFormHandler(event) {
       modalReg.classList.remove('is-open');
       modalReg.classList.add('is-hidden');
       ErrorMessageEl.classList.add('is-hidden');
-      window.location.replace('/');
+      window.location.replace('/astro-team-project/');
     })
     .catch(() => {
       ErrorMessageEl.classList.remove('is-hidden');
