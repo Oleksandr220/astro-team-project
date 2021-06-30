@@ -1,5 +1,6 @@
 import cardTpl from '../templates/popular-film-section.hbs';
 import libraryCardTpl from '../templates/library-card.hbs';
+import debounce from 'lodash.debounce';
 import * as res from './fetches/fetchRequests';
 import * as apiFetchGenres from './fetches/fetchGenres';
 import { API_KEY } from './objects/API_KEY';
@@ -103,7 +104,12 @@ function createDotsPagination(
     // Initialize Previous Dots Button
     const previousDots = document.createElement('button');
     const previousDotsText = document.createTextNode('...');
+    const inputInPreviousDots = document.createElement('input');
+    inputInPreviousDots.type = 'number';
+    inputInPreviousDots.classList.add('inputInPreviousDots');
+    inputInPreviousDots.style.display = 'none';
     previousDots.appendChild(previousDotsText);
+    previousDots.appendChild(inputInPreviousDots);
     previousDots.classList.add('previousDots');
     previousDots.setAttribute('id', 'previousDots');
     previousDots.style.display = 'none';
@@ -129,8 +135,13 @@ function createDotsPagination(
     // Initialize Next Dots Button
     const nextDots = document.createElement('button');
     const nextDotsText = document.createTextNode('...');
+    const inputInNextDots = document.createElement('input');
+    inputInNextDots.type = 'number';
+    inputInNextDots.classList.add('inputInNextDots');
+    inputInNextDots.style.display = 'none';
     const lastButtonElement = paginationDOM.lastElementChild;
     nextDots.appendChild(nextDotsText);
+    nextDots.appendChild(inputInNextDots);
     nextDots.classList.add('nextDots');
     nextDots.setAttribute('id', 'nextDots');
     paginationDOM.insertBefore(nextDots, lastButtonElement);
@@ -150,16 +161,30 @@ function createDotsPagination(
 
   let activePage = document.querySelector('.activePage').dataset.value;
 
-  if (pages.length > 5) {
-    pages.forEach(function (page) {
-      if (page.dataset.value > 5 && page.dataset.value < pages.length) {
-        page.style.display = 'none';
-      }
-    });
+  if (document.documentElement.clientWidth < 469) {
+    if (pages.length > 3) {
+      pages.forEach(function (page) {
+        if (page.dataset.value > 3 && page.dataset.value < pages.length) {
+          page.style.display = 'none';
+        }
+      });
+    } else {
+      pages.forEach(function (page) {
+        page.style.display = 'inline-block';
+      });
+    }
   } else {
-    pages.forEach(function (page) {
-      page.style.display = 'inline-block';
-    });
+    if (pages.length > 5) {
+      pages.forEach(function (page) {
+        if (page.dataset.value > 5 && page.dataset.value < pages.length) {
+          page.style.display = 'none';
+        }
+      });
+    } else {
+      pages.forEach(function (page) {
+        page.style.display = 'inline-block';
+      });
+    }
   }
 
   function pagination(e) {
@@ -174,36 +199,74 @@ function createDotsPagination(
 
     let i = activePage > 5 ? activePage - 2 : 1;
 
-    if (Number(e.dataset.value) > previousActiveValue) {
-      if (Number(e.dataset.value) < numberOfPages - 1) {
-        for (let k = i; k <= Number(activePage) + 2; k += 1) {
-          document.getElementById(`${k - 1}`).style.display = 'inline-block';
+    if (document.documentElement.clientWidth < 469) {
+      if (Number(e.dataset.value) > previousActiveValue) {
+        if (Number(e.dataset.value) < numberOfPages - 1) {
+          for (let k = i; k <= Number(activePage) + 1; k += 1) {
+            document.getElementById(`${k - 1}`).style.display = 'inline-block';
+            if (k < numberOfPages - 3 && k >= Number(activePage) + 1) {
+              document.getElementById(`${k}`).style.display = 'none';
+              document.getElementById(`${k + 1}`).style.display = 'none';
+            }
+          }
+        }
+
+        for (let j = Number(activePage) - 3; j >= 1; j--) {
+          document.getElementById(`${j}`).style.display = 'none';
+          document.getElementById(`${j - 1}`).style.display = 'none';
+
+          document.getElementById('previousDots').style.display = 'inline-block';
+        }
+
+        if (document.getElementById('previousDots').style.display === 'inline-block') {
+          document.getElementById('0').style.display = 'inline-block';
+        }
+      } else if (Number(e.dataset.value) < previousActiveValue) {
+        if (Number(e.dataset.value) <= numberOfPages - 1) {
+          for (let l = Number(activePage) - 1; l <= Number(activePage) + 1; l += 1) {
+            if (l <= 0) break;
+            document.getElementById(`${l - 1}`).style.display = 'inline-block';
+          }
+        }
+        for (let m = Number(activePage) + 1; m < numberOfPages; m += 1) {
+          if (m + 1 <= numberOfPages - 1) {
+            document.getElementById(`${m}`).style.display = 'none';
+          }
         }
       }
-
-      for (let j = Number(activePage) - 4; j >= 1; j--) {
-        document.getElementById(`${j}`).style.display = 'none';
-        document.getElementById(`${j - 1}`).style.display = 'none';
-
-        document.getElementById('previousDots').style.display = 'inline-block';
-      }
-
-      if (document.getElementById('previousDots').style.display === 'inline-block') {
-        document.getElementById('0').style.display = 'inline-block';
-      }
-    } else if (Number(e.dataset.value) < previousActiveValue) {
-      if (Number(e.dataset.value) <= numberOfPages - 1) {
-        for (let l = Number(activePage) - 2; l <= Number(activePage) + 1; l += 1) {
-          if (l <= 0) break;
-          document.getElementById(`${l - 1}`).style.display = 'inline-block';
+    } else {
+      if (Number(e.dataset.value) > previousActiveValue) {
+        if (Number(e.dataset.value) < numberOfPages - 1) {
+          for (let k = i; k <= Number(activePage) + 2; k += 1) {
+            document.getElementById(`${k - 1}`).style.display = 'inline-block';
+          }
         }
-      }
-      for (let m = Number(activePage) + 2; m < numberOfPages; m += 1) {
-        if (m + 1 <= numberOfPages - 1) {
-          document.getElementById(`${m}`).style.display = 'none';
+
+        for (let j = Number(activePage) - 4; j >= 1; j--) {
+          document.getElementById(`${j}`).style.display = 'none';
+          document.getElementById(`${j - 1}`).style.display = 'none';
+
+          document.getElementById('previousDots').style.display = 'inline-block';
+        }
+
+        if (document.getElementById('previousDots').style.display === 'inline-block') {
+          document.getElementById('0').style.display = 'inline-block';
+        }
+      } else if (Number(e.dataset.value) < previousActiveValue) {
+        if (Number(e.dataset.value) <= numberOfPages - 1) {
+          for (let l = Number(activePage) - 2; l <= Number(activePage) + 1; l += 1) {
+            if (l <= 0) break;
+            document.getElementById(`${l - 1}`).style.display = 'inline-block';
+          }
+        }
+        for (let m = Number(activePage) + 2; m < numberOfPages; m += 1) {
+          if (m + 1 <= numberOfPages - 1) {
+            document.getElementById(`${m}`).style.display = 'none';
+          }
         }
       }
     }
+
     if (Number(activePage) === 1) {
       document.getElementById('previous').disabled = true;
       document.getElementById('previous').classList.add('inactiveLink');
@@ -268,6 +331,165 @@ function createDotsPagination(
 
   document.querySelector('.next').addEventListener('click', e => nextPrevious(e));
   document.querySelector('.previous').addEventListener('click', e => nextPrevious(e));
+
+  // Добавил возможность перейти на любую страницу
+
+  document.querySelector('.nextDots').addEventListener('click', appearInput);
+  document.querySelector('.previousDots').addEventListener('click', appearInput);
+
+  function appearInput() {
+    const input = this.querySelector('input');
+    if (input.style.display === 'block') {
+      input.style.display = 'none';
+      input.value = '';
+      return;
+    }
+    input.style.display = 'block';
+    input.focus();
+    input.required = true;
+    input.max = `${numberOfPages}`;
+    input.min = '1';
+    input.addEventListener('input', debounce(onInputSelectPage, 400));
+  }
+
+  function onInputSelectPage(e) {
+    let queryOfInput = e.target.value;
+    if (!queryOfInput || queryOfInput > numberOfPages || queryOfInput < 0) {
+      return;
+    }
+    paginationOnInput(queryOfInput);
+    this.value = '';
+    this.style.display = 'none';
+  }
+
+  function paginationOnInput(e) {
+    let activePageDOM = document.querySelector('.activePage');
+
+    let previousActiveValue = activePageDOM.dataset.value;
+
+    activePageDOM.classList.remove('activePage');
+
+    document.getElementById(`${Number(e) - 1}`).classList.add('activePage');
+    activePage = document.querySelector('.activePage').dataset.value;
+
+    let i = activePage > 5 ? activePage - 2 : 1;
+
+    if (document.documentElement.clientWidth < 469) {
+      if (Number(e) > previousActiveValue) {
+        if (Number(e) < numberOfPages - 1) {
+          for (let k = i; k <= Number(activePage) + 1; k += 1) {
+            document.getElementById(`${k - 1}`).style.display = 'inline-block';
+            if (k < numberOfPages - 3 && k >= Number(activePage) + 1) {
+              document.getElementById(`${k}`).style.display = 'none';
+              document.getElementById(`${k + 1}`).style.display = 'none';
+            }
+          }
+        }
+
+        for (let j = Number(activePage) - 3; j >= 1; j--) {
+          document.getElementById(`${j}`).style.display = 'none';
+          document.getElementById(`${j - 1}`).style.display = 'none';
+
+          document.getElementById('previousDots').style.display = 'inline-block';
+        }
+
+        if (document.getElementById('previousDots').style.display === 'inline-block') {
+          document.getElementById('0').style.display = 'inline-block';
+        }
+      } else if (Number(e) < previousActiveValue) {
+        if (Number(e) <= numberOfPages - 1) {
+          for (let l = Number(activePage) - 1; l <= Number(activePage) + 1; l += 1) {
+            if (l <= 0) break;
+            document.getElementById(`${l - 1}`).style.display = 'inline-block';
+          }
+        }
+        for (let m = Number(activePage) + 1; m < numberOfPages; m += 1) {
+          if (m + 1 <= numberOfPages - 1) {
+            document.getElementById(`${m}`).style.display = 'none';
+          }
+        }
+      }
+    } else {
+      if (Number(e) > previousActiveValue) {
+        if (Number(e) < numberOfPages - 1) {
+          for (let k = i; k <= Number(activePage) + 2; k += 1) {
+            document.getElementById(`${k - 1}`).style.display = 'inline-block';
+          }
+        }
+
+        for (let j = Number(activePage) - 4; j >= 1; j--) {
+          document.getElementById(`${j}`).style.display = 'none';
+          document.getElementById(`${j - 1}`).style.display = 'none';
+
+          document.getElementById('previousDots').style.display = 'inline-block';
+        }
+
+        if (document.getElementById('previousDots').style.display === 'inline-block') {
+          document.getElementById('0').style.display = 'inline-block';
+        }
+      } else if (Number(e) < previousActiveValue) {
+        if (Number(e) <= numberOfPages - 1) {
+          for (let l = Number(activePage) - 2; l <= Number(activePage) + 1; l += 1) {
+            if (l <= 0) break;
+            document.getElementById(`${l - 1}`).style.display = 'inline-block';
+          }
+        }
+        for (let m = Number(activePage) + 2; m < numberOfPages; m += 1) {
+          if (m + 1 <= numberOfPages - 1) {
+            document.getElementById(`${m}`).style.display = 'none';
+          }
+        }
+      }
+    }
+
+    if (Number(activePage) === 1) {
+      document.getElementById('previous').disabled = true;
+      document.getElementById('previous').classList.add('inactiveLink');
+      document.getElementById('next').disabled = false;
+      document.getElementById('next').classList.remove('inactiveLink');
+      document.getElementById(`${Number(activePage)}`).style.display = 'inline-block';
+      if (numberOfPages > 2) {
+        document.getElementById(`${Number(activePage) + 1}`).style.display = 'inline-block';
+      }
+    } else if (Number(activePage) === numberOfPages) {
+      document.getElementById('next').disabled = true;
+      document.getElementById('next').classList.add('inactiveLink');
+      document.getElementById('previous').disabled = false;
+      document.getElementById('previous').classList.remove('inactiveLink');
+      document.getElementById(`${numberOfPages - 2}`).style.display = 'inline-block';
+      if (numberOfPages > 2) {
+        document.getElementById(`${numberOfPages - 3}`).style.display = 'inline-block';
+      }
+    } else {
+      document.getElementById('previous').classList.remove('inactiveLink');
+      document.getElementById('next').classList.remove('inactiveLink');
+      document.getElementById('previous').disabled = false;
+      document.getElementById('next').disabled = false;
+    }
+
+    if (document.getElementById('1').style.display === 'inline-block') {
+      document.getElementById('previousDots').style.display = 'none';
+    }
+    if (document.getElementById(`${numberOfPages - 2}`).style.display === 'inline-block') {
+      document.getElementById('nextDots').style.display = 'none';
+    } else {
+      document.getElementById('nextDots').style.display = 'inline-block';
+    }
+
+    let numberOfPage = Number(activePage);
+    if (movies) {
+      let start = (numberOfPage - 1) * moviesOnPage;
+      let end = start + moviesOnPage;
+      let renderMovies = movies.slice(start, end);
+      createLibraryGallery(renderMovies);
+    } else {
+      if (query) {
+        createSectionOnSearch(API_KEY, numberOfPage, query);
+      } else {
+        createGallerySection(API_KEY, numberOfPage);
+      }
+    }
+  }
 }
 
 export default createDotsPagination;

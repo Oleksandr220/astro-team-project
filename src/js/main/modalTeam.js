@@ -42,6 +42,7 @@ function openModalTeam() {
   changePhoto();
   modalBackdrop.addEventListener('click', closeModalTeam);
   window.addEventListener('keydown', closeModalTeam);
+  document.body.classList.add('modal-open');
 }
 
 function closeModalTeam(e) {
@@ -49,6 +50,7 @@ function closeModalTeam(e) {
     modalBackdrop.classList.add('is-hidden');
     modalBackdrop.removeEventListener('keydown', closeModalTeam);
     window.removeEventListener('keydown', closeModalTeam);
+    document.body.classList.remove('modal-open');
   }
 }
 
