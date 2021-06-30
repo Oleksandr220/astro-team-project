@@ -65,18 +65,26 @@ function authFormHandler(event) {
       menuBtnRef.innerHTML = 'log out';
       menuBtnRef.addEventListener('click', logOut);
 
-      addWatchedToLocalStorage(data.localId).then(resp => {
-        localStorage.setItem('watched', JSON.stringify(resp ? resp : []));
-      });
-      addQueueToLocalStorage(data.localId).then(resp => {
-        localStorage.setItem('queue', JSON.stringify(resp ? resp : []));
-      });
+      addWatchedToLocalStorage(data.localId)
+        .then(resp => {
+          localStorage.setItem('watched', JSON.stringify(resp ? resp : []));
+        })
+        .then(() => {
+          addQueueToLocalStorage(data.localId).then(resp => {
+            localStorage.setItem('queue', JSON.stringify(resp ? resp : []));
+          });
+        })
+        .then(() => {
+          setTimeout(() => {
+            window.location.replace('/astro-team-project/');
+          }, 100);
+        });
+
       email.value = '';
       password.value = '';
       modalAuth.classList.remove('is-open');
       modalAuth.classList.add('is-hidden');
       ErrorMessageEl.classList.add('is-hidden');
-      window.location.replace('/astro-team-project/');
     })
     .catch(() => {
       ErrorMessageEl.classList.remove('is-hidden');
