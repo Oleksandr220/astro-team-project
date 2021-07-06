@@ -10,6 +10,7 @@ import imageVladislav from '../../images/modalTeam/Vladislav1.jpg';
 import imageIgor from '../../images/modalTeam/Igor1.jpg';
 import imageStanislav from '../../images/modalTeam/Stanislav1.jpg';
 import imageAndrii from '../../images/modalTeam/Andrii1.jpg';
+import { enableScroll, disableScroll } from '../disableScroll.js';
 
 const openModalButton = document.querySelector('[data-team]');
 const modalBackdrop = document.querySelector('[data-modal]');
@@ -29,6 +30,7 @@ function openModalTeam() {
     document.documentElement.clientWidth > 468
   ) {
     cardOnPage = 2;
+    console.log('cardOnPage Tablet: ', cardOnPage);
   } else if (document.documentElement.clientWidth < 469) {
     cardOnPage = 1;
   }
@@ -42,7 +44,7 @@ function openModalTeam() {
   changePhoto();
   modalBackdrop.addEventListener('click', closeModalTeam);
   window.addEventListener('keydown', closeModalTeam);
-  document.body.classList.add('modal-open');
+  disableScroll();
 }
 
 function closeModalTeam(e) {
@@ -50,7 +52,7 @@ function closeModalTeam(e) {
     modalBackdrop.classList.add('is-hidden');
     modalBackdrop.removeEventListener('keydown', closeModalTeam);
     window.removeEventListener('keydown', closeModalTeam);
-    document.body.classList.remove('modal-open');
+    enableScroll();
   }
 }
 
