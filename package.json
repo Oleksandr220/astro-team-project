@@ -3,20 +3,20 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://github.com/Danatey/astro-team-project",
+  "homepage": "https://github.com/Oleksandr220/astro-team-project",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /astro-team-project/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Danatey/astro-team-project.git"
+    "url": "git+https://github.com/Oleksandr220/astro-team-project.git"
   },
   "keywords": [],
   "author": "It's all teams",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Danatey/astro-team-project/issues"
+    "url": "https://github.com/Oleksandr220/astro-team-project/issues"
   },
   "devDependencies": {
     "@pnotify/core": "^5.2.0",
