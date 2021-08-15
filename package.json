@@ -6,7 +6,9 @@
   "homepage": "https://Oleksandr220.github.io/astro-team-project",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /astro-team-project/"
+    "build": "parcel build src/*.html --public-url /astro-team-project/",
+    "predeploy": "npm run build -- --public-url /astro-team-project/",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "handlebars": "^4.7.7",
     "lodash.debounce": "^4.0.8"
   }
