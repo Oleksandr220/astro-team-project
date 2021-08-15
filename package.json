@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://Oleksandr220.github.io//astro-team-project",
+  "homepage": "https://Oleksandr220.github.io/astro-team-project",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /astro-team-project/"
